@@ -18,6 +18,10 @@ const config: Config = {
       },
       fontWeight: {
         'bold': '900',
+        'light': '300',
+      },
+      gradientColors: {
+        'primary-gradient': ['from-green-400', 'to-blue-400'],
       },
     },
   },

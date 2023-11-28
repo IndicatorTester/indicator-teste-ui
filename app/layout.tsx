@@ -10,8 +10,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="text-center">
+        <div className="">
+          <div className="grid text-center">
             {children}
           </div>
         </div>
