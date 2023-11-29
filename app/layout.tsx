@@ -1,3 +1,5 @@
+import { UserProvider } from "@auth0/nextjs-auth0/client"
+
 export const metadata = {
   title: 'Indicator Tester',
 }
@@ -9,9 +11,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-screen w-screen overflow-hidden">
-      <body>
-        {children}
-      </body>
+      <UserProvider>
+        <body>
+          {children}
+        </body>
+      </UserProvider>
     </html>
   )
 }

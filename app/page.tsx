@@ -10,7 +10,6 @@ const App = () => {
       <Header />
       <div className="h-screen w-screen snap-y snap-mandatory scroll-smooth overflow-y-auto">
         <LandingPage />
-        <LandingPage />
       </div>
     </>
   )
