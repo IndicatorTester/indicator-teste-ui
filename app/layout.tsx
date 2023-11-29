@@ -8,13 +8,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-screen w-screen overflow-hidden">
       <body>
-        <div className="">
-          <div className="grid text-center">
-            {children}
-          </div>
-        </div>
+        {children}
       </body>
     </html>
   )

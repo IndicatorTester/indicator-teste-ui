@@ -1,16 +1,17 @@
-'use client';
-
 import React from 'react'
 import './globals.css'
 import 'tailwindcss/tailwind.css'
+import LandingPage from './landingPage';
 import Header from './header';
-import StartButton from './StartButton';
 
 const App = () => {
   return (
     <>
-      <StartButton />
       <Header />
+      <div className="h-screen w-screen snap-y snap-mandatory scroll-smooth overflow-y-auto">
+        <LandingPage />
+        <LandingPage />
+      </div>
     </>
   )
 }
