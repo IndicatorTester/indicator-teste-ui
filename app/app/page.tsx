@@ -1,17 +1,18 @@
-'use client';
-
-import React from 'react'
-import { useUser } from '@auth0/nextjs-auth0/client'
-import Link from 'next/link'
+import React from "react";
+import 'tailwindcss/tailwind.css'
+import Menu from "./menu";
+import TestPage from "./testPage";
+import '../globals.css'
 
 const App = () => {
+    return (
+        <>
+            <div className="w-screen flex items-start">
+                <Menu />
+                {/* <TestPage /> */}
+            </div>
+        </>
+    );
+};
 
-    const { user, error, isLoading } = useUser();
-
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>{error.message}</div>;
-    if (!user) return <Link href="/api/auth/login">Login</Link>;
-    return <div>Hello {user.name}, <Link href="/api/auth/logout">Logout</Link></div>;
-}
-
-export default App
+export default App;

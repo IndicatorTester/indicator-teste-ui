@@ -18,6 +18,7 @@ const config: Config = {
       },
       fontWeight: {
         'bold': '900',
+        'normal': '500',
         'light': '300',
       },
       gradientColors: {
