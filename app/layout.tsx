@@ -1,21 +1,22 @@
-import { UserProvider } from "@auth0/nextjs-auth0/client"
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 export const metadata = {
-  title: 'Indicator Tester',
-}
+    title: "Indicator Tester",
+};
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" className="h-screen w-screen overflow-hidden">
-      <UserProvider>
-        <body>
-          {children}
-        </body>
-      </UserProvider>
-    </html>
-  )
+    return (
+        <html
+            lang="en"
+            className="h-screen w-screen overflow-hidden"
+        >
+            <UserProvider>
+                <body>{children}</body>
+            </UserProvider>
+        </html>
+    );
 }

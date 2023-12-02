@@ -1,16 +1,18 @@
 import React from 'react'
-import './globals.css'
+import LandingPage from './landing-page'
+import ChartPage from './chart-page'
+import '../globals.css'
 import 'tailwindcss/tailwind.css'
-import LandingPage from './landingPage';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <div className="h-screen w-screen snap-y snap-mandatory scroll-smooth overflow-y-auto">
         <LandingPage />
+        <ChartPage />
       </div>
     </>
   )
 }
 
-export default Home
+export default HomePage
