@@ -4,7 +4,7 @@ import StockChart from "./StockChart";
 const ChartPage = () => {
     return (
         <div className="snap-center h-screen w-screen grid gap-4 lg:grid-cols-2 grid-rows-2 justify-center items-center px-16 py-16">
-            <div className="flex flex-col items-stretch lg:justify-start justify-center lg:mt-64">
+            <div className="flex flex-col justify-start lg:mt-64">
                 <p className="lg:text-6xl md:text-5xl text-4xl lg:text-start text-center font-bold">
                     Back test your signal trading indicator and check the
                     profit.
