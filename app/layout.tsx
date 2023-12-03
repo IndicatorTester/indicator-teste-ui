@@ -12,7 +12,7 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className="h-screen w-screen overflow-hidden"
+            className="h-screen w-screen overflow-hidden text-neutral-content"
         >
             <UserProvider>
                 <body>{children}</body>

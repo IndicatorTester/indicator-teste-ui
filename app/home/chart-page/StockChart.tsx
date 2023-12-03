@@ -20,6 +20,7 @@ const StockChart = () => {
                         borderColor: "rgb(239, 68, 68)",
                         fill: false,
                         tension: 0.4,
+                        borderWidth: 6,
                     },
                 ],
             },
