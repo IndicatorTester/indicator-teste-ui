@@ -3,7 +3,7 @@ import NumberCard from "./NumberCard";
 
 const NumbersPage = () => {
     return (
-        <div className="snap-center h-screen w-screen flex-row px-16 py-32">
+        <div className="snap-center h-screen w-screen flex-row md:p-16 p-6">
             <div>
                 <p className="lg:text-6xl md:text-5xl text-4xl text-center font-bold">
                     Test your indicator using{" "}

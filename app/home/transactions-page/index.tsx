@@ -3,7 +3,7 @@ import TransactionsTimeline from "./TransactionsTimeline";
 
 const TransactionsPage = () => {
     return (
-        <div className="snap-center h-screen w-screen flex flex-col lg:flex-row lg:items-stretch items-center md:p-16 p-6">
+        <div className="snap-center h-screen w-screen flex flex-col lg:flex-row lg:items-stretch items-center  md:p-16 p-6">
             <div className="flex flex-col justify-start lg:mt-32 lg:w-1/2">
                 <p className="lg:text-6xl md:text-5xl text-4xl lg:text-start text-center font-bold">
                     Study all <span className="text-green-400">Buy</span> /{" "}
