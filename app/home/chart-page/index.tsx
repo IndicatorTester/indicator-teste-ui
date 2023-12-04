@@ -12,7 +12,7 @@ const ChartPage = () => {
                 <div className="m-4"></div>
                 <p className="text-gray-400 lg:text-start text-center text-lg font-light md:text-2xl">
                     Calculate the quality of your indicator by back testing it
-                    on the historical data for a <u>stock or crypto</u>.
+                    on the historical data for a <u className="text-neutral-content" >stock or crypto</u>.
                 </p>
             </div>
             <div className="md:h-full md:w-full flex flex-col items-center justify-center">
