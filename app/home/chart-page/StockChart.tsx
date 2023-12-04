@@ -8,47 +8,49 @@ const StockChart = () => {
     const data = [5, 15, 10, 20, 0, 20];
 
     useEffect(() => {
-        const chart = new Chart(chartRef.current, {
-            type: "line",
-            data: {
-                labels: data.map((_, index) =>
-                    index % 2 == 0 ? "buy" : "sell"
-                ),
-                datasets: [
-                    {
-                        data: data,
-                        borderColor: "rgb(239, 68, 68)",
-                        fill: false,
-                        tension: 0.4,
-                        borderWidth: 6,
-                    },
-                ],
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        display: false,
-                    },
-                    y: {
-                        display: false,
-                    },
+        if (chartRef.current != null) {
+            const chart = new Chart(chartRef.current, {
+                type: "line",
+                data: {
+                    labels: data.map((_, index) =>
+                        index % 2 == 0 ? "buy" : "sell"
+                    ),
+                    datasets: [
+                        {
+                            data: data,
+                            borderColor: "rgb(239, 68, 68)",
+                            fill: false,
+                            tension: 0.4,
+                            borderWidth: 6,
+                        },
+                    ],
                 },
-                plugins: {
-                    legend: {
-                        display: false,
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            display: false,
+                        },
+                        y: {
+                            display: false,
+                        },
                     },
-                    tooltip: {
-                        enabled: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        tooltip: {
+                            enabled: false,
+                        },
                     },
+                    animation: false,
                 },
-                animation: false,
-            },
-        });
+            });
 
-        return () => {
-            chart.destroy();
-        };
+            return () => {
+                chart.destroy();
+            };
+        }
     }, []);
 
     return <canvas ref={chartRef} />;
