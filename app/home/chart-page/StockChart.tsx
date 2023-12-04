@@ -42,10 +42,7 @@ const StockChart = () => {
                         enabled: false,
                     },
                 },
-                animation: {
-                    duration: 1500,
-                    easing: "easeInOutQuart",
-                },
+                animation: false,
             },
         });
 
