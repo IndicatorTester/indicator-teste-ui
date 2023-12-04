@@ -10,7 +10,7 @@ import PricingPage from "./pricing-page";
 const HomePage = () => {
     return (
         <>
-            <div className="h-screen w-screen snap-y snap-mandatory scroll-smooth overflow-y-auto">
+            <div className="h-screen w-screen snap-y snap-mandatory overflow-y-auto">
                 <LandingPage />
                 <ChartPage />
                 <TransactionsPage />
