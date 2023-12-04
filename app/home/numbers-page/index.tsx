@@ -1,22 +1,35 @@
 import React from "react";
+import NumberCard from "./NumberCard";
 
 const NumbersPage = () => {
     return (
-        <div className="snap-center h-screen w-screen flex flex-col lg:flex-row justify-around items-center px-16 py-16">
-            <div className="card shadow-2xl w-96 h-48 bg-neutral text-neutral-content p-10 flex items-center justify-center text-center">
-                <p className="text-5xl font-bold">
-                    <span className="text-green-400">+50</span> Crypto Currency
+        <div className="snap-center h-screen w-screen flex-row px-16 py-32">
+            <div>
+                <p className="lg:text-6xl md:text-5xl text-4xl text-center font-bold">
+                    Test your indicator using{" "}
+                    <span className="text-green-400">+100</span> stock and
+                    crypto and <span className="text-green-400">+15</span>{" "}
+                    already implemented indicators.
                 </p>
             </div>
-            <div className="card shadow-2xl w-96 h-48 bg-neutral text-neutral-content p-10 flex items-center justify-center text-center">
-                <p className="text-5xl font-bold">
-                    <span className="text-green-400">+50</span> Nasdaq Stock
-                </p>
-            </div>
-            <div className="card shadow-2xl w-96 h-48 bg-neutral text-neutral-content p-10 flex items-center justify-center text-center">
-                <p className="text-5xl font-bold">
-                    <span className="text-green-400">+15</span> Indicator
-                </p>
+            <div className="lg:h-32 h-12"></div>
+            <div className="grid grid-rows-3 gap-4 lg:grid-cols-3">
+                <NumberCard>
+                    <p>
+                        <span className="text-green-400">+50</span> Crypto
+                        Currency
+                    </p>
+                </NumberCard>
+                <NumberCard>
+                    <p>
+                        <span className="text-green-400">+50</span> Nasdaq Stock
+                    </p>
+                </NumberCard>
+                <NumberCard>
+                    <p>
+                        <span className="text-green-400">+15</span> Indicator
+                    </p>
+                </NumberCard>
             </div>
         </div>
     );
