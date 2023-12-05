@@ -1,4 +1,6 @@
 import { UserProvider } from "@auth0/nextjs-auth0/client";
+import "./globals.css";
+import "tailwindcss/tailwind.css";
 
 export const metadata = {
     title: "Indicator Tester",
