@@ -61,7 +61,7 @@ const BottomNavigator = ({ activeTab }: NavigationProps) => {
                         return (
                             <div
                                 key={index}
-                                className="h-4 w-4 m-6 rounded-full bg-neutral-content hover:bg-red-500 hover:h-6 hover:w-6 hover:m-5 transition duration-300 animate-spin"
+                                className="h-4 w-4 m-6 rounded-full bg-neutral-content hover:bg-red-500 hover:h-6 hover:w-6 hover:m-5 transition duration-300"
                                 onMouseEnter={(e) => handleHover(index)}
                                 onMouseLeave={() => handleHover(0)}
                             >
