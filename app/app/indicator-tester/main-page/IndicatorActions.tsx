@@ -1,19 +1,7 @@
 import React from "react";
 
-export interface IndicatorActionsData {
-    cash: number;
-    actions: [];
-    startDate: string;
-    endDate: string;
-}
-
-const IndicatorActions = ({
-    cash,
-    actions,
-    startDate,
-    endDate,
-}: IndicatorActionsData) => {
-    const profit = cash - 1000.0;
+const IndicatorActions = ({ data }: { data: any }) => {
+    const profit = data["cash"] - 1000.0;
     const profitPercentage = (profit / 1000.0) * 100.0;
 
     return (
@@ -37,24 +25,24 @@ const IndicatorActions = ({
                 Your indicator converted{" "}
                 <span className="text-neutral-content font-bold">$1000</span> to{" "}
                 <span className="text-neutral-content font-bold">
-                    ${cash.toFixed(2)}
+                    ${data.cash.toFixed(2)}
                 </span>{" "}
                 with{" "}
                 <span className="text-neutral-content font-bold">
-                    {actions.length}
+                    {data.actions.length}
                 </span>{" "}
                 transactions between{" "}
                 <span className="text-neutral-content font-bold italic">
-                    {startDate}
+                    {data.start}
                 </span>{" "}
                 and{" "}
                 <span className="text-neutral-content font-bold italic">
-                    {endDate}
+                    {data.end}
                 </span>
                 .
             </p>
             <div className="h-8"></div>
-            <p className="text-md" >Scroll for more details</p>
+            <p className="text-md">Scroll for more details</p>
             <div className="h-6"></div>
             <div className="inline-flex justify-center h-8 w-8">
                 <div className="flex items-center justify-center animate-bounce">
