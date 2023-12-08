@@ -20,7 +20,7 @@ const IndicatorTesterInput: React.FC<{
                         className="select shadow-2xl mb-12 border-neutral-content font-bold"
                     >
                         <option value="Exchange" disabled>
-                            Pick Exchange
+                            Choose Exchange
                         </option>
                         <option value="Nasdaq">Nasdaq</option>
                         <option value="Crypto">Crypto</option>
