@@ -6,7 +6,7 @@ import SymbolsView from "./SymbolsView";
 
 const Symbols = () => {
     const navigationProps: NavigationProps = {
-        activeTab: 2,
+        activeTab: 3,
     };
 
     const [symbolsData, setSymbolsData] = useState(null);
@@ -48,7 +48,7 @@ const Symbols = () => {
 
     return (
         <>
-            <div className="h-screen w-screen snap-y snap-mandatory overflow-y-auto p-6 md:p-16 flex flex-col">
+            <div className="p-6 md:p-16 flex flex-col">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
                     Symbols
                 </h1>
@@ -64,7 +64,7 @@ const Symbols = () => {
                         />
                     </>
                 ) : (
-                    <div className="h-full w-full flex flex-col justify-center items-center">
+                    <div className="flex flex-col justify-center items-center">
                         <span className="loading loading-ring loading-lg"></span>
                         <div className="h-24"></div>
                     </div>

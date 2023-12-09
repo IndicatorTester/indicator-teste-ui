@@ -8,7 +8,7 @@ const App = () => {
 
     return (
         <>
-            <div className="w-screen h-screen pb-32 flex flex-col justify-between items-center">
+            <div className="h-screen pb-32 flex flex-col justify-between items-center">
                 <div className="h-2"></div>
                 <p className="text-6xl font-bold md:text-8xl text-center">
                     <span className="inline-grid">

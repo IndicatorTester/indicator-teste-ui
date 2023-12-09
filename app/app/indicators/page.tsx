@@ -7,7 +7,7 @@ import INDICATORS_DATA from "./indicators-data";
 
 const Indicators = () => {
     const navigationProps: NavigationProps = {
-        activeTab: 3,
+        activeTab: 4,
     };
     const indicators = INDICATORS_DATA;
 
@@ -20,7 +20,7 @@ const Indicators = () => {
 
     return (
         <>
-            <div className="h-screen w-screen snap-y snap-mandatory overflow-y-auto p-6 md:p-16 flex flex-col">
+            <div className="p-6 md:p-16 flex flex-col">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
                     Indicators
                 </h1>

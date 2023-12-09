@@ -9,7 +9,7 @@ const LandingPage = () => {
             <div className="snap-center h-screen w-screen grid text-center justify-center">
                 <div className="md:mx-10 mx-2 md:my-24 my-12">
                     <Title />
-                    <div className="h-10"></div>
+                    <div className="lg:h-10 h-32"></div>
                     <MainButton />
                     <div className="lg:h-24 md:16 h-10"></div>
                     <BouncingArrow />

@@ -6,12 +6,12 @@ const ResultPage = ({ data }: { data: any }) => {
     };
 
     return (
-        <div className="snap-none w-screen p-6 md:p-16 flex flex-col justify-start">
+        <div className="p-6 md:p-16 flex flex-col justify-start">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
                 Transactions:
             </h1>
             <div className="h-12"></div>
-            <table className="table">
+            <table className="table overflow-x-auto">
                 <thead className="text-xl font-bold text-neutral-content">
                     <tr>
                         <th>#</th>
@@ -32,7 +32,7 @@ const ResultPage = ({ data }: { data: any }) => {
                         <tr key={index}>
                             <th className="font-bold">{index + 1}</th>
                             <td>{action.date}</td>
-                            <td>{action.price.toFixed(2)}</td>
+                            <td>{action.price.toFixed(6)}</td>
                             <td
                                 className={
                                     action.action === "buy"

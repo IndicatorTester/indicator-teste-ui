@@ -12,7 +12,7 @@ const IndicatorTesterInput: React.FC<{
                 Indicator Tester
             </h1>
             <div className="h-12"></div>
-            <div className="w-full flex justify-between">
+            <div className="w-full flex flex-col lg:flex-row justify-between">
                 <div className="flex flex-col justify-between">
                     <select
                         name="exchange"
@@ -44,7 +44,7 @@ const IndicatorTesterInput: React.FC<{
                         className="input input-ghost w-full shadow-2xl border-neutral-content"
                     />
                 </div>
-                <div className="w-12"></div>
+                <div className="lg:w-12 lg:h-0 h-12"></div>
                 <div className="w-full">
                     <textarea
                         name="indicator"
@@ -66,6 +66,7 @@ const IndicatorTesterInput: React.FC<{
                     Run Indicator
                 </button>
             )}
+            <div className="h-12 lg:h-0"></div>
         </form>
     );
 };

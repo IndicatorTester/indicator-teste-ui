@@ -19,7 +19,7 @@ const SymbolsView = ({ data }: { data: any }) => {
                 ))}
             </div>
             <div className="h-8"></div>
-            <div className="grid grid-cols-10 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-10 gap-4">
                 {data.symbolsData[data.selectedExchange].map(
                     (symbolData: any, index: number) => (
                         <div>

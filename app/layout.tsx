@@ -12,10 +12,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html
-            lang="en"
-            className="h-screen w-screen overflow-hidden text-neutral-content"
-        >
+        <html lang="en">
             <UserProvider>
                 <body>{children}</body>
             </UserProvider>

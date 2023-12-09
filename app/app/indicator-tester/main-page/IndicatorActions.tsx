@@ -5,7 +5,7 @@ const IndicatorActions = ({ data }: { data: any }) => {
     const profitPercentage = (profit / 1000.0) * 100.0;
 
     return (
-        <div className="w-full h-full flex flex-col justify-center items-center px-4">
+        <div className="w-full h-full flex flex-col justify-center items-center px-4 my-12">
             <p className="text-center">
                 <span
                     className={
@@ -41,26 +41,6 @@ const IndicatorActions = ({ data }: { data: any }) => {
                 </span>
                 .
             </p>
-            <div className="h-8"></div>
-            <p className="text-md">Scroll for more details</p>
-            <div className="h-6"></div>
-            <div className="inline-flex justify-center h-8 w-8">
-                <div className="flex items-center justify-center animate-bounce">
-                    <svg
-                        className="animate-bounce w-8 h-8 text-green-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                        ></path>
-                    </svg>
-                </div>
-            </div>
         </div>
     );
 };

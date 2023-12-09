@@ -4,8 +4,8 @@ import IndicatorTesterInput from "./IndicatorTesterInput";
 
 const MainPage = ({ data }: { data: any }) => {
     return (
-        <div className="snap-none h-screen w-screen p-6 md:p-16 flex">
-            <div className="flex flex-col w-1/2">
+        <div className="p-6 md:p-16 flex flex-col lg:flex-row">
+            <div className="flex flex-col lg:w-1/2">
                 <IndicatorTesterInput
                     data={{
                         isLoading: data.isLoading,
@@ -13,7 +13,7 @@ const MainPage = ({ data }: { data: any }) => {
                     }}
                 />
             </div>
-            <div className="flex flex-col w-1/2">
+            <div className="flex flex-col lg:w-1/2">
                 {Object.keys(data.testResult).length === 0 || data.isLoading ? (
                     <div></div>
                 ) : (

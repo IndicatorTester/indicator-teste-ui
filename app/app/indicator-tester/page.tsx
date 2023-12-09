@@ -12,7 +12,7 @@ const IndicatorTester = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [testResult, setTestResult] = useState({});
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
         const { exchange, symbol, startDate, endDate, indicator } =
             event.target;
@@ -49,11 +49,11 @@ const IndicatorTester = () => {
 
     return (
         <>
-            <div className="h-screen w-screen snap-y snap-mandatory overflow-y-auto">
+            <div>
                 <MainPage
                     data={{
                         isLoading: isLoading,
-                        testResult: testResult, // sma(close, 5) > sma(open, 5)
+                        testResult: testResult,
                         handleSubmit: handleSubmit,
                     }}
                 />

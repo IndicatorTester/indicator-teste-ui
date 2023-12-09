@@ -1,11 +1,9 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import { useUser } from "@auth0/nextjs-auth0/client";
 
 const MainButton = () => {
-    const { user, error, isLoading } = useUser();
+    // const { user, error, isLoading } = useUser();
 
     return (
         <div>

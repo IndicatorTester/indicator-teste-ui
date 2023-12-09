@@ -10,7 +10,7 @@ export interface NavigationProps {
 const BottomNavigator = ({ activeTab }: NavigationProps) => {
     const [hoveredTab, setHoveredTab] = useState(0);
 
-    const handleHover = (index) => {
+    const handleHover = (index: any) => {
         setHoveredTab(index);
     };
 
@@ -24,6 +24,10 @@ const BottomNavigator = ({ activeTab }: NavigationProps) => {
             navigate: "/app/indicator-tester",
         },
         {
+            name: "Exchange Indicator Tester",
+            navigate: "/app/exchange-indicator-tester",
+        },
+        {
             name: "Symbols",
             navigate: "/app/symbols",
         },
@@ -32,8 +36,8 @@ const BottomNavigator = ({ activeTab }: NavigationProps) => {
             navigate: "/app/indicators",
         },
         {
-            name: "Documentation",
-            navigate: "/app/documentation",
+            name: "Profile",
+            navigate: "/app/profile",
         },
         {
             name: "Support",
