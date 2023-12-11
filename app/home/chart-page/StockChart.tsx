@@ -26,7 +26,6 @@ const StockChart = () => {
                     ],
                 },
                 options: {
-                    responsive: true,
                     scales: {
                         x: {
                             display: false,
@@ -53,7 +52,16 @@ const StockChart = () => {
         }
     }, []);
 
-    return <canvas ref={chartRef} />;
+    return (
+        <div className="flex flex-col items-center justify-center">
+            <div className="h-[200px] w-[400px] lg:h-[280px] lg:w-[580px] xl:h-[360px] xl:w-[720px] 2xl:h-[480px] 2xl:w-[960px] flex justify-center items-center">
+                <canvas ref={chartRef} />
+            </div>
+            <p className="text-green-400 font-black lg:text-6xl md:text-5xl text-4xl">
+                +9,999.99%
+            </p>
+        </div>
+    );
 };
 
 export default StockChart;

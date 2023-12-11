@@ -16,14 +16,6 @@ const config: Config = {
       fontFamily: {
         'sans': ['Montserrat'],
       },
-      fontWeight: {
-        'bold': '900',
-        'normal': '500',
-        'light': '300',
-      },
-      gradientColors: {
-        'primary-gradient': ['from-green-400', 'to-blue-400'],
-      },
     },
   },
   plugins: [require("daisyui")],

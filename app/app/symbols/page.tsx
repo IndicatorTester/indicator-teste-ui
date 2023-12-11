@@ -49,7 +49,7 @@ const Symbols = () => {
     return (
         <>
             <div className="p-6 md:p-16 flex flex-col">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black">
                     Symbols
                 </h1>
                 {symbolsData ? (

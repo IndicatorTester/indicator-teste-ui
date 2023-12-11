@@ -48,7 +48,7 @@ const BottomNavigator = ({ activeTab }: NavigationProps) => {
     return (
         <div className="fixed bottom-0 left-0 w-full mb-10 flex flex-col justify-center items-center">
             <div>
-                <p className="text-lg font-bold">{tabs[hoveredTab].name}</p>
+                <p className="text-lg font-black">{tabs[hoveredTab].name}</p>
             </div>
             <div className="w-full flex justify-center items-center">
                 {tabs.map((tab, index) => {

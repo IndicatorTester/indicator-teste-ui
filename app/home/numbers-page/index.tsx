@@ -5,7 +5,7 @@ const NumbersPage = () => {
     return (
         <div className="snap-center h-screen w-screen flex-row md:p-16 p-6">
             <div>
-                <p className="lg:text-6xl md:text-5xl text-4xl text-center font-bold">
+                <p className="lg:text-6xl md:text-5xl text-4xl text-center font-black">
                     Test your indicator using{" "}
                     <span className="text-green-400">+100</span> stock and
                     crypto and <span className="text-green-400">+15</span>{" "}

@@ -25,7 +25,7 @@ const SymbolsView = ({ data }: { data: any }) => {
                         <div>
                             <p
                                 key={index}
-                                className="px-4 pt-4 text-center font-bold text-lg"
+                                className="px-4 pt-4 text-center font-black text-lg"
                             >
                                 {symbolData.symbol}
                             </p>

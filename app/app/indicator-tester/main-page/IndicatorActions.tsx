@@ -9,7 +9,7 @@ const IndicatorActions = ({ data }: { data: any }) => {
             <p className="text-center">
                 <span
                     className={
-                        "text-4xl md:text-5xl lg:text-6xl font-bold " +
+                        "text-4xl md:text-5xl lg:text-6xl font-black " +
                         (profitPercentage < 0
                             ? "text-red-500"
                             : "text-green-400")
@@ -23,20 +23,20 @@ const IndicatorActions = ({ data }: { data: any }) => {
             <div className="h-4"></div>
             <p className="text-center text-xl font-light text-gray-400">
                 Your indicator converted{" "}
-                <span className="text-neutral-content font-bold">$1000</span> to{" "}
-                <span className="text-neutral-content font-bold">
+                <span className="text-neutral-content font-black">$1000</span> to{" "}
+                <span className="text-neutral-content font-black">
                     ${data.cash.toFixed(2)}
                 </span>{" "}
                 with{" "}
-                <span className="text-neutral-content font-bold">
+                <span className="text-neutral-content font-black">
                     {data.actions.length}
                 </span>{" "}
                 transactions between{" "}
-                <span className="text-neutral-content font-bold italic">
+                <span className="text-neutral-content font-black italic">
                     {data.start}
                 </span>{" "}
                 and{" "}
-                <span className="text-neutral-content font-bold italic">
+                <span className="text-neutral-content font-black italic">
                     {data.end}
                 </span>
                 .

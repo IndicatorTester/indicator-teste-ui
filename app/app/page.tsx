@@ -10,7 +10,7 @@ const App = () => {
         <>
             <div className="h-screen pb-32 flex flex-col justify-between items-center">
                 <div className="h-2"></div>
-                <p className="text-6xl font-bold md:text-8xl text-center">
+                <p className="text-6xl font-black md:text-8xl text-center">
                     <span className="inline-grid">
                         <span className="relative col-start-1 row-start-1 bg-gradient-to-r from-green-400 to-blue-400 text-transparent bg-clip-text blur-xl opacity-90">
                             Get Started

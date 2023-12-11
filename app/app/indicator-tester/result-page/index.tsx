@@ -7,12 +7,12 @@ const ResultPage = ({ data }: { data: any }) => {
 
     return (
         <div className="p-6 md:p-16 flex flex-col justify-start">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black">
                 Transactions:
             </h1>
             <div className="h-12"></div>
             <table className="table overflow-x-auto">
-                <thead className="text-xl font-bold text-neutral-content">
+                <thead className="text-xl font-black text-neutral-content">
                     <tr>
                         <th>#</th>
                         <th>Date</th>
@@ -30,7 +30,7 @@ const ResultPage = ({ data }: { data: any }) => {
                 <tbody className="text-xl">
                     {data.actions.map((action: any, index: number) => (
                         <tr key={index}>
-                            <th className="font-bold">{index + 1}</th>
+                            <th className="font-black">{index + 1}</th>
                             <td>{action.date}</td>
                             <td>{action.price.toFixed(6)}</td>
                             <td
@@ -42,7 +42,7 @@ const ResultPage = ({ data }: { data: any }) => {
                             >
                                 {action.action}
                             </td>
-                            <td className="font-bold">
+                            <td className="font-black">
                                 {index % 2 === 1 && index !== 1 ? (
                                     <>
                                         ${action.cash.toFixed(2)}

@@ -3,7 +3,7 @@ import "./globals.css";
 import "tailwindcss/tailwind.css";
 
 export const metadata = {
-    title: "Indicator Tester",
+    title: "XIndicator",
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <UserProvider>
-                <body>{children}</body>
+                <body className="text-neutral-content" >{children}</body>
             </UserProvider>
         </html>
     );

@@ -8,7 +8,7 @@ const IndicatorTesterInput: React.FC<{
 }> = ({ data: { handleSubmit, isLoading } }) => {
     return (
         <form onSubmit={handleSubmit}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black">
                 Indicator Tester
             </h1>
             <div className="h-12"></div>
@@ -17,7 +17,7 @@ const IndicatorTesterInput: React.FC<{
                     <select
                         name="exchange"
                         defaultValue="Exchange"
-                        className="select shadow-2xl mb-12 border-neutral-content font-bold"
+                        className="select shadow-2xl mb-12 border-neutral-content font-black"
                     >
                         <option value="Exchange" disabled>
                             Choose Exchange

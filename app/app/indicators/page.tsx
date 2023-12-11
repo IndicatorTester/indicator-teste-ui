@@ -21,7 +21,7 @@ const Indicators = () => {
     return (
         <>
             <div className="p-6 md:p-16 flex flex-col">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black">
                     Indicators
                 </h1>
                 <div className="h-12"></div>
@@ -30,7 +30,7 @@ const Indicators = () => {
                         name="indicator"
                         defaultValue="Indicator"
                         onChange={handleIndicatorChange}
-                        className="w-96 select shadow-2xl border-neutral-content font-bold"
+                        className="w-96 select shadow-2xl border-neutral-content font-black"
                     >
                         <option value="Indicator" disabled>
                             Choose Indicator

@@ -54,7 +54,7 @@ const ExchangeIndicatorTester = () => {
     return (
         <>
             <div className="p-6 md:p-16 flex flex-col">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black">
                     Exchange Indicator Tester
                 </h1>
                 <form onSubmit={handleSubmit}>
@@ -64,7 +64,7 @@ const ExchangeIndicatorTester = () => {
                             <select
                                 name="exchange"
                                 defaultValue="Exchange"
-                                className="w-full select shadow-2xl border-neutral-content font-bold"
+                                className="w-full select shadow-2xl border-neutral-content font-black"
                             >
                                 <option value="Exchange" disabled>
                                     Choose Exchange
@@ -114,7 +114,7 @@ const ExchangeIndicatorTester = () => {
                 <div className="h-12" ></div>
                 {testResult.length !== 0 ? (
                     <table className="table text-center">
-                        <thead className="text-xl font-bold text-neutral-content">
+                        <thead className="text-xl font-black text-neutral-content">
                             <tr>
                                 <th>#</th>
                                 <th>Symbol</th>
@@ -125,11 +125,11 @@ const ExchangeIndicatorTester = () => {
                             {testResult.map(
                                 (symbolData: any, index: number) => (
                                     <tr key={index}>
-                                        <th className="font-bold">
+                                        <th className="font-black">
                                             {index + 1}
                                         </th>
                                         <td>{symbolData.symbol}</td>
-                                        <td className="font-bold">
+                                        <td className="font-black">
                                             %
                                             {calculateChangePercentage(
                                                 symbolData.cash.toFixed(2),

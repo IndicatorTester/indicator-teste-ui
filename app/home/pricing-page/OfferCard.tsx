@@ -9,15 +9,15 @@ export interface OfferData {
 const OfferCard = ({ name, details, price }: OfferData) => {
     return (
         <div className="shadow-2xl rounded-lg p-6 flex flex-col justify-between">
-            <h2 className="text-xl font-bold my-4 text-red-500">{name}</h2>
+            <h2 className="text-xl font-black my-4 text-red-500">{name}</h2>
             <div>
                 {details.map((detail, index) => (
-                    <p key={index}><span className="font-bold" >•</span> {detail}</p>
+                    <p key={index}><span className="font-black" >•</span> {detail}</p>
                 ))}
             </div>
-            <p className="text-3xl font-bold my-6 text-green-400">${price}</p>
+            <p className="text-3xl font-black my-6 text-green-400">${price}</p>
             <button className="btn btn-outline">
-                <span className="font-bold">Get Started</span>
+                <span className="font-black">Coming Soon...</span>
             </button>
         </div>
     );
