@@ -4,11 +4,14 @@ import React, { useState } from "react";
 import BottomNavigator, { NavigationProps } from "../BottomNavigator";
 import MainPage from "./main-page";
 import ResultPage from "./result-page";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const IndicatorTester = () => {
     const navigationProps: NavigationProps = {
         activeTab: 1,
     };
+
+    const user = useUser();
     const [isLoading, setIsLoading] = useState(false);
     const [testResult, setTestResult] = useState({});
 
@@ -19,10 +22,11 @@ const IndicatorTester = () => {
         try {
             setIsLoading(true);
             setTestResult({});
-            const response = await fetch("http://127.0.0.1:3010/calculate", {
+            const response = await fetch("http://0.0.0.0:3010/calculate", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Auth": user.user?.sub ?? "",
                 },
                 body: JSON.stringify({
                     exchange: exchange.value.toUpperCase(),

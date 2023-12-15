@@ -3,12 +3,15 @@ const nextConfig = {
     async redirects() {
         return [
             {
-                source: '/',
-                destination: '/home',
+                source: "/",
+                destination: "/home",
                 permanent: false,
             },
         ];
-    }
-}
+    },
+    env: {
+        X_INDICATOR_API: "https://e8bqvdcj9m.eu-west-1.awsapprunner.com",
+    },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

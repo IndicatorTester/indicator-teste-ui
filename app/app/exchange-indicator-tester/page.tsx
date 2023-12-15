@@ -2,12 +2,14 @@
 
 import React, { useState } from "react";
 import BottomNavigator, { NavigationProps } from "../BottomNavigator";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const ExchangeIndicatorTester = () => {
     const navigationProps: NavigationProps = {
         activeTab: 2,
     };
 
+    const user = useUser();
     const [isLoading, setIsLoading] = useState(false);
     const [testResult, setTestResult] = useState([]);
 
@@ -22,11 +24,12 @@ const ExchangeIndicatorTester = () => {
             setIsLoading(true);
             setTestResult([]);
             const response = await fetch(
-                "http://127.0.0.1:3010/calculateExchange",
+                `${process.env.X_INDICATOR_API}/calculateExchange`,
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
+                        "Auth": user.user?.sub ?? "",
                     },
                     body: JSON.stringify({
                         exchange: exchange.value.toUpperCase(),
@@ -40,6 +43,7 @@ const ExchangeIndicatorTester = () => {
             );
 
             if (!response.ok) {
+                console.log(response)
                 throw new Error("An error occurred while making the request.");
             }
 

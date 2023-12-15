@@ -3,18 +3,26 @@
 import React, { useState, useEffect } from "react";
 import BottomNavigator, { NavigationProps } from "../BottomNavigator";
 import SymbolsView from "./SymbolsView";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Symbols = () => {
     const navigationProps: NavigationProps = {
         activeTab: 3,
     };
 
+    const user = useUser();
     const [symbolsData, setSymbolsData] = useState(null);
     const [selectedExchange, setSelectedExchange] = useState("CRYPTO");
 
     const fetchData = async () => {
         try {
-            const response = await fetch("http://127.0.0.1:3010/symbols");
+            const response = await fetch("http://127.0.0.1:3010/symbols", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Auth": user.user?.sub ?? "",
+                },
+            });
             const result = await response.json();
             setSymbolsData(result);
 

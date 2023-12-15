@@ -1,4 +1,3 @@
-import { UserProvider } from "@auth0/nextjs-auth0/client";
 import "./globals.css";
 import "tailwindcss/tailwind.css";
 
@@ -13,9 +12,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <UserProvider>
-                <body className="text-neutral-content" >{children}</body>
-            </UserProvider>
+            <body className="text-neutral-content">{children}</body>
         </html>
     );
 }
