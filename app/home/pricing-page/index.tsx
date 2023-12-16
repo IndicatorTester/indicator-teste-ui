@@ -5,28 +5,28 @@ const PricingPage = () => {
     const offers: OfferData[] = [
         {
             name: "Basic",
-            details: ["15 tests", "All Supported Nasdaq Stocks"],
-            price: 10,
+            details: ["5 tests per day", "US market stocks"],
+            price: 29,
         },
         {
             name: "Standard",
-            details: ["70 tests", "All Supported Nasdaq & Crypto"],
-            price: 50,
+            details: ["12 tests per day", "US market stocks", "Cryptocurrencies"],
+            price: 49,
         },
         {
             name: "Pro",
-            details: ["150 tests", "All Supported Nasdaq & Crypto"],
-            price: 100,
+            details: ["30 tests per day", "US market stocks", "Cryptocurrencies", "All available symbols on your twelvedata plan"],
+            price: 99,
         },
     ];
 
     return (
-        <div className="snap-start h-screen w-screen flex flex-col justify-center items-center px-4 lg:px-12">
-            <h1 className="lg:text-6xl md:text-5xl text-4xl font-black text-center">
+        <div className="flex flex-col space-y-24 justify-start items-center text-center">
+            <h1 className="lg:text-6xl md:text-5xl text-4xl font-black">
                 Simple & Flexible
                 <br /> Pricing
             </h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <OfferCard {...offers[0]} />
                 <OfferCard {...offers[1]} />
                 <OfferCard {...offers[2]} />

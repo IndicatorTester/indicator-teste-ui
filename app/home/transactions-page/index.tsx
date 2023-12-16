@@ -4,7 +4,7 @@ import Title from "./Title";
 
 const TransactionsPage = () => {
     return (
-        <div className="snap-start lg:h-screen w-screen flex flex-col lg:flex-row lg:items-stretch items-center px-4 py-8 lg:py-0 lg:px-12">
+        <div className="flex flex-col space-y-12 justify-start items-center text-center">
             <Title />
             <TransactionsTimeline />
         </div>

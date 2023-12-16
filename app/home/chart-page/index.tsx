@@ -1,12 +1,17 @@
 import React from "react";
-import StockChart from "./StockChart";
 import Title from "./Title";
+import Image from "next/image";
 
 const ChartPage = () => {
     return (
-        <div className="h-screen w-screen snap-start flex md:flex-row flex-col md:justify-between justify-around items-center px-4 lg:px-12">
+        <div className="flex flex-col space-y-12 justify-start items-center text-center">
             <Title />
-            <StockChart />
+            <Image
+                src="/Candlestick.png"
+                alt="Candlestick Image"
+                width={2560*0.15}
+                height={1440*0.15}
+            />
         </div>
     );
 };

@@ -2,99 +2,53 @@ import React from "react";
 
 const TransactionsTimeline = () => {
     return (
-        <div className="flex flex-col lg:w-1/2 justify-center">
-            <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
-                <li>
-                    <div className="timeline-middle">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            className="h-5 w-5"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
-                    </div>
-                    <div className="timeline-start md:text-end mb-10">
-                        <time className="italic text-gray-400">2023/02/10</time>
-                        <div className="text-2xl font-black text-green-400 mt-3 mb-2">
-                            Buy
-                        </div>
-                        <div className="text-start md:text-xl">
-                            Stocks: 1.98765
-                            <br />
-                            Cash: 0<br />
-                            price: 2.5
-                        </div>
-                    </div>
-                    <hr />
-                </li>
-                <li>
-                    <hr />
-                    <div className="timeline-middle">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            className="h-5 w-5"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
-                    </div>
-                    <div className="timeline-end md:text-start mb-10">
-                        <time className="italic text-gray-400">2023/04/05</time>
-                        <div className="text-2xl font-black text-red-500 mt-3 mb-2">
-                            Sell
-                        </div>
-                        <div className="md:text-xl">
-                            Stocks: 0
-                            <br />
-                            Cash: 150.264
-                            <br />
-                            price: 2.74
-                        </div>
-                    </div>
-                    <hr />
-                </li>
-                <li>
-                    <hr />
-                    <div className="timeline-middle">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            className="h-5 w-5"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
-                    </div>
-                    <div className="timeline-start md:text-end mb-10">
-                        <time className="italic text-gray-400">2023/06/17</time>
-                        <div className="text-2xl font-black text-green-400 mt-3 mb-2">
-                            Buy
-                        </div>
-                        <div className="text-start md:text-xl">
-                            Stocks: 10.9817
-                            <br />
-                            Cash: 0<br />
-                            price: 1.52
-                        </div>
-                    </div>
-                    <hr />
-                </li>
-            </ul>
+        <div className="bg-neutral p-4 rounded-3xl shadow-xl">
+            <table className="table overflow-x-auto">
+                <thead className="lg:text-xl md:text-lg sm:text-sm font-black text-neutral-content">
+                    <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                        <th>Cash</th>
+                        <th>Stocks</th>
+                    </tr>
+                </thead>
+                <tbody className="lg:text-xl md:text-lg sm:text-sm">
+                    <tr>
+                        <th className="font-black">#1</th>
+                        <td>2023-02-14</td>
+                        <td>2343.976</td>
+                        <td className="font-black text-green-400">Buy</td>
+                        <td className="font-black">$0</td>
+                        <td>0.04</td>
+                    </tr>
+                    <tr>
+                        <th className="font-black">#2</th>
+                        <td>2023-04-23</td>
+                        <td>2524.991</td>
+                        <td className="font-black text-red-500">Sell</td>
+                        <td className="font-black">$1539.693</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th className="font-black">#3</th>
+                        <td>2023-06-02</td>
+                        <td>2094.072</td>
+                        <td className="font-black text-green-400">Buy</td>
+                        <td className="font-black">$0</td>
+                        <td>0.06</td>
+                    </tr>
+                    <tr>
+                        <th className="font-black">#4</th>
+                        <td>2023-09-17</td>
+                        <td>3091.901</td>
+                        <td className="font-black text-red-500">Sell</td>
+                        <td className="font-black">$2914.019</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 };
