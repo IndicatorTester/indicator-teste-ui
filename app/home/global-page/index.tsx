@@ -15,6 +15,7 @@ const GlobalPage = () => {
                     alt="DottedWorld Image"
                     width={660 * 2}
                     height={320 * 2}
+                    style={{ width: 'auto', height: 'auto' }}
                 />
             </div>
         </div>

@@ -11,6 +11,7 @@ const ChartPage = () => {
                 alt="Candlestick Image"
                 width={2560*0.15}
                 height={1440*0.15}
+                style={{ width: 'auto', height: 'auto' }}
             />
         </div>
     );
