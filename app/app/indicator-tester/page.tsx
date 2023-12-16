@@ -22,7 +22,7 @@ const IndicatorTester = () => {
         try {
             setIsLoading(true);
             setTestResult({});
-            const response = await fetch("http://0.0.0.0:3010/calculate", {
+            const response = await fetch(`${process.env.X_INDICATOR_API}/calculate`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -40,6 +40,7 @@ const IndicatorTester = () => {
             });
 
             if (!response.ok) {
+                console.log(response)
                 throw new Error("An error occurred while making the request.");
             }
 
