@@ -8,7 +8,7 @@ const MainButton = () => {
         <div>
             <Link href="/app">
                 <button className="btn btn-active bg-gradient-to-r from-pink-700 to-red-500 w-64 h-16 text-lg">
-                    Coming Soon...
+                    Start Now
                 </button>
             </Link>
         </div>

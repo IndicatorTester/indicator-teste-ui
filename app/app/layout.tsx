@@ -1,4 +1,3 @@
-import { UserProvider } from "@auth0/nextjs-auth0/client";
 import AuthWrapper from "../wrapper/AuthWrapper";
 
 export const metadata = {
@@ -10,9 +9,5 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
-    return (
-        <UserProvider>
-            <AuthWrapper>{children}</AuthWrapper>
-        </UserProvider>
-    );
+    return <AuthWrapper>{children}</AuthWrapper>;
 }

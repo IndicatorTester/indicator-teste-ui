@@ -1,6 +1,6 @@
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const IndicatorDetails = ({ data }: { data: any }) => {
     return (
@@ -16,8 +16,8 @@ const IndicatorDetails = ({ data }: { data: any }) => {
             <h1 className="text-3xl font-black">Code:</h1>
             <div className="h-8"></div>
             <div>
-                <div className="mockup-code">
-                    <SyntaxHighlighter language="python" style={vscDarkPlus}>
+                <div className="mockup-code border border-neutral">
+                    <SyntaxHighlighter language="python" style={dracula}>
                         {data.code}
                     </SyntaxHighlighter>
                 </div>

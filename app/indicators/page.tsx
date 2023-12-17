@@ -1,14 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import BottomNavigator, { NavigationProps } from "../BottomNavigator";
 import IndicatorDetails from "./IndicatorDetails";
 import INDICATORS_DATA from "./indicators-data";
 
 const Indicators = () => {
-    const navigationProps: NavigationProps = {
-        activeTab: 4,
-    };
     const indicators = INDICATORS_DATA;
 
     const [selectedIndicator, setSelectedIndicator] = useState(null);
@@ -20,19 +16,16 @@ const Indicators = () => {
 
     return (
         <>
-            <div className="p-6 md:p-16 flex flex-col">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black">
-                    Indicators
-                </h1>
-                <div className="h-12"></div>
-                <div className="w-full flex flex-col justify-center items-center">
+            <div className="col-span-2"></div>
+            <div className="col-span-8 row-span-1">
+                <div className="flex flex-col items-center justify-center">
                     <select
                         name="indicator"
                         defaultValue="Indicator"
                         onChange={handleIndicatorChange}
-                        className="w-96 select shadow-2xl border-neutral-content font-black"
+                        className="w-full select shadow-2xl border-neutral-content font-black"
                     >
-                        <option value="Indicator" disabled>
+                        <option value="Indicator" disabled >
                             Choose Indicator
                         </option>
                         {indicators.map((indicator, index) => (
@@ -41,15 +34,17 @@ const Indicators = () => {
                             </option>
                         ))}
                     </select>
-                    <div className="h-12"></div>
-                    {selectedIndicator ? (
-                        <IndicatorDetails
-                            data={indicators[selectedIndicator]}
-                        />
-                    ) : null}
+                    <div className="w-full flex flex-col justify-center items-center">
+                        <div className="h-12"></div>
+                        {selectedIndicator ? (
+                            <IndicatorDetails
+                                data={indicators[selectedIndicator]}
+                            />
+                        ) : null}
+                    </div>
                 </div>
             </div>
-            <BottomNavigator {...navigationProps} />
+            <div className="col-span-2"></div>
         </>
     );
 };
