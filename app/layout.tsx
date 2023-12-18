@@ -1,7 +1,7 @@
 import "./globals.css";
 import "tailwindcss/tailwind.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import NavBar from "./NavBar";
+import XNavBar from "./components/XNavBar";
 
 export const metadata = {
     title: "XIndicator",
@@ -19,7 +19,7 @@ export default function RootLayout({
                     <div className="grid grid-rows-expand grid-cols-12">
                         <div className="col-span-2"></div>
                         <div className="col-span-8 row-span-1 pt-4">
-                            <NavBar />
+                            <XNavBar />
                         </div>
                         <div className="col-span-2"></div>
                         {children}

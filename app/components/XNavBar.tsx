@@ -6,7 +6,7 @@ import React from "react";
 import { User } from "react-feather";
 import { usePathname } from 'next/navigation';
 
-const NavBar = () => {
+const XNavBar = () => {
     const { user, error, isLoading } = useUser();
     const pathname = usePathname();
 
@@ -17,7 +17,7 @@ const NavBar = () => {
                     <div
                         tabIndex={0}
                         role="button"
-                        className="btn btn-ghost lg:hidden"
+                        className="lg:hidden pr-4"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +85,7 @@ const NavBar = () => {
                     <li>
                         <details>
                             <summary>Data Providers</summary>
-                            <ul className="p-2">
+                            <ul className="p-2 bg-base-200">
                                 <li>
                                     <Link
                                         href="https://twelvedata.com"
@@ -100,7 +100,7 @@ const NavBar = () => {
                     <li>
                         <details>
                             <summary>Documentation</summary>
-                            <ul className="p-2">
+                            <ul className="p-2 bg-base-200">
                                 <li>
                                     <Link href={"/indicators"}>Indicators</Link>
                                 </li>
@@ -137,4 +137,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default XNavBar;

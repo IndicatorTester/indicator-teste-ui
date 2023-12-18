@@ -5,13 +5,18 @@ const PricingPage = () => {
     const offers: OfferData[] = [
         {
             name: "Basic",
-            details: ["5 tests per day", "US market stocks"],
+            details: [
+                "5 tests per day",
+                "Last 10 tests history",
+                "US market stocks",
+            ],
             price: 29,
         },
         {
             name: "Standard",
             details: [
                 "12 tests per day",
+                "Last 25 tests history",
                 "US market stocks",
                 "Cryptocurrencies",
             ],
@@ -21,6 +26,7 @@ const PricingPage = () => {
             name: "Pro",
             details: [
                 "30 tests per day",
+                "Last 50 tests history",
                 "US market stocks",
                 "Cryptocurrencies",
                 "All available symbols on your twelvedata plan",
@@ -38,7 +44,7 @@ const PricingPage = () => {
                         Simple & Flexible
                         <br /> Pricing
                     </h1>
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-12">
                         <OfferCard {...offers[0]} />
                         <OfferCard {...offers[1]} />
                         <OfferCard {...offers[2]} />
