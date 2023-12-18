@@ -58,7 +58,7 @@ const XSelect: React.FC<XSelectProps> = ({
                 placeholder={placeholder || "Search for an option..."}
                 value={selectedOption?.label ?? searchTerm}
                 onChange={handleInputChange}
-                className="input input-bordered shadow-2xl border-neutral-content h-12"
+                className="input input-bordered border-neutral-content h-12"
                 disabled={disabled ?? true}
             />
             {visibleOptions.length !== 0 ? (

@@ -165,7 +165,7 @@ const FormView: React.FC<FormViewProps> = ({ handleRunTest }) => {
                     name="type"
                     defaultValue="Type"
                     onChange={handleTypeChange}
-                    className="w-full select shadow-2xl border-neutral-content font-black"
+                    className="w-full select border-neutral-content font-black"
                 >
                     <option value="Type" disabled>
                         Choose Symbol Type
@@ -180,7 +180,7 @@ const FormView: React.FC<FormViewProps> = ({ handleRunTest }) => {
                     name="interval"
                     defaultValue="Interval"
                     onChange={handleIntervalChange}
-                    className="w-full select shadow-2xl border-neutral-content font-black"
+                    className="w-full select border-neutral-content font-black"
                     disabled={type.length === 0}
                 >
                     <option value="Interval" disabled>
@@ -208,7 +208,7 @@ const FormView: React.FC<FormViewProps> = ({ handleRunTest }) => {
             <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-start items-center">
                 <input
                     type="date"
-                    className="input input-bordered w-full border-neutral-content shadow-2xl"
+                    className="input input-bordered w-full border-neutral-content"
                     value={startDate}
                     onChange={handleStartDateChange}
                     placeholder="Start Date"
@@ -216,7 +216,7 @@ const FormView: React.FC<FormViewProps> = ({ handleRunTest }) => {
                 />
                 <input
                     type="date"
-                    className="input input-bordered w-full border-neutral-content shadow-2xl"
+                    className="input input-bordered w-full border-neutral-content"
                     value={endDate}
                     onChange={handleEndDateChange}
                     placeholder="End Date"
