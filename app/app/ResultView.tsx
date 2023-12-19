@@ -39,7 +39,7 @@ const ResultView: React.FC<ResultViewProps> = ({
                         </span>
                         <br />
                         <span className="font-light md:text-lg text-base text-gray-400">
-                            Your Total Profit from in this Test
+                            Your Total Profit from this Test
                         </span>
                     </p>
                     <button
@@ -115,10 +115,8 @@ const ResultView: React.FC<ResultViewProps> = ({
                                                 (
                                                 {calculateChangePercentage(
                                                     action.cash,
-                                                    index !== 1
-                                                        ? data.actions[1].cash
-                                                        : 1000.0
-                                                ).toFixed(2)}
+                                                    1000.0
+                                                ).toFixed(1)}
                                                 %)
                                             </span>
                                         </>

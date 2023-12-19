@@ -163,7 +163,7 @@ const FormView: React.FC<FormViewProps> = ({ handleRunTest }) => {
             <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-start items-center">
                 <select
                     name="type"
-                    defaultValue="Type"
+                    defaultValue={type.length === 0 ? "Type" : type}
                     onChange={handleTypeChange}
                     className="w-full select border-neutral-content font-black"
                 >
@@ -178,7 +178,7 @@ const FormView: React.FC<FormViewProps> = ({ handleRunTest }) => {
                 </select>
                 <select
                     name="interval"
-                    defaultValue="Interval"
+                    defaultValue={interval.length === 0 ? "Interval" : interval}
                     onChange={handleIntervalChange}
                     className="w-full select border-neutral-content font-black"
                     disabled={type.length === 0}
@@ -208,16 +208,16 @@ const FormView: React.FC<FormViewProps> = ({ handleRunTest }) => {
             <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-start items-center">
                 <input
                     type="date"
+                    defaultValue={startDate}
                     className="input input-bordered w-full border-neutral-content"
-                    value={startDate}
                     onChange={handleStartDateChange}
                     placeholder="Start Date"
                     disabled={symbol.length === 0}
                 />
                 <input
                     type="date"
+                    defaultValue={endDate}
                     className="input input-bordered w-full border-neutral-content"
-                    value={endDate}
                     onChange={handleEndDateChange}
                     placeholder="End Date"
                     disabled={startDate.length === 0}
@@ -226,6 +226,7 @@ const FormView: React.FC<FormViewProps> = ({ handleRunTest }) => {
             <div className="w-full flex flex-col space-y-2 justify-center items-start">
                 <textarea
                     className="w-full h-32 textarea textarea-bordered border-neutral-content"
+                    defaultValue={indicator.length === 0 ? "" : indicator}
                     placeholder="Your Indicator"
                     disabled={endDate.length === 0}
                     onChange={handleIndicatorChange}

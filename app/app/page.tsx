@@ -42,15 +42,12 @@ const App = () => {
 
             const data = await response.json();
             setTestResult(data);
-        } catch (error) {
-            console.error(error);
-        }
+        } catch (error) {}
 
         setIsLoading(false);
     };
 
     const backAction: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-        // console.log("HI");
         setTestResult(null);
     };
 
