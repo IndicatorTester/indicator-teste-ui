@@ -4,9 +4,13 @@ import React, { useState } from "react";
 import FormView, { TestParams } from "./FormView";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import ResultView from "./ResultView";
+import { API_KEY_LOCAL_STORAGE_KEY } from "../constants/constants";
+import { AlertTriangle } from "react-feather";
+import Link from "next/link";
 
 const App = () => {
     const user = useUser();
+    const apiKey = localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY) ?? null;
     const [testResult, setTestResult] = useState<Object | null>(null);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -32,6 +36,7 @@ const App = () => {
                         interval: testParams.interval,
                         userId: user.user?.sub ?? "",
                         type: testParams.type,
+                        apiKey: apiKey,
                     }),
                 }
             );
@@ -63,6 +68,22 @@ const App = () => {
                     <h1 className="lg:text-6xl text-5xl font-black">
                         Test Your Indicator
                     </h1>
+                    {!apiKey && (
+                        <div className="w-full">
+                            <div role="alert" className="alert alert-warning">
+                                <AlertTriangle />
+                                <span>
+                                    Warning: Add your Twelvedata api key in{" "}
+                                    <Link
+                                        href={"/profile"}
+                                        className="border-b border-gray-500 font-bold"
+                                    >
+                                        your profile.
+                                    </Link>
+                                </span>
+                            </div>
+                        </div>
+                    )}
                     {isLoading ? (
                         <span className="loading loading-ring loading-lg"></span>
                     ) : testResult ? (
@@ -72,7 +93,7 @@ const App = () => {
                             downloadAction={downloadAction}
                         />
                     ) : (
-                        <FormView handleRunTest={handleRunTest} />
+                        apiKey && <FormView handleRunTest={handleRunTest} />
                     )}
                 </div>
             </div>
