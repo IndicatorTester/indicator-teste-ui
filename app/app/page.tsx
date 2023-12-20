@@ -7,6 +7,7 @@ import ResultView from "./ResultView";
 import { API_KEY_LOCAL_STORAGE_KEY } from "../constants/constants";
 import { AlertTriangle } from "react-feather";
 import Link from "next/link";
+import { generateClientHash } from "../utils";
 
 const App = () => {
     const user = useUser();
@@ -21,6 +22,13 @@ const App = () => {
             setTestResult(null);
             const response = await fetch("/api/calculate", {
                 method: "POST",
+                headers: {
+                    auth: generateClientHash(
+                        testParams.symbol.toUpperCase(),
+                        user.user?.sub ?? "",
+                        apiKey ?? ""
+                    ),
+                },
                 body: JSON.stringify({
                     exchange: testParams.exchange.toUpperCase(),
                     symbol: testParams.symbol.toUpperCase(),
