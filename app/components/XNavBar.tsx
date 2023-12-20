@@ -126,7 +126,7 @@ const XNavBar = () => {
                     ) : (
                         <Link
                             href={"/api/auth/login"}
-                            className="btn bg-gradient-to-r from-pink-700 to-red-500 md:w-32"
+                            className="btn md:w-32"
                         >
                             Login
                         </Link>
