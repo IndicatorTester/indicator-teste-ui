@@ -16,10 +16,14 @@ export type TestParams = {
 };
 
 type FormViewProps = {
+    isCalculating: boolean;
     handleRunTest: (testParams: TestParams) => void;
 };
 
-const FormView: React.FC<FormViewProps> = ({ handleRunTest }) => {
+const FormView: React.FC<FormViewProps> = ({
+    isCalculating,
+    handleRunTest,
+}) => {
     const intervals = [
         { value: "1min", label: "One Minute" },
         { value: "5min", label: "Five Minutes" },
@@ -225,7 +229,7 @@ const FormView: React.FC<FormViewProps> = ({ handleRunTest }) => {
             </div>
             <div className="w-full flex flex-col space-y-2 justify-center items-start">
                 <textarea
-                    className="w-full h-32 textarea textarea-bordered border-neutral-content"
+                    className="w-full h-32 textarea textarea-bordered border-neutral-content text-base"
                     defaultValue={indicator.length === 0 ? "" : indicator}
                     placeholder="Your Indicator"
                     disabled={endDate.length === 0}
@@ -240,12 +244,16 @@ const FormView: React.FC<FormViewProps> = ({ handleRunTest }) => {
             </div>
             <div className="w-full flex justify-center items-center">
                 {indicator.length !== 0 ? (
-                    <button
-                        onClick={runTest}
-                        className="btn btn-active bg-gradient-to-r from-pink-700 to-red-500 w-48 h-12"
-                    >
-                        Run The Test
-                    </button>
+                    isCalculating ? (
+                        <span className="loading loading-ring loading-lg"></span>
+                    ) : (
+                        <button
+                            onClick={runTest}
+                            className="btn btn-active bg-gradient-to-r from-pink-700 to-red-500 w-48 h-12"
+                        >
+                            Run The Test
+                        </button>
+                    )
                 ) : null}
             </div>
         </div>

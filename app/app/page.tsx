@@ -19,27 +19,20 @@ const App = () => {
 
         try {
             setTestResult(null);
-            const response = await fetch(
-                `${process.env.X_INDICATOR_API}/calculate`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Auth: user.user?.sub ?? "",
-                    },
-                    body: JSON.stringify({
-                        exchange: testParams.exchange.toUpperCase(),
-                        symbol: testParams.symbol.toUpperCase(),
-                        indicator: testParams.indicator.toLowerCase(),
-                        startDate: testParams.startDate,
-                        endDate: testParams.endDate,
-                        interval: testParams.interval,
-                        userId: user.user?.sub ?? "",
-                        type: testParams.type,
-                        apiKey: apiKey,
-                    }),
-                }
-            );
+            const response = await fetch("/api/calculate", {
+                method: "POST",
+                body: JSON.stringify({
+                    exchange: testParams.exchange.toUpperCase(),
+                    symbol: testParams.symbol.toUpperCase(),
+                    indicator: testParams.indicator.toLowerCase(),
+                    startDate: testParams.startDate,
+                    endDate: testParams.endDate,
+                    interval: testParams.interval,
+                    userId: user.user?.sub ?? "",
+                    type: testParams.type,
+                    apiKey: apiKey,
+                }),
+            });
 
             if (!response.ok) {
                 throw new Error("An error occurred while making the request.");
@@ -84,16 +77,19 @@ const App = () => {
                             </div>
                         </div>
                     )}
-                    {isLoading ? (
-                        <span className="loading loading-ring loading-lg"></span>
-                    ) : testResult ? (
+                    {testResult ? (
                         <ResultView
                             data={testResult}
                             backAction={backAction}
                             downloadAction={downloadAction}
                         />
                     ) : (
-                        apiKey && <FormView handleRunTest={handleRunTest} />
+                        apiKey && (
+                            <FormView
+                                handleRunTest={handleRunTest}
+                                isCalculating={isLoading}
+                            />
+                        )
                     )}
                 </div>
             </div>
