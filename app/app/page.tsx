@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormView, { TestParams } from "./FormView";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import ResultView from "./ResultView";
@@ -11,9 +11,13 @@ import { generateClientHash } from "../utils";
 
 const App = () => {
     const user = useUser();
-    const apiKey = localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY) ?? null;
+    const [apiKey, setApiKey] = useState<string | null>(null);
     const [testResult, setTestResult] = useState<Object | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setApiKey(localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY));
+    }, []);
 
     const handleRunTest = async (testParams: TestParams) => {
         setIsLoading(true);
