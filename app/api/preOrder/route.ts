@@ -1,9 +1,5 @@
 import { NextResponse } from "next/server";
-import {
-    UNEXPECTED_ERROR_RESPONSE,
-    XIndicatorApiHeaders,
-    getIpAddress,
-} from "../utils";
+import { XIndicatorApiHeaders, getIpAddress } from "../utils";
 
 export const POST = async (request: Request) => {
     try {
