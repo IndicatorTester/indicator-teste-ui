@@ -30,7 +30,13 @@ export const XIndicatorApiHeaders = () => {
 
     return {
         "Content-Type": "application/json",
-        Auth: hash,
-        Timestamp: timestamp,
+        "Auth": hash,
+        "Timestamp": timestamp,
     };
+};
+
+export const getIpAddress = (request: Request) => {
+    return request.headers.get("x-forwarded-for")
+        ? request.headers.get("x-forwarded-for")?.split(",")[0]
+        : null;
 };

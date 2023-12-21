@@ -236,10 +236,7 @@ const FormView: React.FC<FormViewProps> = ({
                     onChange={handleIndicatorChange}
                 ></textarea>
                 {indicatorMessage.length !== 0 ? (
-                    <p className="text-red-500 font-bold">
-                        {" "}
-                        {indicatorMessage}{" "}
-                    </p>
+                    <p className="text-red-500 font-bold">{indicatorMessage}</p>
                 ) : null}
             </div>
             <div className="w-full flex justify-center items-center">

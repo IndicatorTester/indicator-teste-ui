@@ -43,6 +43,7 @@ const XSelect: React.FC<XSelectProps> = ({
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
         setSelectedOption(undefined);
+        selectedHandler("");
     };
 
     const handleOptionSelect = (selected: Option) => {
@@ -52,7 +53,7 @@ const XSelect: React.FC<XSelectProps> = ({
     };
 
     return (
-        <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col overflow-auto">
             <input
                 type="text"
                 placeholder={placeholder || "Search for an option..."}
@@ -62,12 +63,12 @@ const XSelect: React.FC<XSelectProps> = ({
                 disabled={disabled ?? true}
             />
             {visibleOptions.length !== 0 ? (
-                <ul className="menu bg-base-200 rounded-xl text-start absolute z-[1] mt-14 max-h-56 overflow-y-scroll">
+                <ul className="flex flex-col menu rounded-xl text-start absolute z-[1] mt-14 h-48 w-64 overflow-y-scroll">
                     {visibleOptions.map((option) => (
                         <li
                             key={option.value}
                             value={option.value}
-                            className="w-fit"
+                            className="font-bold lg:text-lg text-base"
                         >
                             <button onClick={() => handleOptionSelect(option)}>
                                 {option.label}
