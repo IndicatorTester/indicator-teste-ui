@@ -1,11 +1,20 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { XIndicatorApiHeaders, hasClientServerAccess } from "../utils";
 
-export const POST = async (request: NextRequest) => {
+export const POST = async (request: Request) => {
     const data = await request.json();
 
-    if(!hasClientServerAccess(data.symbol, data.userId, data.apiKey, request.headers.get("auth") ?? "")) {
-        throw new Error("Someone who does not have the right to call this API is calling it...");
+    if (
+        !hasClientServerAccess(
+            data.symbol,
+            data.userId,
+            data.apiKey,
+            request.headers.get("auth") ?? ""
+        )
+    ) {
+        throw new Error(
+            "Someone who does not have the right to call this API is calling it..."
+        );
     }
 
     const response = await fetch(`${process.env.X_INDICATOR_API}/calculate`, {

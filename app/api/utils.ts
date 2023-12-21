@@ -1,5 +1,4 @@
 import crypto from "crypto";
-import { NextRequest } from "next/server";
 
 const X_INDICATOR_API_SECRET = process.env.X_INDICATOR_API_KEY;
 
@@ -36,8 +35,6 @@ export const XIndicatorApiHeaders = () => {
     };
 };
 
-export const getIpAddress = (request: NextRequest) => {
-    return request.headers.get("x-forwarded-for")
-        ? request.headers.get("x-forwarded-for")?.split(",")[0]
-        : request.ip;
+export const getIpAddress = async () => {
+    return (await fetch("https://api.ipify.org/")).text ?? "::1";
 };

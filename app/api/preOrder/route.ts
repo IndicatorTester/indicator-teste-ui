@@ -4,6 +4,7 @@ import { XIndicatorApiHeaders, getIpAddress } from "../utils";
 export const POST = async (request: NextRequest) => {
     try {
         const data = await request.json();
+        const ip = await getIpAddress();
 
         const response = await fetch(
             `${process.env.X_INDICATOR_API}/preOrder`,
@@ -11,7 +12,7 @@ export const POST = async (request: NextRequest) => {
                 method: "POST",
                 headers: XIndicatorApiHeaders(),
                 body: JSON.stringify({
-                    ip: getIpAddress(request),
+                    ip: ip,
                     email: data.email,
                 }),
             }
@@ -27,8 +28,12 @@ export const POST = async (request: NextRequest) => {
             );
         }
 
-        return NextResponse.json(await response.json());
+        return NextResponse.json({
+            ip: ip,
+            email: data.email,
+        });
     } catch (error) {
+        console.log(error);
         return NextResponse.json(
             {
                 success: false,
