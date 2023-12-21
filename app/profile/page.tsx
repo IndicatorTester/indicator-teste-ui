@@ -5,7 +5,7 @@ import React from "react";
 import ProfileAlert from "./ProfileAlerts";
 import { useState, useEffect } from "react";
 import { API_KEY_LOCAL_STORAGE_KEY } from "../constants/constants";
-import Accordions from "./accordions";
+import Accordions from "./Accordions";
 
 const Profile = () => {
     const user = useUser();

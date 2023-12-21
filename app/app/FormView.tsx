@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import XSelect, { Option } from "../components/XSelect";
+import { Info } from "react-feather";
 
 const INDICATOR_REGEX = /^[a-zA-Z0-9,()+\-*/|&<>=. ]+$/;
 
@@ -159,11 +160,17 @@ const FormView: React.FC<FormViewProps> = ({
             indicator: indicator,
         };
 
-        handleRunTest(testParams);
+        // handleRunTest(testParams);
     };
 
     return (
         <div className="w-full flex flex-col space-y-8">
+            <div className="w-full">
+                <div role="alert" className="alert alert-info">
+                    <Info />
+                    <span>This tool is still under development</span>
+                </div>
+            </div>
             <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-start items-center">
                 <select
                     name="type"
