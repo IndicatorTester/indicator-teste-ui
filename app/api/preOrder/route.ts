@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { XIndicatorApiHeaders, getIpAddress } from "../utils";
 
-export const POST = async (request: Request) => {
+export const POST = async (request: NextRequest) => {
     try {
         const data = await request.json();
 

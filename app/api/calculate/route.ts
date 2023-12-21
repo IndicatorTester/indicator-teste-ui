@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { XIndicatorApiHeaders, hasClientServerAccess } from "../utils";
 
-export const POST = async (request: Request) => {
+export const POST = async (request: NextRequest) => {
     const data = await request.json();
 
     if(!hasClientServerAccess(data.symbol, data.userId, data.apiKey, request.headers.get("auth") ?? "")) {
