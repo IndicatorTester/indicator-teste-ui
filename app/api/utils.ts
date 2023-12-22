@@ -34,7 +34,3 @@ export const XIndicatorApiHeaders = () => {
         Timestamp: timestamp,
     };
 };
-
-export const getIpAddress = async () => {
-    return (await fetch("https://api.ipify.org/")).text ?? "::1";
-};

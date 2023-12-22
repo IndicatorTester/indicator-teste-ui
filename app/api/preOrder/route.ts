@@ -1,10 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
-import { XIndicatorApiHeaders, getIpAddress } from "../utils";
+import { XIndicatorApiHeaders, hasClientServerAccess } from "../utils";
 
 export const POST = async (request: NextRequest) => {
     try {
         const data = await request.json();
-        const ip = await getIpAddress();
+
+        if (
+            !hasClientServerAccess(
+                data.email,
+                data.ip,
+                data.email,
+                request.headers.get("auth") ?? ""
+            )
+        ) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    error: "Access Denied",
+                },
+                { status: 403 }
+            );
+        }
 
         const response = await fetch(
             `${process.env.X_INDICATOR_API}/preOrder`,
@@ -12,7 +28,7 @@ export const POST = async (request: NextRequest) => {
                 method: "POST",
                 headers: XIndicatorApiHeaders(),
                 body: JSON.stringify({
-                    ip: ip,
+                    ip: data.ip,
                     email: data.email,
                 }),
             }
@@ -29,7 +45,7 @@ export const POST = async (request: NextRequest) => {
         }
 
         return NextResponse.json({
-            ip: ip,
+            ip: data.ip,
             email: data.email,
         });
     } catch (error) {

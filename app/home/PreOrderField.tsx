@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import validator from "validator";
 import { Check, XOctagon } from "react-feather";
+import { generateClientHash, getIpAddress } from "../utils";
 
 const PreOrderField = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -16,10 +17,15 @@ const PreOrderField = () => {
         setIsLoading(true);
         event.preventDefault();
         const email = event.target.email.value;
+        const ip = await getIpAddress();
 
         const response = await fetch("/api/preOrder", {
             method: "POST",
+            headers: {
+                auth: generateClientHash(email, ip, email),
+            },
             body: JSON.stringify({
+                ip: ip,
                 email: email,
             }),
         });
