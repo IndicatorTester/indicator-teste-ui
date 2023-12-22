@@ -20,10 +20,10 @@ export const hasClientServerAccess = (
     return hash === clientHash;
 };
 
-export const XIndicatorApiHeaders = () => {
+export const XIndicatorApiHeaders = (apiKey: string) => {
     const timestamp = Date.now().toString();
 
-    const value = timestamp + process.env.X_INDICATOR_API_KEY + timestamp;
+    const value = timestamp + apiKey + timestamp;
     const hash = crypto.createHash("sha512").update(value).digest("hex");
 
     return {

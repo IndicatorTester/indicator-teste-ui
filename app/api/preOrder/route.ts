@@ -26,7 +26,9 @@ export const POST = async (request: NextRequest) => {
             `${process.env.X_INDICATOR_API}/preOrder`,
             {
                 method: "POST",
-                headers: XIndicatorApiHeaders(),
+                headers: XIndicatorApiHeaders(
+                    process.env.X_INDICATOR_API_KEY ?? ""
+                ),
                 body: JSON.stringify({
                     ip: data.ip,
                     email: data.email,

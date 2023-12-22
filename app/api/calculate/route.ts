@@ -19,7 +19,7 @@ export const POST = async (request: Request) => {
 
     const response = await fetch(`${process.env.X_INDICATOR_API}/calculate`, {
         method: "POST",
-        headers: XIndicatorApiHeaders(),
+        headers: XIndicatorApiHeaders(process.env.X_INDICATOR_API_KEY ?? ""),
         body: JSON.stringify(data),
     });
 
