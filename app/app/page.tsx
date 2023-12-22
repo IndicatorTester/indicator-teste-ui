@@ -16,7 +16,7 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setApiKey(localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY));
+        setApiKey(localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY) ?? "A");
     }, []);
 
     const handleRunTest = async (testParams: TestParams) => {
