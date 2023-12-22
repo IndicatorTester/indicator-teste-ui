@@ -25,7 +25,6 @@ const HomePage = () => {
                 </div>
             </div>
             <div className="col-span-2"></div>
-            <div className="col-span-12 h-48"></div>
         </>
     );
 };

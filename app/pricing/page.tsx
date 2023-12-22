@@ -49,7 +49,6 @@ const PricingPage = () => {
                         <OfferCard {...offers[1]} />
                         <OfferCard {...offers[2]} />
                     </div>
-                    <div className="h-36"></div>
                 </div>
             </div>
             <div className="col-span-2"></div>
