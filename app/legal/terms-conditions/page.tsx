@@ -13,9 +13,9 @@ const TermsConditions = () => {
                     <p>Welcome to XIndicator!</p>
                     <br />
                     <p>
-                        These terms and conditions outline the rules and
+                        {`These terms and conditions outline the rules and
                         regulations for the use of XIndicator's Website, located
-                        at https://www.xindicator.com.
+                        at https://www.xindicator.com.`}
                     </p>
                     <br />
                     <p>
@@ -26,7 +26,7 @@ const TermsConditions = () => {
                     </p>
                     <br />
                     <p>
-                        The following terminology applies to these Terms and
+                        {`The following terminology applies to these Terms and
                         Conditions, Privacy Statement and Disclaimer Notice and
                         all Agreements: "Client", "You" and "Your" refers to
                         you, the person log on this website and compliant to the
@@ -42,7 +42,7 @@ const TermsConditions = () => {
                         subject to, prevailing law of gb. Any use of the above
                         terminology or other words in the singular, plural,
                         capitalization and/or he/she or they, are taken as
-                        interchangeable and therefore as referring to same.
+                        interchangeable and therefore as referring to same.`}
                     </p>
                     <br />
                     <h2 className="font-black text-xl">
@@ -50,18 +50,18 @@ const TermsConditions = () => {
                     </h2>
                     <br />
                     <p>
-                        We employ the use of cookies. By accessing XIndicator,
+                        {`We employ the use of cookies. By accessing XIndicator,
                         you agreed to use cookies in agreement with the
-                        XIndicator's Privacy Policy.{" "}
+                        XIndicator's Privacy Policy.`}
                     </p>
                     <br />
                     <p>
-                        Most interactive websites use cookies to let us retrieve
+                        {`Most interactive websites use cookies to let us retrieve
                         the user's details for each visit. Cookies are used by
                         our website to enable the functionality of certain areas
                         to make it easier for people visiting our website. Some
                         of our affiliate/advertising partners may also use
-                        cookies.
+                        cookies.`}
                     </p>
                     <br />
                     <h2 className="font-black text-xl">
@@ -182,12 +182,12 @@ const TermsConditions = () => {
                     </ul>
                     <br />
                     <p>
-                        These organizations may link to our home page, to
+                        {`These organizations may link to our home page, to
                         publications or to other Website information so long as
                         the link: (a) is not in any way deceptive; (b) does not
                         falsely imply sponsorship, endorsement or approval of
                         the linking party and its products and/or services; and
-                        (c) fits within the context of the linking party's site.
+                        (c) fits within the context of the linking party's site.`}
                     </p>
                     <br />
                     <p>
@@ -224,11 +224,11 @@ const TermsConditions = () => {
                     </p>
                     <br />
                     <p>
-                        These organizations may link to our home page so long as
+                        {`These organizations may link to our home page so long as
                         the link: (a) is not in any way deceptive; (b) does not
                         falsely imply sponsorship, endorsement or approval of
                         the linking party and its products or services; and (c)
-                        fits within the context of the linking party's site.
+                        fits within the context of the linking party's site.`}
                     </p>
                     <br />
                     <p>
@@ -254,16 +254,16 @@ const TermsConditions = () => {
                             to; or
                         </li>
                         <li>
-                            By use of any other description of our Website being
+                            {`By use of any other description of our Website being
                             linked to that makes sense within the context and
-                            format of content on the linking party's site.
+                            format of content on the linking party's site.`}
                         </li>
                     </ul>
                     <br />
                     <p>
-                        No use of XIndicator's logo or other artwork will be
+                        {`No use of XIndicator's logo or other artwork will be
                         allowed for linking absent a trademark license
-                        agreement.
+                        agreement.`}
                     </p>
                     <br />
                     <h2 className="font-black text-xl">
@@ -297,13 +297,13 @@ const TermsConditions = () => {
                     </h2>
                     <br />
                     <p>
-                        We reserve the right to request that you remove all
+                        {`We reserve the right to request that you remove all
                         links or any particular link to our Website. You approve
                         to immediately remove all links to our Website upon
                         request. We also reserve the right to amen these terms
                         and conditions and it's linking policy at any time. By
                         continuously linking to our Website, you agree to be
-                        bound to and follow these linking terms and conditions.
+                        bound to and follow these linking terms and conditions.`}
                     </p>
                     <br />
                     <h2 className="font-black text-xl">

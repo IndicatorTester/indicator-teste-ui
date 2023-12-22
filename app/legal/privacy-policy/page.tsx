@@ -204,12 +204,12 @@ const PrivacyPolicy = () => {
                     </p>
                     <br/>
                     <p>
-                        Usage Data may include information such as Your Device's
+                        {`Usage Data may include information such as Your Device's
                         Internet Protocol address (e.g. IP address), browser
                         type, browser version, the pages of our Service that You
                         visit, the time and date of Your visit, the time spent
                         on those pages, unique device identifiers and other
-                        diagnostic data.
+                        diagnostic data.`}
                     </p>
                     <br/>
                     <p>
@@ -246,22 +246,22 @@ const PrivacyPolicy = () => {
                     </ul>
                     <br/>
                     <p>
-                        If You decide to register through or otherwise grant us
+                        {`If You decide to register through or otherwise grant us
                         access to a Third-Party Social Media Service, We may
                         collect Personal data that is already associated with
                         Your Third-Party Social Media Service's account, such as
                         Your name, Your email address, Your activities or Your
-                        contact list associated with that account.
+                        contact list associated with that account.`}
                     </p>
                     <br/>
                     <p>
-                        You may also have the option of sharing additional
+                        {`You may also have the option of sharing additional
                         information with the Company through Your Third-Party
                         Social Media Service's account. If You choose to provide
                         such information and Personal Data, during registration
                         or otherwise, You are giving the Company permission to
                         use, share, and store it in a manner consistent with
-                        this Privacy Policy.
+                        this Privacy Policy.`}
                     </p>
                     <br/>
                     <h4 className="font-bold text-md">Tracking Technologies and Cookies</h4>
@@ -410,7 +410,7 @@ const PrivacyPolicy = () => {
                         </li>
                         <li>
                             <p>
-                                <strong>To contact You:</strong> To contact You
+                                <strong>To contact You:</strong> {`To contact You
                                 by email, telephone calls, SMS, or other
                                 equivalent forms of electronic communication,
                                 such as a mobile application's push
@@ -418,7 +418,7 @@ const PrivacyPolicy = () => {
                                 communications related to the functionalities,
                                 products or contracted services, including the
                                 security updates, when necessary or reasonable
-                                for their implementation.
+                                for their implementation.`}
                             </p>
                         </li>
                         <li>
@@ -540,14 +540,14 @@ const PrivacyPolicy = () => {
                     <h3 className="font-bold text-lg">Transfer of Your Personal Data</h3>
                     <br/>
                     <p>
-                        Your information, including Personal Data, is processed
+                        {`Your information, including Personal Data, is processed
                         at the Company's operating offices and in any other
                         places where the parties involved in the processing are
                         located. It means that this information may be
                         transferred to — and maintained on — computers located
                         outside of Your state, province, country or other
                         governmental jurisdiction where the data protection laws
-                        may differ than those from Your jurisdiction.
+                        may differ than those from Your jurisdiction.`}
                     </p>
                     <br/>
                     <p>
@@ -650,7 +650,7 @@ const PrivacyPolicy = () => {
                         its absolute security.
                     </p>
                     <br/>
-                    <h2 className="font-black text-xl">Children's Privacy</h2>
+                    <h2 className="font-black text-xl">{`Children's Privacy`}</h2>
                     <br/>
                     <p>
                         Our Service does not address anyone under the age of 13.
@@ -665,20 +665,20 @@ const PrivacyPolicy = () => {
                     </p>
                     <br/>
                     <p>
-                        If We need to rely on consent as a legal basis for
+                        {`If We need to rely on consent as a legal basis for
                         processing Your information and Your country requires
                         consent from a parent, We may require Your parent's
-                        consent before We collect and use that information.
+                        consent before We collect and use that information.`}
                     </p>
                     <br/>
                     <h2 className="font-black text-xl">Links to Other Websites</h2>
                     <br/>
                     <p>
-                        Our Service may contain links to other websites that are
+                        {`Our Service may contain links to other websites that are
                         not operated by Us. If You click on a third party link,
                         You will be directed to that third party's site. We
                         strongly advise You to review the Privacy Policy of
-                        every site You visit.
+                        every site You visit.`}
                     </p>
                     <br/>
                     <p>
