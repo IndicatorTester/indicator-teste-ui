@@ -15,6 +15,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
+            <head>
+                <link rel="icon" href="/Logo.svg" sizes="any" />
+            </head>
             <body className="text-neutral-content">
                 <UserProvider>
                     <div className="grid grid-rows-expand grid-cols-12">
