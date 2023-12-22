@@ -19,7 +19,8 @@ export const generateClientHash = (
 
 export const getIpAddress = async () => {
     try {
-        return (await fetch("https://api.ipify.org/")).text.toString();
+        const response = await fetch("https://api.ipify.org/?format=json");
+        return (await response.json()).ip.toString();
     } catch (error) {
         return "";
     }
