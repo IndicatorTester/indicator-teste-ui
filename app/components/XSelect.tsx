@@ -11,6 +11,7 @@ type XSelectProps = {
     options: Option[];
     disabled?: boolean;
     placeholder?: string;
+    defaultValue?: string;
     selectedHandler: (selectedValue: string) => void;
 };
 
@@ -18,6 +19,7 @@ const XSelect: React.FC<XSelectProps> = ({
     options,
     disabled,
     placeholder,
+    defaultValue,
     selectedHandler,
 }) => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -57,7 +59,7 @@ const XSelect: React.FC<XSelectProps> = ({
             <input
                 type="text"
                 placeholder={placeholder || "Search for an option..."}
-                value={selectedOption?.label ?? searchTerm}
+                value={selectedOption?.label ?? searchTerm.length === 0 ? defaultValue : searchTerm}
                 onChange={handleInputChange}
                 className="input input-bordered border-neutral-content h-12"
                 disabled={disabled ?? true}

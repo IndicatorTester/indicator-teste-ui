@@ -167,9 +167,8 @@ const XNavBar = () => {
                     ) : user ? (
                         <Link
                             href={"/profile"}
-                            className="btn btn-ghost text-xl font-black rounded-full"
                         >
-                            <User />
+                            <User className="hover:text-green-400 h-8 w-8" />
                         </Link>
                     ) : (
                         <Link href={"/api/auth/login"} className="btn md:w-32">

@@ -12,6 +12,10 @@ const ResultView: React.FC<ResultViewProps> = ({
     backAction,
     downloadAction,
 }) => {
+    if (!data) {
+        return <div></div>;
+    }
+
     const profit = data["cash"] - 1000.0;
     const profitPercentage = (profit / 1000.0) * 100.0;
 

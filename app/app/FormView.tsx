@@ -17,11 +17,13 @@ export type TestParams = {
 };
 
 type FormViewProps = {
+    data: any;
     isCalculating: boolean;
     handleRunTest: (testParams: TestParams) => void;
 };
 
 const FormView: React.FC<FormViewProps> = ({
+    data,
     isCalculating,
     handleRunTest,
 }) => {
@@ -163,8 +165,15 @@ const FormView: React.FC<FormViewProps> = ({
         handleRunTest(testParams);
     };
 
-    return (
+    return data ? (
+        <div></div>
+    ) : (
         <div className="w-full flex flex-col space-y-8">
+            <div className="w-full">
+                <h1 className="lg:text-6xl text-5xl font-black">
+                    Indicator Tester
+                </h1>
+            </div>
             <div className="w-full">
                 <div role="alert" className="alert alert-info">
                     <Info />
@@ -213,6 +222,7 @@ const FormView: React.FC<FormViewProps> = ({
                         placeholder="Symbol"
                         selectedHandler={symbolSelectHandler}
                         disabled={interval.length === 0}
+                        defaultValue={symbol}
                     />
                 )}
             </div>

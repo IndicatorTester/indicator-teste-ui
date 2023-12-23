@@ -8,6 +8,7 @@ import { API_KEY_LOCAL_STORAGE_KEY } from "../constants/constants";
 import { AlertTriangle } from "react-feather";
 import Link from "next/link";
 import { generateClientHash } from "../utils";
+import XComponentStack from "../components/XComponentStack";
 
 const App = () => {
     const user = useUser();
@@ -70,9 +71,6 @@ const App = () => {
             <div className="col-span-2"></div>
             <div className="col-span-8 row-span-1 min-h-screen">
                 <div className="flex flex-col space-y-16 justify-start items-center text-center">
-                    <h1 className="lg:text-6xl text-5xl font-black">
-                        Test Your Indicator
-                    </h1>
                     {!apiKey && (
                         <div className="w-full">
                             <div role="alert" className="alert alert-warning">
@@ -89,20 +87,33 @@ const App = () => {
                             </div>
                         </div>
                     )}
-                    {testResult ? (
+                    <XComponentStack
+                        activeComponent={testResult ? 2 : 1}
+                        components={[
+                            <FormView
+                                data={testResult}
+                                handleRunTest={handleRunTest}
+                                isCalculating={isLoading}
+                            />,
+                            <ResultView
+                                data={testResult}
+                                backAction={backAction}
+                                downloadAction={downloadAction}
+                            />,
+                        ]}
+                    />
+                    {/* {testResult ? (
                         <ResultView
                             data={testResult}
                             backAction={backAction}
                             downloadAction={downloadAction}
                         />
                     ) : (
-                        apiKey && (
-                            <FormView
-                                handleRunTest={handleRunTest}
-                                isCalculating={isLoading}
-                            />
-                        )
-                    )}
+                        <FormView
+                            handleRunTest={handleRunTest}
+                            isCalculating={isLoading}
+                        />
+                    )} */}
                 </div>
             </div>
             <div className="col-span-2"></div>
