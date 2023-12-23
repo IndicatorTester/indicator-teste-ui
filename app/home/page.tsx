@@ -7,7 +7,7 @@ const HomePage = () => {
     return (
         <>
             <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1">
+            <div className="col-span-8 row-span-1 min-h-screen">
                 <div className="pt-4 flex flex-col space-y-12 justify-start items-center text-center">
                     <Title />
                     <PreOrderField />

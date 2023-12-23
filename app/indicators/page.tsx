@@ -17,15 +17,19 @@ const Indicators = () => {
     return (
         <>
             <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1">
-                <div className="flex flex-col items-center justify-center">
+            <div className="col-span-8 row-span-1 min-h-screen">
+                <div className="flex flex-col justify-start items-center">
+                    <h1 className="lg:text-6xl text-5xl font-black text-center">
+                        Indicators
+                    </h1>
+                    <div className="h-8"></div>
                     <select
                         name="indicator"
                         defaultValue="Indicator"
                         onChange={handleIndicatorChange}
                         className="w-full select shadow-2xl border-neutral-content font-black"
                     >
-                        <option value="Indicator" disabled >
+                        <option value="Indicator" disabled>
                             Choose Indicator
                         </option>
                         {indicators.map((indicator, index) => (

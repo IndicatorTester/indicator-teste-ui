@@ -160,7 +160,7 @@ const FormView: React.FC<FormViewProps> = ({
             indicator: indicator,
         };
 
-        // handleRunTest(testParams);
+        handleRunTest(testParams);
     };
 
     return (

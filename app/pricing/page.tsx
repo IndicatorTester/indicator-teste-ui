@@ -38,7 +38,7 @@ const PricingPage = () => {
     return (
         <>
             <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1">
+            <div className="col-span-8 row-span-1 min-h-screen">
                 <div className="flex flex-col space-y-16 justify-start items-center text-center">
                     <h1 className="lg:text-6xl text-5xl font-black">
                         Simple & Flexible

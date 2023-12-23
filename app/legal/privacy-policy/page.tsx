@@ -4,7 +4,7 @@ const PrivacyPolicy = () => {
     return (
         <>
             <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1">
+            <div className="col-span-8 row-span-1 min-h-screen">
                 <div className="w-full">
                     <h1 className="font-black text-4xl" >Privacy Policy</h1>
                     <br/>

@@ -14,27 +14,22 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className="h-[100%]" >
+        <html lang="en" className="h-[100%]">
             <head>
                 <link rel="icon" href="/Logo.svg" sizes="any" />
             </head>
-            <body className="min-h-[100%] text-neutral-content">
+            <body className="h-[100%] text-neutral-content">
                 <UserProvider>
                     <div className="grid grid-rows-expand grid-cols-12 min-h-screen">
-                        <div className="col-span-2"></div>
-                        <div className="col-span-8 row-span-1 pt-4">
+                        <div className="col-span-2 h-fit"></div>
+                        <div className="col-span-8 row-span-1 h-fit">
                             <XNavBar />
                         </div>
-                        <div className="col-span-2"></div>
+                        <div className="col-span-2 h-fit"></div>
                         {children}
-                        <div className="col-span-12 h-24"></div>
-                        <div className="col-span-2 bg-base-200"></div>
-                        <div className="col-span-8 row-span-1 bg-base-200">
-                            <XFooter />
-                        </div>
-                        <div className="col-span-2 bg-base-200"></div>
                     </div>
                 </UserProvider>
+                <XFooter />
             </body>
         </html>
     );

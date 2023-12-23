@@ -35,7 +35,7 @@ const Profile = () => {
     return (
         <>
             <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1">
+            <div className="col-span-8 row-span-1 min-h-screen">
                 <div className="w-full flex flex-col space-y-16">
                     <ProfileAlert user={user} apiKey={apiKey} infoMessage={message} />
                     <div className="w-full text-center overflow-auto">
