@@ -7,8 +7,9 @@ const PricingPage = () => {
         {
             name: "Basic",
             details: [
-                "5 tests per day",
+                "150 tests per month",
                 "Last 10 tests history",
+                "Get last 20 transactions for each test",
                 "US market stocks",
             ],
             price: 29,
@@ -16,18 +17,19 @@ const PricingPage = () => {
         {
             name: "Standard",
             details: [
-                "12 tests per day",
+                "300 tests per month",
                 "Last 25 tests history",
+                "Get last 50 transactions for each test",
                 "US market stocks",
-                "Cryptocurrencies",
             ],
-            price: 49,
+            price: 39,
         },
         {
             name: "Pro",
             details: [
-                "30 tests per day",
+                "750 tests per month",
                 "Last 50 tests history",
+                "Get last 50 transactions for each test & the ability of downloading all transactions",
                 "US market stocks",
                 "Cryptocurrencies",
                 "All available symbols on your twelvedata plan",
