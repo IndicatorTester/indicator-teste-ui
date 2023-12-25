@@ -5,8 +5,6 @@ import FormView, { TestParams } from "./FormView";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import ResultView from "./ResultView";
 import { API_KEY_LOCAL_STORAGE_KEY } from "../constants/constants";
-import { AlertTriangle } from "react-feather";
-import Link from "next/link";
 import { generateClientHash } from "../utils";
 import XComponentStack from "../components/XComponentStack";
 
@@ -17,7 +15,7 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setApiKey(localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY) ?? "A");
+        setApiKey(localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY) ?? null);
     }, []);
 
     const handleRunTest = async (testParams: TestParams) => {
@@ -71,22 +69,6 @@ const App = () => {
             <div className="col-span-2"></div>
             <div className="col-span-8 row-span-1 min-h-screen">
                 <div className="flex flex-col space-y-16 justify-start items-center text-center">
-                    {!apiKey && (
-                        <div className="w-full">
-                            <div role="alert" className="alert alert-warning">
-                                <AlertTriangle />
-                                <span>
-                                    Warning: Add your Twelvedata api key in{" "}
-                                    <Link
-                                        href={"/profile"}
-                                        className="border-b border-gray-500 font-bold"
-                                    >
-                                        your profile.
-                                    </Link>
-                                </span>
-                            </div>
-                        </div>
-                    )}
                     <XComponentStack
                         activeComponent={testResult ? 2 : 1}
                         components={[
@@ -102,18 +84,6 @@ const App = () => {
                             />,
                         ]}
                     />
-                    {/* {testResult ? (
-                        <ResultView
-                            data={testResult}
-                            backAction={backAction}
-                            downloadAction={downloadAction}
-                        />
-                    ) : (
-                        <FormView
-                            handleRunTest={handleRunTest}
-                            isCalculating={isLoading}
-                        />
-                    )} */}
                 </div>
             </div>
             <div className="col-span-2"></div>
