@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import XSelect, { Option } from "../components/XSelect";
+import XSelect, { Option } from "../../components/XSelect";
 
 const INDICATOR_REGEX = /^[a-zA-Z0-9,()+\-*/|&<>=. ]+$/;
 

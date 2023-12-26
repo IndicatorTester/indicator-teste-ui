@@ -8,11 +8,11 @@ import { MoreHorizontal, User } from "react-feather";
 const XNavBar = () => {
     const menu = [
         {
-            head: "Applications",
+            head: "Features",
             items: [
                 {
                     title: "Indicator Tester",
-                    path: "/app",
+                    path: "/features/indicator-tester",
                 },
             ],
         },
@@ -89,7 +89,7 @@ const XNavBar = () => {
                                     {value.items.map((item, j) => {
                                         return (
                                             <Link key={j} href={item.path}>
-                                                <p className="text-gray-400 hover:text-neutral-content hover:underline">
+                                                <p className="whitespace-nowrap text-gray-400 hover:text-neutral-content hover:underline">
                                                     {item.title}
                                                 </p>
                                             </Link>

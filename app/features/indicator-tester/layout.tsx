@@ -1,4 +1,4 @@
-import AuthWrapper from "../wrapper/AuthWrapper";
+import AuthWrapper from "../../wrapper/AuthWrapper";
 
 export default function AppLayout({
     children,

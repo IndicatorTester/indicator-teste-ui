@@ -7,6 +7,11 @@ const nextConfig = {
                 destination: "/home",
                 permanent: false,
             },
+            {
+                source: "/features",
+                destination: "/features/indicator-tester",
+                permanent: false,
+            },
         ];
     },
     env: {

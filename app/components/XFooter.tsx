@@ -57,7 +57,7 @@ const XFooter = () => {
                     </aside>
                     <nav>
                         <header className="footer-title">Navigation</header>
-                        <Link href={"/app"} className="link link-hover">
+                        <Link href={"/features/indicator-tester"} className="link link-hover">
                             Indicator Tester
                         </Link>
                         <Link href={"/indicators"} className="link link-hover">

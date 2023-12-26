@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import FormView, { TestParams } from "./FormView";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import ResultView from "./ResultView";
-import { API_KEY_LOCAL_STORAGE_KEY } from "../constants/constants";
-import { generateClientHash } from "../utils";
-import XComponentStack from "../components/XComponentStack";
+import { API_KEY_LOCAL_STORAGE_KEY } from "../../constants/constants";
+import { generateClientHash } from "../../utils";
+import XComponentStack from "../../components/XComponentStack";
 
 const App = () => {
     const user = useUser();
