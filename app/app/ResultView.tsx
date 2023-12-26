@@ -98,7 +98,7 @@ const ResultView: React.FC<ResultViewProps> = ({
                         {data.actions.map((action: any, index: number) => (
                             <tr key={index}>
                                 <th className="font-black">{index + 1}</th>
-                                <td>{action.date}</td>
+                                <td className="text-base">{action.date}</td>
                                 <td>{action.price.toFixed(6)}</td>
                                 <td
                                     className={

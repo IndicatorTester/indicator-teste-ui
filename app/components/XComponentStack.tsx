@@ -15,12 +15,10 @@ const XComponentStack: React.FC<XComponentStackProps> = ({
                 return (
                     <div
                         key={index}
-                        className="transition-opacity duration-500 relative col-start-1 row-start-1"
+                        className="transition-opacity duration-500 col-start-1 row-start-1 overflow-auto"
                         style={{
                             opacity: activeComponent - 1 === index ? 1 : 0,
                             zIndex: activeComponent - 1 === index ? 0 : -1,
-                            top: 0,
-                            right: 0,
                         }}
                     >
                         {component}

@@ -167,102 +167,107 @@ const FormView: React.FC<FormViewProps> = ({
     return data ? (
         <div></div>
     ) : (
-        <div className="w-full flex flex-col space-y-8">
-            <div className="w-full">
+        <div className="w-full flex flex-col space-y-16 justify-center items-center">
+            <div className="w-full text-center">
                 <h1 className="lg:text-6xl text-5xl font-black">
                     Indicator Tester
                 </h1>
             </div>
-            <div></div>
-            <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-start items-center">
-                <select
-                    name="type"
-                    defaultValue={type.length === 0 ? "Type" : type}
-                    onChange={handleTypeChange}
-                    className="w-full select border-neutral-content font-black"
-                >
-                    <option value="Type" disabled>
-                        Choose Symbol Type
-                    </option>
-                    {typeOptions.map((type, index) => (
-                        <option key={index} value={type.value}>
-                            {type.label}
+            <div className="w-full max-w-2xl flex flex-col space-y-8 justify-center items-center">
+                <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-start items-center">
+                    <select
+                        name="type"
+                        defaultValue={type.length === 0 ? "Type" : type}
+                        onChange={handleTypeChange}
+                        className="w-full select border-neutral-content font-black"
+                    >
+                        <option value="Type" disabled>
+                            Choose Symbol Type
                         </option>
-                    ))}
-                </select>
-                <select
-                    name="interval"
-                    defaultValue={interval.length === 0 ? "Interval" : interval}
-                    onChange={handleIntervalChange}
-                    className="w-full select border-neutral-content font-black"
-                    disabled={type.length === 0}
-                >
-                    <option value="Interval" disabled>
-                        Choose Interval
-                    </option>
-                    {intervals.map((interval, index) => (
-                        <option key={index} value={interval.value}>
-                            {interval.label}
+                        {typeOptions.map((type, index) => (
+                            <option key={index} value={type.value}>
+                                {type.label}
+                            </option>
+                        ))}
+                    </select>
+                    <select
+                        name="interval"
+                        defaultValue={
+                            interval.length === 0 ? "Interval" : interval
+                        }
+                        onChange={handleIntervalChange}
+                        className="w-full select border-neutral-content font-black"
+                        disabled={type.length === 0}
+                    >
+                        <option value="Interval" disabled>
+                            Choose Interval
                         </option>
-                    ))}
-                </select>
-            </div>
-            <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-center items-center">
-                {isLoading ? (
-                    <span className="loading loading-ring loading-lg"></span>
-                ) : (
-                    <XSelect
-                        options={symbols ?? []}
-                        placeholder="Symbol"
-                        selectedHandler={symbolSelectHandler}
-                        disabled={interval.length === 0}
-                        defaultValue={symbol}
-                    />
-                )}
-            </div>
-            <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-start items-center">
-                <input
-                    type="date"
-                    defaultValue={startDate}
-                    className="input input-bordered w-full border-neutral-content"
-                    onChange={handleStartDateChange}
-                    placeholder="Start Date"
-                    disabled={symbol.length === 0}
-                />
-                <input
-                    type="date"
-                    defaultValue={endDate}
-                    className="input input-bordered w-full border-neutral-content"
-                    onChange={handleEndDateChange}
-                    placeholder="End Date"
-                    disabled={startDate.length === 0}
-                />
-            </div>
-            <div className="w-full flex flex-col space-y-2 justify-center items-start">
-                <textarea
-                    className="w-full h-32 textarea textarea-bordered border-neutral-content text-base"
-                    defaultValue={indicator.length === 0 ? "" : indicator}
-                    placeholder="Your Indicator"
-                    disabled={endDate.length === 0}
-                    onChange={handleIndicatorChange}
-                ></textarea>
-                {indicatorMessage.length !== 0 ? (
-                    <p className="text-red-500 font-bold">{indicatorMessage}</p>
-                ) : null}
-            </div>
-            <div className="w-full flex justify-center items-center">
-                {indicator.length !== 0 ? (
-                    isCalculating ? (
+                        {intervals.map((interval, index) => (
+                            <option key={index} value={interval.value}>
+                                {interval.label}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-center items-center">
+                    {isLoading ? (
                         <span className="loading loading-ring loading-lg"></span>
                     ) : (
-                        <button
-                            onClick={runTest}
-                            className="btn btn-active bg-gradient-to-r from-pink-700 to-red-500 w-48 h-12"
-                        >
-                            Run The Test
-                        </button>
-                    )
-                ) : null}
+                        <XSelect
+                            options={symbols ?? []}
+                            placeholder="Symbol"
+                            selectedHandler={symbolSelectHandler}
+                            disabled={interval.length === 0}
+                            defaultValue={symbol}
+                        />
+                    )}
+                </div>
+                <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-start items-center">
+                    <input
+                        type="date"
+                        defaultValue={startDate}
+                        className="input input-bordered w-full border-neutral-content"
+                        onChange={handleStartDateChange}
+                        placeholder="Start Date"
+                        disabled={symbol.length === 0}
+                    />
+                    <input
+                        type="date"
+                        defaultValue={endDate}
+                        className="input input-bordered w-full border-neutral-content"
+                        onChange={handleEndDateChange}
+                        placeholder="End Date"
+                        disabled={startDate.length === 0}
+                    />
+                </div>
+                <div className="w-full flex flex-col space-y-2 justify-center items-start">
+                    <textarea
+                        className="w-full h-48 textarea textarea-bordered border-neutral-content text-base"
+                        defaultValue={indicator.length === 0 ? "" : indicator}
+                        placeholder="Your Indicator"
+                        disabled={endDate.length === 0}
+                        onChange={handleIndicatorChange}
+                    ></textarea>
+                    {indicatorMessage.length !== 0 ? (
+                        <p className="text-red-500 font-bold">
+                            {indicatorMessage}
+                        </p>
+                    ) : null}
+                </div>
+                <div className="w-full flex justify-center items-center">
+                    {indicator.length !== 0 ? (
+                        isCalculating ? (
+                            <span className="loading loading-ring loading-lg"></span>
+                        ) : (
+                            <button
+                                onClick={runTest}
+                                className="btn btn-active bg-gradient-to-r from-pink-700 to-red-500 w-48 h-12"
+                            >
+                                Run The Test
+                            </button>
+                        )
+                    ) : null}
+                </div>
             </div>
         </div>
     );

@@ -68,7 +68,6 @@ const App = () => {
         <>
             <div className="col-span-2"></div>
             <div className="col-span-8 row-span-1 min-h-screen">
-                <div className="flex flex-col space-y-16 justify-start items-center text-center">
                     <XComponentStack
                         activeComponent={testResult ? 2 : 1}
                         components={[
@@ -84,7 +83,6 @@ const App = () => {
                             />,
                         ]}
                     />
-                </div>
             </div>
             <div className="col-span-2"></div>
         </>
