@@ -28,7 +28,7 @@ export const XIndicatorApiHeaders = (apiKey: string) => {
 
     return {
         "Content-Type": "application/json",
-        Auth: hash,
-        Timestamp: timestamp,
+        X_Auth: hash,
+        X_Timestamp: timestamp,
     };
 };

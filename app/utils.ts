@@ -1,5 +1,19 @@
 import crypto from "crypto";
 
+export const INTERVALS_MAPPING: any = {
+    "1min": "One Minute",
+    "5min": "Five Minutes",
+    "15min": "15 Minutes",
+    "30min": "30 Minutes",
+    "45min": "45 Minutes",
+    "1h": "One Hour",
+    "2h": "Two Hours",
+    "4h": "Four Hours",
+    "1day": "One Day",
+    "1week": "One Week",
+    "1month": "One Month",
+};
+
 export const generateClientHash = (
     key1: string,
     key2: string,

@@ -42,6 +42,7 @@ const App = () => {
                     userId: user.user?.sub ?? "",
                     type: testParams.type,
                     apiKey: apiKey,
+                    timestamp: `${Math.floor(Date.now() / 1000)}`,
                 }),
             });
 

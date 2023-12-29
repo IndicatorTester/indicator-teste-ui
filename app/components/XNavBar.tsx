@@ -14,6 +14,10 @@ const XNavBar = () => {
                     title: "Indicator Tester",
                     path: "/features/indicator-tester",
                 },
+                {
+                    title: "Tests Archive",
+                    path: "/features/tests-archive",
+                },
             ],
         },
         {
