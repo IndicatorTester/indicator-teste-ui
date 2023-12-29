@@ -8,9 +8,12 @@ import { ChevronLeft, ChevronRight, Copy, Download } from "react-feather";
 const TestsArchive = () => {
     const user = useUser();
     const [tests, setTests] = useState<any>(null);
+    const [isFetchingData, setIsFetchingData] = useState<boolean>(false);
+    const [downloadAction, setDownloadAction] = useState<string | null>(null);
     const [pageNumber, setPageNumber] = useState<number>(1);
 
     const fetchTests = async (timestamp: string, pageNumber: number) => {
+        setIsFetchingData(true);
         const response = await fetch("/api/testArchive", {
             method: "POST",
             headers: {
@@ -33,6 +36,42 @@ const TestsArchive = () => {
 
         const data = await response.json();
         setTests(data);
+        setIsFetchingData(false);
+    };
+
+    const fetchTestActions = async (timestamp: string) => {
+        if (downloadAction) {
+            return;
+        }
+        setDownloadAction(timestamp);
+        const response = await fetch("/api/testActions", {
+            method: "POST",
+            headers: {
+                auth: generateClientHash(
+                    timestamp,
+                    user.user?.sub ?? "",
+                    user.user?.sub ?? ""
+                ),
+            },
+            body: JSON.stringify({
+                timestamp: timestamp,
+                userId: user.user?.sub ?? "",
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error("An error occurred while making the request.");
+        }
+
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${timestamp}.json`;
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        setDownloadAction(null);
     };
 
     useEffect(() => {
@@ -86,7 +125,10 @@ const TestsArchive = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {tests &&
+                                {isFetchingData ? (
+                                    <span className="loading loading-ring loading-lg"></span>
+                                ) : (
+                                    tests &&
                                     tests.map((test: any, index: number) => {
                                         return (
                                             <tr key={index}>
@@ -138,13 +180,26 @@ const TestsArchive = () => {
                                                     {test.profit}%
                                                 </td>
                                                 <td className="flex justify-center items-center">
-                                                    <button className="btn btn-circle btn-info">
-                                                        <Download className="text-neutral" />
-                                                    </button>
+                                                    {downloadAction ==
+                                                    test.timestamp ? (
+                                                        <span className="loading loading-ball loading-md"></span>
+                                                    ) : (
+                                                        <button
+                                                            onClick={() =>
+                                                                fetchTestActions(
+                                                                    test.timestamp
+                                                                )
+                                                            }
+                                                            className="btn btn-circle btn-info"
+                                                        >
+                                                            <Download className="text-neutral" />
+                                                        </button>
+                                                    )}
                                                 </td>
                                             </tr>
                                         );
-                                    })}
+                                    })
+                                )}
                             </tbody>
                         </table>
                         <div className="w-full flex justify-center items-center space-x-4">
