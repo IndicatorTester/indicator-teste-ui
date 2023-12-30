@@ -61,65 +61,74 @@ const XNavBar = () => {
     const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
 
     return (
-        <div className="navbar bg-base-100 mb-8 p-0">
-            <div className="navbar-start">
-                <Link href={"/home"} className="text-xl font-bold">
-                    XIndicator
-                </Link>
-            </div>
-            <div
-                onMouseEnter={() => setIsNavMenuOpen(true)}
-                onMouseLeave={() => setIsNavMenuOpen(false)}
-                className="flex flex-col p-6 space-y-12 justify-start items-center"
-            >
-                <div className="animate-pulse h-12 w-12">
-                    <MoreHorizontal className="h-12 w-12" />
+        <div className="grid grid-rows-expand grid-cols-12 min-h-[5%] mt-2">
+            <div className="col-span-2"></div>
+            <div className="navbar bg-base-100 mb-8 p-0 col-span-8">
+                <div className="navbar-start">
+                    <Link href={"/home"} className="text-xl font-bold">
+                        XIndicator
+                    </Link>
                 </div>
                 <div
-                    className={`${
-                        isNavMenuOpen ? "opacity-100 z-[1]" : "opacity-0 z-[-1]"
-                    } transition-opacity duration-200 ease-in-out flex flex-col lg:flex-row justify-between items-start space-x-0 lg:space-x-24 space-y-12 lg:space-y-0 p-8 rounded-xl absolute bg-base-200 shadow-2xl`}
+                    onMouseEnter={() => setIsNavMenuOpen(true)}
+                    onMouseLeave={() => setIsNavMenuOpen(false)}
+                    className="flex flex-col p-6 space-y-12 justify-start items-center"
                 >
-                    {menu.map((value, i) => {
-                        return (
-                            <div
-                                key={i}
-                                className="flex flex-col space-y-4 justify-start items-start"
-                            >
-                                <h1 className="font-black text-xl">
-                                    {value.head}
-                                </h1>
-                                <div className="flex flex-col space-y-2">
-                                    {value.items.map((item, j) => {
-                                        return (
-                                            <Link key={j} href={item.path}>
-                                                <p className="whitespace-nowrap text-gray-400 hover:text-neutral-content hover:underline">
-                                                    {item.title}
-                                                </p>
-                                            </Link>
-                                        );
-                                    })}
+                    <div className="animate-pulse h-12 w-12">
+                        <MoreHorizontal className="h-12 w-12" />
+                    </div>
+                    <div
+                        className={`${
+                            isNavMenuOpen
+                                ? "opacity-100 z-[1]"
+                                : "opacity-0 z-[-1]"
+                        } transition-opacity duration-200 ease-in-out grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-12 p-8 rounded-xl absolute bg-base-200 shadow-2xl`}
+                    >
+                        {menu.map((value, i) => {
+                            return (
+                                <div
+                                    key={i}
+                                    className="flex flex-col space-y-4 justify-start items-start"
+                                >
+                                    <h1 className="font-black text-xl">
+                                        {value.head}
+                                    </h1>
+                                    <div className="flex flex-col space-y-2">
+                                        {value.items.map((item, j) => {
+                                            return (
+                                                <Link key={j} href={item.path}>
+                                                    <p className="whitespace-nowrap text-gray-400 hover:text-neutral-content hover:underline">
+                                                        {item.title}
+                                                    </p>
+                                                </Link>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
+                </div>
+                <div className="navbar-end">
+                    <div className="h-8 flex justify-center items-center">
+                        {isLoading ? (
+                            <span className="loading loading-ring loading-lg"></span>
+                        ) : user ? (
+                            <Link href={"/profile"}>
+                                <User className="hover:text-green-400 h-8 w-8" />
+                            </Link>
+                        ) : (
+                            <Link
+                                href={"/api/auth/login"}
+                                className="btn md:w-32"
+                            >
+                                Login
+                            </Link>
+                        )}
+                    </div>
                 </div>
             </div>
-            <div className="navbar-end">
-                <div className="h-8 flex justify-center items-center">
-                    {isLoading ? (
-                        <span className="loading loading-ring loading-lg"></span>
-                    ) : user ? (
-                        <Link href={"/profile"}>
-                            <User className="hover:text-green-400 h-8 w-8" />
-                        </Link>
-                    ) : (
-                        <Link href={"/api/auth/login"} className="btn md:w-32">
-                            Login
-                        </Link>
-                    )}
-                </div>
-            </div>
+            <div className="col-span-2"></div>
         </div>
     );
 };

@@ -20,12 +20,8 @@ export default function RootLayout({
             </head>
             <body className="h-[100%] text-neutral-content">
                 <UserProvider>
+                    <XNavBar />
                     <div className="grid grid-rows-expand grid-cols-12 min-h-screen">
-                        <div className="col-span-2 h-fit"></div>
-                        <div className="col-span-8 row-span-1 h-fit">
-                            <XNavBar />
-                        </div>
-                        <div className="col-span-2 h-fit"></div>
                         {children}
                     </div>
                 </UserProvider>

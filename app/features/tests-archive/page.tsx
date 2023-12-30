@@ -90,10 +90,7 @@ const TestsArchive = () => {
     const previousPage: React.MouseEventHandler<HTMLButtonElement> = async (
         event
     ) => {
-        const firstTimestamp =
-            tests.length > 0
-                ? tests[0].timestamp
-                : `${Math.floor(Date.now() / 1000)}`;
+        const firstTimestamp = tests[0].timestamp;
         setTests(null);
         await fetchTests(firstTimestamp, pageNumber - 1);
         setPageNumber(pageNumber - 1);
