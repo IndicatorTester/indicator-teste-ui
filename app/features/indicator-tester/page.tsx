@@ -7,18 +7,29 @@ import ResultView from "./ResultView";
 import { API_KEY_LOCAL_STORAGE_KEY } from "../../constants/constants";
 import { generateClientHash } from "../../utils";
 import XComponentStack from "../../components/XComponentStack";
+import { XOctagon } from "react-feather";
 
 const App = () => {
     const user = useUser();
     const [apiKey, setApiKey] = useState<string | null>(null);
     const [testResult, setTestResult] = useState<Object | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         setApiKey(localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY) ?? null);
     }, []);
 
-    const handleRunTest = async (testParams: TestParams) => {
+    const handleRunTest = async (
+        testParams: TestParams | null,
+        error: string | null
+    ) => {
+        setError(error);
+        if (testParams === null) {
+            return;
+        }
+
+        setError(null);
         setIsLoading(true);
 
         try {
@@ -47,7 +58,10 @@ const App = () => {
             });
 
             if (!response.ok) {
-                throw new Error("An error occurred while making the request.");
+                const error = await response.json();
+                setError(error.error);
+                setIsLoading(false);
+                return;
             }
 
             const data = await response.json();
@@ -61,29 +75,32 @@ const App = () => {
         setTestResult(null);
     };
 
-    const downloadAction: React.MouseEventHandler<HTMLButtonElement> = (
-        event
-    ) => {};
-
     return (
         <>
             <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1 min-h-screen">
-                    <XComponentStack
-                        activeComponent={testResult ? 2 : 1}
-                        components={[
-                            <FormView
-                                data={testResult}
-                                handleRunTest={handleRunTest}
-                                isCalculating={isLoading}
-                            />,
-                            <ResultView
-                                data={testResult}
-                                backAction={backAction}
-                                downloadAction={downloadAction}
-                            />,
-                        ]}
-                    />
+            <div className="col-span-8 row-span-1 min-h-screen flex flex-col justify-start items-center space-y-8">
+                {error && (
+                    <div className="w-full max-w-[720px]">
+                        <div role="alert" className="alert alert-error">
+                            <XOctagon />
+                            <span>{error}</span>
+                        </div>
+                    </div>
+                )}
+                <XComponentStack
+                    activeComponent={testResult ? 2 : 1}
+                    components={[
+                        <FormView
+                            data={testResult}
+                            handleRunTest={handleRunTest}
+                            isCalculating={isLoading}
+                        />,
+                        <ResultView
+                            data={testResult}
+                            backAction={backAction}
+                        />,
+                    ]}
+                />
             </div>
             <div className="col-span-2"></div>
         </>

@@ -1,26 +1,41 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { ChevronLeft, Download } from "react-feather";
 
 type ResultViewProps = {
     data: any;
     backAction: React.MouseEventHandler<HTMLButtonElement>;
-    downloadAction: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const ResultView: React.FC<ResultViewProps> = ({
-    data,
-    backAction,
-    downloadAction,
-}) => {
+const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
     if (!data) {
         return <div></div>;
     }
 
-    const profit = data["cash"] - 1000.0;
+    const [isDownloading, setIsDownloading] = useState(false);
+
+    const profit = data.cash - 1000.0;
     const profitPercentage = (profit / 1000.0) * 100.0;
 
     const calculateChangePercentage = (newValue: number, oldValue: number) => {
         return ((newValue - oldValue) / oldValue) * 100.0;
+    };
+
+    const downloadAction: React.MouseEventHandler<HTMLButtonElement> = async (
+        event
+    ) => {
+        setIsDownloading(true);
+        const jsonString = JSON.stringify(data.actions);
+        const blob = new Blob([jsonString], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${Math.floor(Date.now() / 1000)}.json`;
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        setIsDownloading(false);
     };
 
     return (
@@ -46,12 +61,18 @@ const ResultView: React.FC<ResultViewProps> = ({
                             Your Total Profit from this Test
                         </span>
                     </p>
-                    <button
-                        onClick={downloadAction}
-                        className="btn btn-info btn-circle"
-                    >
-                        <Download />
-                    </button>
+                    <div className="flex justify-start items-center h-4">
+                        {isDownloading ? (
+                            <span className="loading loading-ball loading-md"></span>
+                        ) : (
+                            <button
+                                onClick={downloadAction}
+                                className="btn btn-info btn-circle"
+                            >
+                                <Download />
+                            </button>
+                        )}
+                    </div>
                 </div>
                 <p className="text-center text-xl font-light text-gray-400">
                     Your indicator converted{" "}

@@ -51,7 +51,6 @@ export const POST = async (request: NextRequest) => {
             email: data.email,
         });
     } catch (error) {
-        console.log(error);
         return NextResponse.json(
             {
                 success: false,

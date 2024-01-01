@@ -18,7 +18,10 @@ export type TestParams = {
 type FormViewProps = {
     data: any;
     isCalculating: boolean;
-    handleRunTest: (testParams: TestParams) => void;
+    handleRunTest: (
+        testParams: TestParams | null,
+        error: string | null
+    ) => void;
 };
 
 const FormView: React.FC<FormViewProps> = ({
@@ -60,37 +63,43 @@ const FormView: React.FC<FormViewProps> = ({
     > = async (e) => {
         setIsLoading(true);
         const selectedValue = e.target.value;
+        handleRunTest(null, null);
 
-        const response = await fetch(
-            `${process.env.TWELVE_DATA_API}/${selectedValue}`
-        );
+        await fetch(`${process.env.TWELVE_DATA_API}/${selectedValue}`)
+            .then(async (response) => {
+                const stream = response.body;
+                const decoder = new TextDecoder();
+                let chunks = "";
+                if (stream != null) {
+                    const reader = stream.getReader();
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+                        chunks += decoder.decode(value);
+                    }
+                }
 
-        const stream = response.body;
-        const decoder = new TextDecoder();
-        let chunks = "";
-        if (stream != null) {
-            const reader = stream.getReader();
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-                chunks += decoder.decode(value);
-            }
-        }
+                const data = JSON.parse(chunks)["data"];
 
-        const data = JSON.parse(chunks)["data"];
+                const symbolsList: Option[] = data.map((object: any) => ({
+                    value:
+                        object.symbol +
+                        (object.exchange ? ` - ${object.exchange}` : ""),
+                    label:
+                        object.symbol +
+                        (object.exchange ? ` - ${object.exchange}` : ""),
+                }));
+                setSymbols(symbolsList);
+                setType(selectedValue);
+            })
+            .catch((error) => {
+                console.error("Unable to load the needed symbols", error);
+                handleRunTest(
+                    null,
+                    "Unable to load the needed symbols, kindly try again later"
+                );
+            });
 
-        const symbolsList: Option[] = data.map((object: any) => ({
-            value:
-                object.symbol +
-                (object.exchange ? ` - ${object.exchange}` : ""),
-            label:
-                object.symbol +
-                (object.exchange ? ` - ${object.exchange}` : ""),
-        }));
-
-        setSymbols(symbolsList);
-
-        setType(selectedValue);
         setIsLoading(false);
     };
 
@@ -109,25 +118,29 @@ const FormView: React.FC<FormViewProps> = ({
     const handleStartDateChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
-        const rawDateValue = event.target.value;
-
-        const formattedDate = new Date(rawDateValue)
-            .toISOString()
-            .split("T")[0];
-
-        setStartDate(formattedDate);
+        try {
+            const rawDateValue = event.target.value;
+            const formattedDate = new Date(rawDateValue)
+                .toISOString()
+                .split("T")[0];
+            setStartDate(formattedDate);
+        } catch (error) {
+            setStartDate("");
+        }
     };
 
     const handleEndDateChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
-        const rawDateValue = event.target.value;
-
-        const formattedDate = new Date(rawDateValue)
-            .toISOString()
-            .split("T")[0];
-
-        setEndDate(formattedDate);
+        try {
+            const rawDateValue = event.target.value;
+            const formattedDate = new Date(rawDateValue)
+                .toISOString()
+                .split("T")[0];
+            setEndDate(formattedDate);
+        } catch (error) {
+            setEndDate("");
+        }
     };
 
     const handleIndicatorChange: React.ChangeEventHandler<
@@ -151,17 +164,36 @@ const FormView: React.FC<FormViewProps> = ({
     };
 
     const runTest: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-        const testParams: TestParams = {
-            type: type,
-            interval: interval,
-            symbol: symbol.split(" ")[0],
-            startDate: startDate,
-            endDate: endDate,
-            exchange: type === "cryptocurrencies" ? "" : symbol.split(" ")[2],
-            indicator: indicator,
-        };
+        handleRunTest(null, null);
 
-        handleRunTest(testParams);
+        if (type.length === 0) {
+            handleRunTest(null, "Choose a type!");
+        } else if (interval.length === 0) {
+            handleRunTest(null, "Choose an interval!");
+        } else if (symbol.length === 0) {
+            handleRunTest(null, "Choose a Symbol!");
+        } else if (startDate.length === 0) {
+            handleRunTest(null, "Choose a valid start date!");
+        } else if (endDate.length === 0) {
+            handleRunTest(null, "Choose a valid end date!");
+        } else if (startDate >= endDate) {
+            handleRunTest(null, "End date must be after the start date!");
+        } else if (indicator.length === 0) {
+            handleRunTest(null, "Empty indicator is invalid!");
+        } else {
+            const testParams: TestParams = {
+                type: type,
+                interval: interval,
+                symbol: symbol.split(" ")[0],
+                startDate: startDate,
+                endDate: endDate,
+                exchange:
+                    type === "cryptocurrencies" ? "" : symbol.split(" ")[2],
+                indicator: indicator,
+            };
+
+            handleRunTest(testParams, null);
+        }
     };
 
     return data ? (
@@ -172,10 +204,10 @@ const FormView: React.FC<FormViewProps> = ({
                 <h1 className="text-5xl font-bold">Indicator Tester</h1>
                 <div>
                     <p className="text-gray-400">
-                        Have questions or feedback? We are here to help. Send us
-                        a message, or an email on{" "}
-                        <span className="underline underline-offset-2 text-neutral-content">
-                            support@xindicator.com
+                        Do you want to test a signal indicator? Plug in the
+                        required data and run a back test. See:{" "}
+                        <span className="underline underline-offset-1 text-neutral-content">
+                            Indicator test guide
                         </span>
                         .
                     </p>

@@ -12,20 +12,49 @@ export const POST = async (request: Request) => {
             request.headers.get("auth") ?? ""
         )
     ) {
-        throw new Error(
-            "Someone who does not have the right to call this API is calling it..."
+        return NextResponse.json(
+            {
+                success: false,
+                error: "Access Denied",
+            },
+            { status: 403 }
         );
     }
 
-    const response = await fetch(`${process.env.X_INDICATOR_API}/calculate`, {
+    return await fetch(`${process.env.X_INDICATOR_API}/calculate`, {
         method: "POST",
         headers: XIndicatorApiHeaders(process.env.X_INDICATOR_API_KEY ?? ""),
         body: JSON.stringify(data),
-    });
-
-    if (!response.ok) {
-        throw new Error("An error occurred while making the request.");
-    }
-
-    return NextResponse.json(await response.json());
+    })
+        .then(async (response) => {
+            if (!response.ok) {
+                return response.json().then(async (error) => {
+                    console.error(
+                        "Failed to get success response from /calculate api.",
+                        error
+                    );
+                    return NextResponse.json(
+                        {
+                            success: false,
+                            error: error.detail,
+                        },
+                        { status: 403 }
+                    );
+                });
+            }
+            return NextResponse.json(await response.json());
+        })
+        .catch((error) => {
+            console.error(
+                "Something went wrong while calling /calculate api.",
+                error
+            );
+            return NextResponse.json(
+                {
+                    success: false,
+                    error: "Unknown error, kindly try again later!",
+                },
+                { status: 500 }
+            );
+        });
 };
