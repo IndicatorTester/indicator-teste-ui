@@ -168,18 +168,25 @@ const FormView: React.FC<FormViewProps> = ({
         <div></div>
     ) : (
         <div className="w-full flex flex-col space-y-16 justify-center items-center">
-            <div className="w-full text-center">
-                <h1 className="lg:text-6xl text-5xl font-black">
-                    Indicator Tester
-                </h1>
-            </div>
-            <div className="w-full max-w-2xl flex flex-col space-y-8 justify-center items-center">
-                <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-start items-center">
+            <div className="max-w-[720px] bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 h-fit">
+                <h1 className="text-5xl font-bold">Indicator Tester</h1>
+                <div>
+                    <p className="text-gray-400">
+                        Have questions or feedback? We are here to help. Send us
+                        a message, or an email on{" "}
+                        <span className="underline underline-offset-2 text-neutral-content">
+                            support@xindicator.com
+                        </span>
+                        .
+                    </p>
+                </div>
+                <div className="divider"></div>
+                <div className="w-full grid grid-cols-2 gap-6">
                     <select
                         name="type"
                         defaultValue={type.length === 0 ? "Type" : type}
                         onChange={handleTypeChange}
-                        className="w-full select border-neutral-content font-black"
+                        className="w-full select border-neutral-content font-black md:col-span-1 col-span-2"
                     >
                         <option value="Type" disabled>
                             Choose Symbol Type
@@ -196,8 +203,7 @@ const FormView: React.FC<FormViewProps> = ({
                             interval.length === 0 ? "Interval" : interval
                         }
                         onChange={handleIntervalChange}
-                        className="w-full select border-neutral-content font-black"
-                        disabled={type.length === 0}
+                        className="w-full select border-neutral-content font-black md:col-span-1 col-span-2"
                     >
                         <option value="Interval" disabled>
                             Choose Interval
@@ -208,55 +214,50 @@ const FormView: React.FC<FormViewProps> = ({
                             </option>
                         ))}
                     </select>
-                </div>
-                <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-center items-center">
-                    {isLoading ? (
-                        <span className="loading loading-ring loading-lg"></span>
-                    ) : (
-                        <XSelect
-                            options={symbols ?? []}
-                            placeholder="Symbol"
-                            selectedHandler={symbolSelectHandler}
-                            disabled={interval.length === 0}
-                            defaultValue={symbol}
-                        />
-                    )}
-                </div>
-                <div className="w-full flex md:flex-row flex-col md:space-x-8 md:space-y-0 space-y-8 justify-start items-center">
+                    <div className="flex justify-center items-center col-span-2">
+                        {isLoading ? (
+                            <span className="loading loading-ring loading-lg"></span>
+                        ) : (
+                            <XSelect
+                                options={symbols ?? []}
+                                placeholder="Symbol"
+                                selectedHandler={symbolSelectHandler}
+                                defaultValue={symbol}
+                                disabled={type.length === 0}
+                            />
+                        )}
+                    </div>
                     <input
                         type="date"
                         defaultValue={startDate}
-                        className="input input-bordered w-full border-neutral-content"
+                        className="input input-bordered w-full border-neutral-content md:col-span-1 col-span-2"
                         onChange={handleStartDateChange}
                         placeholder="Start Date"
-                        disabled={symbol.length === 0}
                     />
                     <input
                         type="date"
                         defaultValue={endDate}
-                        className="input input-bordered w-full border-neutral-content"
+                        className="input input-bordered w-full border-neutral-content md:col-span-1 col-span-2"
                         onChange={handleEndDateChange}
                         placeholder="End Date"
-                        disabled={startDate.length === 0}
                     />
-                </div>
-                <div className="w-full flex flex-col space-y-2 justify-center items-start">
-                    <textarea
-                        className="w-full h-48 textarea textarea-bordered border-neutral-content text-base"
-                        defaultValue={indicator.length === 0 ? "" : indicator}
-                        placeholder="Your Indicator"
-                        disabled={endDate.length === 0}
-                        onChange={handleIndicatorChange}
-                    ></textarea>
-                    {indicatorMessage.length !== 0 ? (
-                        <p className="text-red-500 font-bold">
-                            {indicatorMessage}
-                        </p>
-                    ) : null}
-                </div>
-                <div className="w-full flex justify-center items-center">
-                    {indicator.length !== 0 ? (
-                        isCalculating ? (
+                    <div className="w-full flex flex-col space-y-2 justify-center items-start col-span-2">
+                        <textarea
+                            className="w-full h-48 textarea textarea-bordered border-neutral-content text-base"
+                            defaultValue={
+                                indicator.length === 0 ? "" : indicator
+                            }
+                            placeholder="Your Indicator"
+                            onChange={handleIndicatorChange}
+                        ></textarea>
+                        {indicatorMessage.length !== 0 ? (
+                            <p className="text-red-500 font-bold">
+                                {indicatorMessage}
+                            </p>
+                        ) : null}
+                    </div>
+                    <div className="flex justify-center items-center col-span-2">
+                        {isCalculating ? (
                             <span className="loading loading-ring loading-lg"></span>
                         ) : (
                             <button
@@ -265,8 +266,8 @@ const FormView: React.FC<FormViewProps> = ({
                             >
                                 Run The Test
                             </button>
-                        )
-                    ) : null}
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

@@ -38,7 +38,7 @@ const XSelect: React.FC<XSelectProps> = ({
                             .toLowerCase()
                             .includes(searchTerm.toLowerCase())
                 )
-                .slice(0, 25)
+                .slice(0, 8)
         );
     }, [searchTerm, options]);
 
@@ -59,18 +59,22 @@ const XSelect: React.FC<XSelectProps> = ({
             <input
                 type="text"
                 placeholder={placeholder || "Search for an option..."}
-                value={selectedOption?.label ?? searchTerm.length === 0 ? defaultValue : searchTerm}
+                value={
+                    selectedOption?.label ?? searchTerm.length === 0
+                        ? defaultValue
+                        : searchTerm
+                }
                 onChange={handleInputChange}
                 className="input input-bordered border-neutral-content h-12"
                 disabled={disabled ?? true}
             />
             {visibleOptions.length !== 0 ? (
-                <ul className="flex flex-col menu rounded-xl text-start absolute z-[1] mt-14 h-48 w-64 overflow-y-scroll">
+                <ul className="grid grid-cols-2 gap-8 bg-neutral menu rounded-xl text-start absolute z-[1] mt-14 overflow-auto">
                     {visibleOptions.map((option) => (
                         <li
                             key={option.value}
                             value={option.value}
-                            className="font-bold lg:text-lg text-base"
+                            className="lg:text-lg text-base"
                         >
                             <button onClick={() => handleOptionSelect(option)}>
                                 {option.label}
