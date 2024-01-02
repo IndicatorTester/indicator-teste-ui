@@ -50,8 +50,8 @@ const XNavBar = () => {
                     path: "/website/contact",
                 },
                 {
-                    title: "About",
-                    path: "/website/about",
+                    title: "About Us",
+                    path: "/website/about-us",
                 },
             ],
         },

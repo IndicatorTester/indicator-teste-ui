@@ -72,8 +72,14 @@ const XFooter = () => {
                     </nav>
                     <nav>
                         <header className="footer-title">Website</header>
-                        <a className="link link-hover">About us</a>
-                        <a className="link link-hover">Contact</a>
+                        <Link
+                            href={"/website/about-us"}
+                            className="link link-hover"
+                        >About us</Link>
+                        <Link
+                            href={"/website/contact"}
+                            className="link link-hover"
+                        >Contact</Link>
                     </nav>
                     <nav>
                         <header className="footer-title">Legal</header>
