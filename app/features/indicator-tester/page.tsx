@@ -7,7 +7,8 @@ import ResultView from "./ResultView";
 import { API_KEY_LOCAL_STORAGE_KEY } from "../../constants/constants";
 import { generateClientHash } from "../../utils";
 import XComponentStack from "../../components/XComponentStack";
-import { XOctagon } from "react-feather";
+import { Info, XOctagon } from "react-feather";
+import fakeTestResult from '@/public/fake/testResult.json';
 
 const App = () => {
     const user = useUser();
@@ -31,6 +32,12 @@ const App = () => {
 
         setError(null);
         setIsLoading(true);
+
+        if(!user.user) {
+            setTestResult(fakeTestResult);
+            setIsLoading(false);
+            return;
+        }
 
         try {
             setTestResult(null);
@@ -79,6 +86,17 @@ const App = () => {
         <>
             <div className="col-span-2"></div>
             <div className="col-span-8 row-span-1 min-h-screen flex flex-col justify-start items-center space-y-8">
+                {!user.user && (
+                    <div className="w-full max-w-[720px]">
+                        <div role="alert" className="alert alert-info">
+                            <Info />
+                            <span>
+                                You are using the static version. Login to be
+                                able to use the real version.
+                            </span>
+                        </div>
+                    </div>
+                )}
                 {error && (
                     <div className="w-full max-w-[720px]">
                         <div role="alert" className="alert alert-error">

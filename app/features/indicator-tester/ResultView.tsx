@@ -15,9 +15,6 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
 
     const [isDownloading, setIsDownloading] = useState(false);
 
-    const profit = data.cash - 1000.0;
-    const profitPercentage = (profit / 1000.0) * 100.0;
-
     const calculateChangePercentage = (newValue: number, oldValue: number) => {
         return ((newValue - oldValue) / oldValue) * 100.0;
     };
@@ -49,12 +46,12 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
                         <span
                             className={
                                 "text-5xl md:text-6xl lg:text-7xl font-black " +
-                                (profitPercentage < 0
+                                (data.profitPercentage < 0
                                     ? "text-red-500"
                                     : "text-green-400")
                             }
                         >
-                            {profitPercentage.toFixed(2)}%
+                            {data.profitPercentage.toFixed(2)}%
                         </span>
                         <br />
                         <span className="font-light md:text-lg text-base text-gray-400">

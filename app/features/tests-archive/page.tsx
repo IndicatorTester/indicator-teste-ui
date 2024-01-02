@@ -3,7 +3,9 @@
 import { INTERVALS_MAPPING, generateClientHash } from "@/app/utils";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import React, { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, Copy, Download } from "react-feather";
+import { ChevronLeft, ChevronRight, Copy, Download, Info } from "react-feather";
+import fakeTestsArchive from '@/public/fake/testsArchive.json'
+import fakeTestActions from '@/public/fake/testActions.json'
 
 const TestsArchive = () => {
     const user = useUser();
@@ -13,6 +15,12 @@ const TestsArchive = () => {
     const [pageNumber, setPageNumber] = useState<number>(1);
 
     const fetchTests = async (timestamp: string, pageNumber: number) => {
+
+        if(!user.user) {
+            setTests(fakeTestsArchive);
+            return;
+        }
+
         setIsFetchingData(true);
         const response = await fetch("/api/testArchive", {
             method: "POST",
@@ -40,6 +48,19 @@ const TestsArchive = () => {
     };
 
     const fetchTestActions = async (timestamp: string) => {
+        if(!user.user) {
+            const jsonString = JSON.stringify(fakeTestActions);
+            const blob = new Blob([jsonString], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `${Math.floor(Date.now() / 1000)}.json`;
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+            return;
+        }
+
         if (downloadAction) {
             return;
         }
@@ -101,6 +122,17 @@ const TestsArchive = () => {
             <div className="col-span-2"></div>
             <div className="col-span-8 row-span-1 min-h-screen">
                 <div className="w-full flex flex-col space-y-16 justify-center items-center">
+                    {!user.user && (
+                        <div className="w-full">
+                            <div role="alert" className="alert alert-info">
+                                <Info />
+                                <span>
+                                    You are using the static version. Login to
+                                    be able to use the real version.
+                                </span>
+                            </div>
+                        </div>
+                    )}
                     <div className="w-full text-center">
                         <h1 className="lg:text-6xl text-5xl font-black">
                             Tests Archive
