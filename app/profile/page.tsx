@@ -6,9 +6,15 @@ import ProfileAlert from "./ProfileAlerts";
 import { useState, useEffect } from "react";
 import { API_KEY_LOCAL_STORAGE_KEY } from "../constants/constants";
 import Accordions from "./Accordions";
+import { redirect } from "next/navigation";
 
 const Profile = () => {
     const user = useUser();
+
+    if (!user.user) {
+        redirect("/api/auth/login");
+    }
+
     const [apiKey, setApiKey] = useState<string | null>(null);
     const [message, setMessage] = useState<string | null>(null);
 
@@ -37,7 +43,11 @@ const Profile = () => {
             <div className="col-span-2"></div>
             <div className="col-span-8 row-span-1 min-h-screen">
                 <div className="w-full flex flex-col space-y-16">
-                    <ProfileAlert user={user} apiKey={apiKey} infoMessage={message} />
+                    <ProfileAlert
+                        user={user}
+                        apiKey={apiKey}
+                        infoMessage={message}
+                    />
                     <div className="w-full text-center overflow-auto">
                         <span className="text-5xl md:text-6xl lg:text-7xl font-black">
                             {user.user?.email?.split("@")[0]}
