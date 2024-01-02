@@ -103,7 +103,7 @@ const TestsArchive = () => {
 
     useEffect(() => {
         fetchTests(`${Math.floor(Date.now() / 1000)}`, 1);
-    }, []);
+    }, [fetchTests]);
 
     const nextPage: React.MouseEventHandler<HTMLButtonElement> = async (
         event
@@ -154,10 +154,9 @@ const TestsArchive = () => {
                         <div className="divider"></div>
                         <div className="w-full flex flex-col space-y-8 overflow-auto bg-base-200 px-2 rounded-3xl">
                             {isFetchingData ? (
-                                <div className="w-full flex justify-center items-center" >
+                                <div className="w-full flex justify-center items-center">
                                     <span className="loading loading-ring loading-lg"></span>
                                 </div>
-                                
                             ) : (
                                 <table className="table text-center">
                                     <thead className="text-base text-neutral-content font-black">

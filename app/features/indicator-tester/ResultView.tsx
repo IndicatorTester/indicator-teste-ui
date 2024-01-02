@@ -9,10 +9,6 @@ type ResultViewProps = {
 };
 
 const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
-    if (!data) {
-        return <div></div>;
-    }
-
     const [isDownloading, setIsDownloading] = useState(false);
 
     const calculateChangePercentage = (newValue: number, oldValue: number) => {
@@ -35,7 +31,9 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
         setIsDownloading(false);
     };
 
-    return (
+    return !data ? (
+        <div></div>
+    ) : (
         <div className="w-full flex flex-col space-y-16">
             <div className="w-full flex flex-col justify-start items-center space-y-8">
                 <div className="w-full flex justify-between items-center">

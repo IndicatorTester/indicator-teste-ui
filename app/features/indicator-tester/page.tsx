@@ -8,7 +8,7 @@ import { API_KEY_LOCAL_STORAGE_KEY } from "../../constants/constants";
 import { generateClientHash } from "../../utils";
 import XComponentStack from "../../components/XComponentStack";
 import { Info, XOctagon } from "react-feather";
-import fakeTestResult from '@/public/fake/testResult.json';
+import fakeTestResult from "@/public/fake/testResult.json";
 
 const App = () => {
     const user = useUser();
@@ -33,7 +33,7 @@ const App = () => {
         setError(null);
         setIsLoading(true);
 
-        if(!user.user) {
+        if (!user.user) {
             setTestResult(fakeTestResult);
             setIsLoading(false);
             return;
@@ -109,11 +109,13 @@ const App = () => {
                     activeComponent={testResult ? 2 : 1}
                     components={[
                         <FormView
+                            key={1}
                             data={testResult}
                             handleRunTest={handleRunTest}
                             isCalculating={isLoading}
                         />,
                         <ResultView
+                            key={2}
                             data={testResult}
                             backAction={backAction}
                         />,
