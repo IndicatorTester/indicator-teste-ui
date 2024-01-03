@@ -34,7 +34,7 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
     return !data ? (
         <div></div>
     ) : (
-        <div className="w-full flex flex-col space-y-16">
+        <div className="w-full bg-base-200 p-8 rounded-3xl flex flex-col space-y-8">
             <div className="w-full flex flex-col justify-start items-center space-y-8">
                 <div className="w-full flex justify-between items-center">
                     <button onClick={backAction} className="btn btn-circle">
@@ -93,7 +93,8 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
                     .
                 </p>
             </div>
-            <div className="w-full h-[720px] bg-neutral p-4 rounded-xl shadow-xl overflow-auto">
+            <div className="divider" ></div>
+            <div className="w-full h-[720px] overflow-auto">
                 <table className="table">
                     <thead className="text-base text-neutral-content font-black">
                         <tr>
@@ -111,42 +112,52 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
                         </tr>
                     </thead>
                     <tbody className="text-lg">
-                        {data.actions.map((action: any, index: number) => (
-                            <tr key={index}>
-                                <th className="font-black">{index + 1}</th>
-                                <td className="text-base">{action.date}</td>
-                                <td>{action.price.toFixed(6)}</td>
-                                <td
-                                    className={
-                                        action.action === "buy"
-                                            ? "text-green-500 font-black"
-                                            : "text-red-500 font-black"
-                                    }
-                                >
-                                    {action.action.charAt(0).toUpperCase() +
-                                        action.action.slice(1)}
-                                </td>
-                                <td className="font-black">
-                                    {index % 2 === 1 ? (
-                                        <>
-                                            ${action.cash.toFixed(2)}
-                                            <span className="text-sm font-normal text-gray-400">
-                                                {" "}
-                                                (
-                                                {calculateChangePercentage(
-                                                    action.cash,
-                                                    1000.0
-                                                ).toFixed(1)}
-                                                %)
-                                            </span>
-                                        </>
-                                    ) : (
-                                        <>${action.cash.toFixed(2)}</>
-                                    )}
-                                </td>
-                                <td>{action.stocks.toFixed(2)}</td>
-                            </tr>
-                        ))}
+                        {data.actions.map(
+                            (action: any, index: number) =>
+                                (index < 20 ||
+                                index > data.actions.length - 20) && (
+                                    <tr key={index} className="hover:bg-base-300" >
+                                        <th className="font-black">
+                                            {index + 1}
+                                        </th>
+                                        <td className="text-base">
+                                            {action.date}
+                                        </td>
+                                        <td>{action.price.toFixed(6)}</td>
+                                        <td
+                                            className={
+                                                action.action === "buy"
+                                                    ? "text-green-500 font-black"
+                                                    : "text-red-500 font-black"
+                                            }
+                                        >
+                                            {action.action
+                                                .charAt(0)
+                                                .toUpperCase() +
+                                                action.action.slice(1)}
+                                        </td>
+                                        <td className="font-black">
+                                            {index % 2 === 1 ? (
+                                                <>
+                                                    ${action.cash.toFixed(2)}
+                                                    <span className="text-sm font-normal text-gray-400">
+                                                        {" "}
+                                                        (
+                                                        {calculateChangePercentage(
+                                                            action.cash,
+                                                            1000.0
+                                                        ).toFixed(1)}
+                                                        %)
+                                                    </span>
+                                                </>
+                                            ) : (
+                                                <>${action.cash.toFixed(2)}</>
+                                            )}
+                                        </td>
+                                        <td>{action.stocks.toFixed(2)}</td>
+                                    </tr>
+                                )
+                        )}
                     </tbody>
                 </table>
             </div>
