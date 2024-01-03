@@ -1,0 +1,329 @@
+[
+    {
+        "name": "Average Directional Index",
+        "shorts": [
+            {
+                "name": "ADX",
+                "requiredFields": [
+                    {
+                        "name": "data",
+                        "description": "This field indicates that this indicator uses more than one price. In this case, high, low, and close prices."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "length",
+                        "description": "time periods.",
+                        "initialValue": "14"
+                    }
+                ]
+            }
+        ],
+        "examples": ["ADX(data)", "ADX(data, 10)"],
+        "code": "\n    import pandas as pd\n\n    # Average Directional Index\n    def adx(data: pd.DataFrame, period = 14):\n        high = data['High']\n        low = data['Low']\n        close = data['Close']\n    \n        tr = pd.DataFrame(index=data.index)\n        tr['tr1'] = high - low  # True Range 1\n        tr['tr2'] = abs(high - close.shift())  # True Range 2\n        tr['tr3'] = abs(low - close.shift())  # True Range 3\n        tr['true_range'] = tr.max(axis=1)  # True Range (largest of the three)\n    \n        tr['plus_dm'] = high - high.shift()\n        tr['minus_dm'] = low.shift() - low\n        tr['plus_dm'] = tr['plus_dm'].apply(lambda x: x if x > 0 else 0)  # Set negative values to 0\n        tr['minus_dm'] = tr['minus_dm'].apply(lambda x: x if x > 0 else 0)  # Set negative values to 0\n    \n        tr['plus_di'] = 100 * (tr['plus_dm'].rolling(period).sum() / tr['true_range'].rolling(period).sum())\n        tr['minus_di'] = 100 * (tr['minus_dm'].rolling(period).sum() / tr['true_range'].rolling(period).sum())\n    \n        tr['dx'] = 100 * (abs(tr['plus_di'] - tr['minus_di']) / abs(tr['plus_di'] + tr['minus_di']))\n    \n        adx = tr['dx'].rolling(period).mean()\n    \n        return adx\n"
+    },
+    {
+        "name": "Bollinger Bands",
+        "shorts": [
+            {
+                "name": "BOLD: Bollinger Bands lower band",
+                "requiredFields": [
+                    {
+                        "name": "prices",
+                        "description": "The price value which this indicator will use. One of: open, high, low, and close."
+                    }
+                ]
+            },
+            {
+                "name": "BOLD: Bollinger Bands upper band",
+                "requiredFields": [
+                    {
+                        "name": "prices",
+                        "description": "The price value which this indicator will use. One of: open, high, low, and close."
+                    }
+                ]
+            }
+        ],
+        "examples": ["BOLD(open)", "BOLD(high)", "BOLU(low)", "BOLU(close)"],
+        "code": "\n    import pandas as pd\n\n        # Bollinger Bands lower band\n        def bold(data: pd.DataFrame):\n            WINDOW = 20\n            SMA = data.rolling(window = WINDOW).mean()\n            SD = data.rolling(window = WINDOW).std()\n            return SMA - 2 * SD\n        \n        # Bollinger Bands upper band\n        def bolu(data: pd.DataFrame):\n            WINDOW = 20\n            SMA = data.rolling(window = WINDOW).mean()\n            SD = data.rolling(window = WINDOW).std()\n            return SMA + 2 * SD\n"
+    },
+    {
+        "name": "Commodity Channel Index",
+        "shorts": [
+            {
+                "name": "CCI",
+                "requiredFields": [
+                    {
+                        "name": "data",
+                        "description": "This field indicates that this indicator uses more than one price. In this case, high, low, and close prices."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "length",
+                        "description": "time periods.",
+                        "initialValue": "20"
+                    }
+                ]
+            }
+        ],
+        "examples": ["CCI(data)", "CCI(data, 14)"],
+        "code": "\n    import pandas as pd\n    import numpy as np\n        \n        # Commodity Channel Index\n        def cci(data: pd.DataFrame, period = 20):\n            typical_price = (data['High'] + data['Low'] + data['Close']) / 3\n            mean_deviation = typical_price.rolling(period).apply(lambda x: np.mean(np.abs(x - np.mean(x))), raw=True)\n            cci = (typical_price - typical_price.rolling(period).mean()) / (0.015 * mean_deviation)\n            return cci\n"
+    },
+    {
+        "name": "Exponential Moving Average",
+        "shorts": [
+            {
+                "name": "EMA",
+                "requiredFields": [
+                    {
+                        "name": "prices",
+                        "description": "The price value which this indicator will use. One of: open, high, low, and close."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "length",
+                        "description": "time periods.",
+                        "initialValue": "14"
+                    }
+                ]
+            }
+        ],
+        "examples": ["EMA(open)", "EMA(close, 20)"],
+        "code": "\n    import pandas as pd\n\n        # Exponential Moving Average\n        def ema(data: pd.DataFrame, span = 14):\n            return data.ewm(span = span, adjust = False).mean()\n"
+    },
+    {
+        "name": "Moving Average Convergence Divergence",
+        "shorts": [
+            {
+                "name": "MACD: MACD line",
+                "requiredFields": [
+                    {
+                        "name": "prices",
+                        "description": "The price value which this indicator will use. One of: open, high, low, and close."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "short_period",
+                        "initialValue": "12"
+                    },
+                    {
+                        "name": "long_period",
+                        "initialValue": "26"
+                    }
+                ]
+            },
+            {
+                "name": "MACDS: signal line",
+                "requiredFields": [
+                    {
+                        "name": "prices",
+                        "description": "The price value which this indicator will use. One of: open, high, low, and close."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "short_period",
+                        "initialValue": "12"
+                    },
+                    {
+                        "name": "long_period",
+                        "initialValue": "26"
+                    },
+                    {
+                        "name": "signal_period",
+                        "initialValue": "9"
+                    }
+                ]
+            },
+            {
+                "name": "MACDH: histogram line",
+                "requiredFields": [
+                    {
+                        "name": "prices",
+                        "description": "The price value which this indicator will use. One of: open, high, low, and close."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "short_period",
+                        "initialValue": "12"
+                    },
+                    {
+                        "name": "long_period",
+                        "initialValue": "26"
+                    },
+                    {
+                        "name": "signal_period",
+                        "initialValue": "9"
+                    }
+                ]
+            }
+        ],
+        "examples": ["MACD(close)", "MACDH(high)", "MACDS(open, 2, 3, 4)"],
+        "code": "\n    import pandas as pd\n\n        # Moving Average Convergence Divergence - MACD line\n        def macd(data: pd.DataFrame, short_period = 12, long_period = 26):\n            # Calculate the short-term exponential moving average (EMA)\n            ema_short = data.ewm(span=short_period, adjust=False).mean()\n        \n            # Calculate the long-term exponential moving average (EMA)\n            ema_long = data.ewm(span=long_period, adjust=False).mean()\n        \n            # Calculate the MACD line\n            macd_line = ema_short - ema_long\n        \n            return macd_line\n        \n        # Moving Average Convergence Divergence - signal line\n        def macds(data: pd.DataFrame, short_period=12, long_period=26, signal_period=9):\n            # Calculate the short-term exponential moving average (EMA)\n            ema_short = data.ewm(span=short_period, adjust=False).mean()\n        \n            # Calculate the long-term exponential moving average (EMA)\n            ema_long = data.ewm(span=long_period, adjust=False).mean()\n        \n            # Calculate the MACD line\n            macd_line = ema_short - ema_long\n        \n            # Calculate the signal line\n            signal_line = macd_line.ewm(span=signal_period, adjust=False).mean()\n        \n            return signal_line\n        \n        # Moving Average Convergence Divergence - histogram line\n        def macdh(data: pd.DataFrame, short_period=12, long_period=26, signal_period=9):\n            # Calculate the short-term exponential moving average (EMA)\n            ema_short = data.ewm(span=short_period, adjust=False).mean()\n        \n            # Calculate the long-term exponential moving average (EMA)\n            ema_long = data.ewm(span=long_period, adjust=False).mean()\n        \n            # Calculate the MACD line\n            macd_line = ema_short - ema_long\n        \n            # Calculate the signal line\n            signal_line = macd_line.ewm(span=signal_period, adjust=False).mean()\n        \n            # Calculate the MACD histogram\n            macd_histogram = macd_line - signal_line\n        \n            return macd_histogram\n"
+    },
+    {
+        "name": "Parabolic SAR",
+        "shorts": [
+            {
+                "name": "PSAR",
+                "requiredFields": [
+                    {
+                        "name": "data",
+                        "description": "This field indicates that this indicator uses more than one price. In this case, low, and high prices."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "af_start",
+                        "initialValue": "0.02"
+                    },
+                    {
+                        "name": "af_increment",
+                        "initialValue": "0.02"
+                    },
+                    {
+                        "name": "af_max",
+                        "initialValue": "0.2"
+                    }
+                ]
+            }
+        ],
+        "examples": ["PSAR(data)", "PSAR(data, 0.04, 0.04, 0.4)"],
+        "code": "\n    import pandas as pd\n\n        # Parabolic SAR\n        def psar(data: pd.DataFrame, af_start = 0.02, af_increment = 0.02, af_max = 0.2):\n            high = data['High']\n            low = data['Low']\n        \n            sar = pd.Series(index=data.index)\n            trend = pd.Series(0, index=data.index)\n            acceleration = af_start\n            extreme = high[0]\n            sar[0] = low[0]\n        \n            for i in range(1, len(data)):\n                if trend[i-1] > 0:  # Current trend is up\n                    sar[i] = sar[i-1] + acceleration * (extreme - sar[i-1])\n                    if sar[i] > low[i-1]:  # Switch to downtrend\n                        trend[i] = -1\n                        sar[i] = extreme\n                        extreme = low[i]\n                        acceleration = af_start\n                    else:\n                        trend[i] = 1\n                        acceleration = min(acceleration + af_increment, af_max)\n                        if high[i] > extreme:\n                            extreme = high[i]\n                else:  # Current trend is down\n                    sar[i] = sar[i-1] - acceleration * (sar[i-1] - extreme)\n                    if sar[i] < high[i-1]:  # Switch to uptrend\n                        trend[i] = 1\n                        sar[i] = extreme\n                        extreme = high[i]\n                        acceleration = af_start\n                    else:\n                        trend[i] = -1\n                        acceleration = min(acceleration + af_increment, af_max)\n                        if low[i] < extreme:\n                            extreme = low[i]\n        \n            return sar\n"
+    },
+    {
+        "name": "Returns RSI values",
+        "shorts": [
+            {
+                "name": "RSI",
+                "requiredFields": [
+                    {
+                        "name": "prices",
+                        "description": "The price value which this indicator will use. One of: open, high, low, and close."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "length",
+                        "description": "time periods.",
+                        "initialValue": "14"
+                    }
+                ]
+            }
+        ],
+        "examples": ["RSI(close)", "RSI(open, 20)"],
+        "code": "\n    import pandas as pd\n\n        # Returns RSI values\n        def rsi(data: pd.DataFrame, periods = 14):    \n            close_delta = data.diff()\n        \n            # Make two series: one for lower closes and one for higher closes\n            up = close_delta.clip(lower=0)\n            down = -1 * close_delta.clip(upper=0)\n        \n            ma_up = up.ewm(com = periods - 1, adjust=True, min_periods = periods).mean()\n            ma_down = down.ewm(com = periods - 1, adjust=True, min_periods = periods).mean()\n        \n            rsi = ma_up / ma_down\n            rsi = 100 - (100/(1 + rsi))\n            return rsi\n"
+    },
+    {
+        "name": "Standard Deviation",
+        "shorts": [
+            {
+                "name": "SD",
+                "requiredFields": [
+                    {
+                        "name": "prices",
+                        "description": "The price value which this indicator will use. One of: open, high, low, and close."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "length",
+                        "description": "time periods.",
+                        "initialValue": "5"
+                    }
+                ]
+            }
+        ],
+        "examples": ["SD(close)", "SD(open, 20)"],
+        "code": "\n    import pandas as pd\n\n        # Standard Deviation\n        def sd(data: pd.DataFrame, period = 5):\n            std_dev = data.rolling(window=period).std(ddof=0)\n            return std_dev\n"
+    },
+    {
+        "name": "Simple Moving Average",
+        "shorts": [
+            {
+                "name": "SMA",
+                "requiredFields": [
+                    {
+                        "name": "prices",
+                        "description": "The price value which this indicator will use. One of: open, high, low, and close."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "length",
+                        "description": "time periods.",
+                        "initialValue": "14"
+                    }
+                ]
+            }
+        ],
+        "examples": ["SMA(close)", "SMA(high, 10)"],
+        "code": "\n    import pandas as pd\n\n        # Simple Moving Average\n        def sma(data: pd.DataFrame, window = 14):\n            return data.rolling(window = window).mean()\n"
+    },
+    {
+        "name": "Stochastic Oscillator",
+        "shorts": [
+            {
+                "name": "SOK: Stochastic Oscillator slow K",
+                "requiredFields": [
+                    {
+                        "name": "data",
+                        "description": "This field indicates that this indicator uses more than one price. In this case, low, high, and close prices."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "length",
+                        "description": "time periods.",
+                        "initialValue": "14"
+                    }
+                ]
+            },
+            {
+                "name": "SOD: Stochastic Oscillator fast D",
+                "requiredFields": [
+                    {
+                        "name": "data",
+                        "description": "This field indicates that this indicator uses more than one price. In this case, low, high, and close prices."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "length",
+                        "description": "time periods.",
+                        "initialValue": "3"
+                    }
+                ]
+            }
+        ],
+        "examples": ["SOK(data)", "SOD(data, 10)"],
+        "code": "\n    import pandas as pd\n\n        # Stochastic Oscillator slow K\n        def sok(data: pd.DataFrame, period = 14):\n            # Calculate %K\n            lowest_low = data['Low'].rolling(window=period).min()\n            highest_high = data['High'].rolling(window=period).max()\n            return (data['Close'] - lowest_low) / (highest_high - lowest_low) * 100\n        \n        # Stochastic Oscillator fast D\n        def sod(data: pd.DataFrame, period = 3):\n            # Calculate %K\n            lowest_low = data['Low'].rolling(window=period).min()\n            highest_high = data['High'].rolling(window=period).max()\n            slowK = (data['Close'] - lowest_low) / (highest_high - lowest_low) * 100\n            # Calculate %D\n            return slowK.rolling(window=3).mean()\n"
+    },
+    {
+        "name": "Williams %R",
+        "shorts": [
+            {
+                "name": "WIR",
+                "requiredFields": [
+                    {
+                        "name": "data",
+                        "description": "This field indicates that this indicator uses more than one price. In this case, low, high, and close prices."
+                    }
+                ],
+                "optionalFields": [
+                    {
+                        "name": "length",
+                        "description": "time periods.",
+                        "initialValue": "5"
+                    }
+                ]
+            }
+        ],
+        "examples": ["WIR(data)", "WIR(data, 14)"],
+        "code": "\n    import pandas as pd\n\n        # Williams %R\n        def wir(data: pd.DataFrame, period = 5):\n            high = data['High']\n            low = data['Low']\n            close = data['Close']\n        \n            highest_high = high.rolling(window=period).max()\n            lowest_low = low.rolling(window=period).min()\n        \n            williams_r = (highest_high - close) / (highest_high - lowest_low) * -100\n            return williams_r\n"
+    }
+]

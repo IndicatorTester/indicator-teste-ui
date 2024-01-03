@@ -2,11 +2,9 @@
 
 import React, { useState } from "react";
 import IndicatorDetails from "./IndicatorDetails";
-import INDICATORS_DATA from "./indicators-data";
+import indicatorsData from "@/public/static/indicators.json";
 
 const Indicators = () => {
-    const indicators = INDICATORS_DATA;
-
     const [selectedIndicator, setSelectedIndicator] = useState(null);
 
     const handleIndicatorChange = (e: any) => {
@@ -18,11 +16,15 @@ const Indicators = () => {
         <>
             <div className="col-span-2"></div>
             <div className="col-span-8 row-span-1 min-h-screen">
-                <div className="flex flex-col justify-start items-center">
-                    <h1 className="lg:text-6xl text-5xl font-black text-center">
-                        Indicators
-                    </h1>
-                    <div className="h-8"></div>
+                <div className="w-full bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 h-fi">
+                    <h1 className="text-5xl font-bold">Indicators</h1>
+                    <div>
+                        <p className="text-gray-400">
+                            Here you can check all available already implemented
+                            indicators with all details for each indicator.
+                        </p>
+                    </div>
+                    <div className="divider"></div>
                     <select
                         name="indicator"
                         defaultValue="Indicator"
@@ -32,17 +34,16 @@ const Indicators = () => {
                         <option value="Indicator" disabled>
                             Choose Indicator
                         </option>
-                        {indicators.map((indicator, index) => (
+                        {indicatorsData.map((indicator, index) => (
                             <option key={index} value={index}>
                                 {indicator.name}
                             </option>
                         ))}
                     </select>
                     <div className="w-full flex flex-col justify-center items-center">
-                        <div className="h-12"></div>
                         {selectedIndicator ? (
                             <IndicatorDetails
-                                data={indicators[selectedIndicator]}
+                                data={indicatorsData[selectedIndicator]}
                             />
                         ) : null}
                     </div>
