@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Title from "./Title";
-import PreOrderField from "./PreOrderField";
+import MainButton from "./MainButton";
 
 const HomePage = () => {
     return (
@@ -10,7 +10,7 @@ const HomePage = () => {
             <div className="col-span-8 row-span-1 min-h-screen">
                 <div className="pt-4 flex flex-col space-y-12 justify-start items-center text-center">
                     <Title />
-                    <PreOrderField />
+                    <MainButton />
                     <div className="w-full mockup-window border border-gray-400 bg-base-200 shadow-2xl rounded-3xl">
                         <div className="flex justify-center bg-base-200 rounded-3xl">
                             <Image

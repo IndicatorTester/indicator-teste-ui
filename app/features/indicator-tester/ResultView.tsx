@@ -94,7 +94,7 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
                 </p>
             </div>
             <div className="divider" ></div>
-            <div className="w-full h-[720px] overflow-auto">
+            <div className="w-full overflow-auto">
                 <table className="table">
                     <thead className="text-base text-neutral-content font-black">
                         <tr>
