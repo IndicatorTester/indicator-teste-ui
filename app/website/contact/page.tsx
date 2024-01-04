@@ -59,7 +59,7 @@ const Contact = () => {
         <>
             <div className="col-span-2"></div>
             <div className="col-span-8 row-span-1 min-h-screen flex justify-center">
-                <div className="max-w-[720px] bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 h-fit">
+                <div className="w-full max-w-[720px] bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 h-fit">
                     {warning && (
                         <div className="w-full">
                             <div role="alert" className="alert alert-warning">

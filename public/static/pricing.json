@@ -3,12 +3,14 @@
         "title": "Bronze Test",
         "amount": "0.00",
         "action": "Start Now",
+        "checkoutPage": "/features/indicator-tester",
         "details": ["Run on US Stocks", "Daily data is available"]
     },
     {
         "title": "Silver Test",
-        "amount": "0.10",
+        "amount": "0.20",
         "action": "Buy Now",
+        "checkoutPage": "/checkout/1",
         "details": [
             "Run on US Stocks",
             "Daily data is available",
@@ -17,8 +19,9 @@
     },
     {
         "title": "Gold Test",
-        "amount": "0.20",
+        "amount": "0.40",
         "action": "Buy Now",
+        "checkoutPage": "/checkout/2",
         "details": [
             "Run on US Stocks",
             "Run on Cryptocurrencies",
@@ -28,8 +31,9 @@
     },
     {
         "title": "Diamond Test",
-        "amount": "0.25",
+        "amount": "0.50",
         "action": "Buy Now",
+        "checkoutPage": "/checkout/3",
         "details": [
             "Run on US Stocks",
             "Run on Cryptocurrencies",

@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import pricingData from "@/public/static/pricing.json";
+import Link from "next/link";
 
 const PricingPage = () => {
     return (
         <>
             <div className="col-span-2"></div>
             <div className="col-span-8 row-span-1 min-h-screen flex justify-center">
-                <div className="max-w-[720px] flex flex-col space-y-4 justify-start">
+                <div className="w-full max-w-[720px] flex flex-col space-y-4 justify-start">
                     <div className="w-full bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 justify-start">
                         <h1 className="text-5xl font-bold">Pricing</h1>
                         <div>
@@ -63,9 +64,12 @@ const PricingPage = () => {
                                         {price.amount}
                                     </h2>
                                 </div>
-                                <button className="col-span-4 btn btn-outline">
+                                <Link
+                                    href={price.checkoutPage}
+                                    className="col-span-4 btn btn-outline"
+                                >
                                     {price.action}
-                                </button>
+                                </Link>
                                 <div className="col-span-4 flex flex-col space-y-2">
                                     {price.details.map((detail, index) => (
                                         <p
