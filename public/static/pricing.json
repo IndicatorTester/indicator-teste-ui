@@ -1,0 +1,41 @@
+[
+    {
+        "title": "Bronze Test",
+        "amount": "0.00",
+        "action": "Start Now",
+        "details": ["Run on US Stocks", "Daily data is available"]
+    },
+    {
+        "title": "Silver Test",
+        "amount": "0.10",
+        "action": "Buy Now",
+        "details": [
+            "Run on US Stocks",
+            "Daily data is available",
+            "Intraday data is available"
+        ]
+    },
+    {
+        "title": "Gold Test",
+        "amount": "0.20",
+        "action": "Buy Now",
+        "details": [
+            "Run on US Stocks",
+            "Run on Cryptocurrencies",
+            "Daily data is available",
+            "The test will be added to your archive"
+        ]
+    },
+    {
+        "title": "Diamond Test",
+        "amount": "0.25",
+        "action": "Buy Now",
+        "details": [
+            "Run on US Stocks",
+            "Run on Cryptocurrencies",
+            "Daily data is available",
+            "Intraday data is available",
+            "The test will be added to your archive"
+        ]
+    }
+]
