@@ -37,6 +37,7 @@ const Profile = () => {
 
             if (!response.ok) {
                 setError("Something went wrong, kindly try again later!");
+                return;
             }
 
             const data = await response.json();

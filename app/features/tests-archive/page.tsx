@@ -10,6 +10,7 @@ import {
     Copy,
     Download,
     Info,
+    XOctagon,
 } from "react-feather";
 import fakeTestsArchive from "@/public/fake/testsArchive.json";
 import fakeTestActions from "@/public/fake/testActions.json";
@@ -17,6 +18,7 @@ import fakeTestActions from "@/public/fake/testActions.json";
 const TestsArchive = () => {
     const user = useUser();
     const [tests, setTests] = useState<any>(null);
+    const [error, setError] = useState<string | null>(null);
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [isFetchingData, setIsFetchingData] = useState<boolean>(false);
     const [downloadAction, setDownloadAction] = useState<string | null>(null);
@@ -45,7 +47,9 @@ const TestsArchive = () => {
         });
 
         if (!response.ok) {
-            throw new Error("An error occurred while making the request.");
+            setIsFetchingData(false);
+            setError("Something went wrong, kindly try again later!");
+            return;
         }
 
         const data = await response.json();
@@ -87,7 +91,9 @@ const TestsArchive = () => {
         });
 
         if (!response.ok) {
-            throw new Error("An error occurred while making the request.");
+            setIsFetchingData(false);
+            setError("Something went wrong, kindly try again later!");
+            return;
         }
 
         const blob = await response.blob();
@@ -102,8 +108,11 @@ const TestsArchive = () => {
     };
 
     useEffect(() => {
-        fetchTests(`${Math.floor(Date.now() / 1000)}`, 1);
-    }, [fetchTests]);
+        const loadTests = async () =>
+            await fetchTests(`${Math.floor(Date.now() / 1000)}`, 1);
+
+        loadTests();
+    }, []);
 
     const nextPage: React.MouseEventHandler<HTMLButtonElement> = async (
         event
@@ -136,6 +145,14 @@ const TestsArchive = () => {
                                     You are using the static version. Login to
                                     be able to use the real version.
                                 </span>
+                            </div>
+                        </div>
+                    )}
+                    {error && (
+                        <div className="w-full">
+                            <div role="alert" className="alert alert-error">
+                                <XOctagon />
+                                <span>Error: {error}</span>
                             </div>
                         </div>
                     )}

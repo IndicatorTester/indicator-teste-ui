@@ -37,7 +37,7 @@ const ProfileAlert: React.FC<ProfileAlertProps> = ({
                 <div className="w-full">
                     <div role="alert" className="alert alert-warning">
                         <AlertTriangle />
-                        <span>Warning: Add your Twelvedata api key</span>
+                        <span>Warning: Add your Twelvedata api key to be able to user your tests</span>
                     </div>
                 </div>
             )}
