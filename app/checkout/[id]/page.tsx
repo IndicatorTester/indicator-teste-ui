@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import pricingData from "@/public/static/pricing.json";
 import { ShoppingBag } from "react-feather";
+import Link from "next/link";
 
 const Checkout = ({ params }: { params: { id: number } }) => {
     const user = useUser();
@@ -45,7 +46,7 @@ const Checkout = ({ params }: { params: { id: number } }) => {
                     <h1 className="text-5xl font-bold">Checkout</h1>
                     <div>
                         <p className="text-gray-400">
-                            Here you specify the products you want to buy
+                            Here you can specify the products you want to buy
                             depending on your need.
                         </p>
                     </div>
@@ -76,7 +77,7 @@ const Checkout = ({ params }: { params: { id: number } }) => {
                                 {amounts.map((amount, index) => (
                                     <div
                                         key={index}
-                                        className="flex flex-row space-x-2"
+                                        className="flex flex-row space-x-2 items-center"
                                     >
                                         <input
                                             type="radio"
@@ -105,7 +106,23 @@ const Checkout = ({ params }: { params: { id: number } }) => {
                         </div>
                     </div>
                     <div className="divider"></div>
-                    <div className="w-full flex justify-center items-center">
+                    <div className="w-full flex justify-between items-center">
+                        <div className="col-span-2 flex flex-row space-x-2">
+                            <input
+                                type="checkbox"
+                                name="agree"
+                                className="checkbox"
+                            />
+                            <p>
+                                I agree to our friendly{" "}
+                                <Link href={"/legal/terms-conditions"}>
+                                    <span className="underline underline-offset-2">
+                                        terms & conditions
+                                    </span>
+                                    .
+                                </Link>
+                            </p>
+                        </div>
                         <button className="btn btn-circle btn-info">
                             <ShoppingBag className="text-neutral" />
                         </button>

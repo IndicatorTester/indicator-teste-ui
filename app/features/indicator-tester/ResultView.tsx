@@ -127,7 +127,7 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
                                         <td
                                             className={
                                                 action.action === "buy"
-                                                    ? "text-green-500 font-black"
+                                                    ? "text-green-400 font-black"
                                                     : "text-red-500 font-black"
                                             }
                                         >
