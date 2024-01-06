@@ -110,7 +110,7 @@ const Contact = () => {
                             />
                             <textarea
                                 name="email"
-                                placeholder="Leave us message"
+                                placeholder="Leave us a message"
                                 className="textarea textarea-bordered h-60 col-span-2"
                             ></textarea>
                             <div className="col-span-2 flex flex-row space-x-2">

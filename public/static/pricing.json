@@ -9,8 +9,8 @@
     {
         "title": "Silver Test",
         "amount": "0.20",
-        "action": "Buy Now",
-        "checkoutPage": "/checkout/1",
+        "action": "Coming Soon",
+        "checkoutPage": "/pricing",
         "details": [
             "Run on US Stocks",
             "Daily data is available",
@@ -20,8 +20,8 @@
     {
         "title": "Gold Test",
         "amount": "0.40",
-        "action": "Buy Now",
-        "checkoutPage": "/checkout/2",
+        "action": "Coming Soon",
+        "checkoutPage": "/pricing",
         "details": [
             "Run on US Stocks",
             "Run on Cryptocurrencies",
@@ -32,8 +32,8 @@
     {
         "title": "Diamond Test",
         "amount": "0.50",
-        "action": "Buy Now",
-        "checkoutPage": "/checkout/3",
+        "action": "Coming Soon",
+        "checkoutPage": "/pricing",
         "details": [
             "Run on US Stocks",
             "Run on Cryptocurrencies",

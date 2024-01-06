@@ -14,9 +14,15 @@ import {
 } from "react-feather";
 import fakeTestsArchive from "@/public/fake/testsArchive.json";
 import fakeTestActions from "@/public/fake/testActions.json";
+import { redirect } from "next/navigation";
 
 const TestsArchive = () => {
     const user = useUser();
+
+    if(user.user && !user.user?.email_verified) {
+        redirect("/profile");
+    }
+
     const [tests, setTests] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);
     const [pageNumber, setPageNumber] = useState<number>(1);

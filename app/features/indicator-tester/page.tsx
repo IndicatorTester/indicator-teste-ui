@@ -9,9 +9,15 @@ import { generateClientHash } from "../../utils";
 import XComponentStack from "../../components/XComponentStack";
 import { Info, XOctagon } from "react-feather";
 import fakeTestResult from "@/public/fake/testResult.json";
+import { redirect } from "next/navigation";
 
 const App = () => {
     const user = useUser();
+
+    if(user.user && !user.user?.email_verified) {
+        redirect("/profile");
+    }
+
     const [apiKey, setApiKey] = useState<string | null>(null);
     const [testResult, setTestResult] = useState<Object | null>(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +31,12 @@ const App = () => {
         testParams: TestParams | null,
         error: string | null
     ) => {
+
+        if(apiKey === null) {
+            setError("You have to add your api key to use this tool, go to your profile.");
+            return;
+        }
+
         setError(error);
         if (testParams === null) {
             return;
