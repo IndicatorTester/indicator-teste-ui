@@ -7,7 +7,7 @@ import { API_KEY_LOCAL_STORAGE_KEY } from "../constants/constants";
 import { redirect } from "next/navigation";
 import { generateClientHash } from "../utils";
 import Link from "next/link";
-import { AlertTriangle, LogOut, XOctagon } from "react-feather";
+import { AlertTriangle, Info, LogOut, XOctagon } from "react-feather";
 
 const Profile = () => {
     const user = useUser();

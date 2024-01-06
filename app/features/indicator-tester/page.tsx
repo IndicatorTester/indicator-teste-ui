@@ -32,7 +32,7 @@ const App = () => {
         error: string | null
     ) => {
 
-        if(apiKey === null) {
+        if(apiKey === null || apiKey === "") {
             setError("You have to add your api key to use this tool, go to your profile.");
             return;
         }
