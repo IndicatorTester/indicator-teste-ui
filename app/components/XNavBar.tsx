@@ -67,8 +67,8 @@ const XNavBar = () => {
     return (
         <div className="grid grid-rows-expand grid-cols-12 mt-2">
             <div className="col-span-2"></div>
-            <div className="navbar bg-base-100 mb-8 p-0 col-span-8">
-                <div className="navbar-start">
+            <div className="navbar bg-base-100 mb-8 p-0 col-span-8 flex justify-between items-center">
+                <div className="">
                     <Link href={"/home"} className="text-xl font-bold">
                         XIndicator
                     </Link>
@@ -113,7 +113,7 @@ const XNavBar = () => {
                         })}
                     </div>
                 </div>
-                <div className="navbar-end">
+                <div className="">
                     <div className="h-8 flex justify-center items-center">
                         {isLoading ? (
                             <span className="loading loading-ring loading-lg"></span>
