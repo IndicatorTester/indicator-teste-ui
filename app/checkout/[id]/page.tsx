@@ -12,7 +12,7 @@ const Checkout = ({ params }: { params: { id: number } }) => {
 
     if (!user.user) {
         redirect("/api/auth/login");
-    } else if (params.id < 1 || params.id > pricingData.length - 1) {
+    } else if (params.id < 0 || params.id > pricingData.length - 1) {
         redirect("/pricing");
     }
 

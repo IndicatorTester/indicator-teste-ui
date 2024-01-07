@@ -1,9 +1,9 @@
 [
     {
         "title": "Bronze Test",
-        "amount": "0.00",
-        "action": "Start Now",
-        "checkoutPage": "/features/indicator-tester",
+        "amount": "0.10",
+        "action": "Coming Soon",
+        "checkoutPage": "/pricing",
         "details": ["Run on US Stocks", "Daily data is available"]
     },
     {

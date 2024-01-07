@@ -6,7 +6,7 @@ import { validBooleanExpression, validBrackets } from "@/app/utils";
 import { Command } from "react-feather";
 import Link from "next/link";
 
-const INDICATOR_REGEX = /^[a-zA-Z0-9,()+\-*/|&<>=.! \n\t]+$/;
+const INDICATOR_REGEX = /^[a-zA-Z0-9,()+\-*/|&<>=.! \n]+$/;
 
 export type TestParams = {
     type: string;
