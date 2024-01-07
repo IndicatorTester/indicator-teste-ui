@@ -19,7 +19,7 @@ import { redirect } from "next/navigation";
 const TestsArchive = () => {
     const user = useUser();
 
-    if(user.user && !user.user?.email_verified) {
+    if (user.user && !user.user?.email_verified) {
         redirect("/profile");
     }
 
@@ -167,11 +167,7 @@ const TestsArchive = () => {
                         <div>
                             <p className="text-gray-400">
                                 Check your tests history and download all
-                                tractions for{" "}
-                                <span className="underline underline-offset-1 text-neutral-content">
-                                    all your tests
-                                </span>
-                                .
+                                transactions for your tests.
                             </p>
                         </div>
                         <div className="divider"></div>
@@ -210,7 +206,7 @@ const TestsArchive = () => {
                                             tests.map(
                                                 (test: any, index: number) => {
                                                     return (
-                                                        <tr key={index}>
+                                                        <tr key={index} className="hover:bg-base-300" >
                                                             <td className="font-black">
                                                                 {index +
                                                                     1 +
