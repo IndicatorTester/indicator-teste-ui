@@ -60,7 +60,7 @@ const XFooter = () => {
                         <Link href={"/features/indicator-tester"} className="link link-hover">
                             Indicator Tester
                         </Link>
-                        <Link href={"/indicators"} className="link link-hover">
+                        <Link href={"/guidelines/indicators"} className="link link-hover">
                             Indicators
                         </Link>
                         <Link href={"/pricing"} className="link link-hover">

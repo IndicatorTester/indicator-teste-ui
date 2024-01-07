@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import XSelect, { Option } from "../../components/XSelect";
 
-const INDICATOR_REGEX = /^[a-zA-Z0-9,()+\-*/|&<>=. ]+$/;
+const INDICATOR_REGEX = /^[a-zA-Z0-9,()+\-*/|&<>=.! ]+$/;
 
 export type TestParams = {
     type: string;

@@ -38,7 +38,7 @@ const XNavBar = () => {
                 },
                 {
                     title: "Indicators",
-                    path: "/indicators",
+                    path: "/guidelines/indicators",
                 },
             ],
         },
