@@ -21,11 +21,15 @@ const XNavBar = () => {
             ],
         },
         {
-            head: "Providers",
+            head: "Guidelines",
             items: [
                 {
-                    title: "twelvedata",
-                    path: "https://twelvedata.com",
+                    title: "Writing Indicators",
+                    path: "/guidelines/write-indicators",
+                },
+                {
+                    title: "Indicators",
+                    path: "/guidelines/indicators",
                 },
             ],
         },
@@ -37,8 +41,8 @@ const XNavBar = () => {
                     path: "/pricing",
                 },
                 {
-                    title: "Indicators",
-                    path: "/guidelines/indicators",
+                    title: "twelvdata",
+                    path: "https://twelvedata.com/",
                 },
             ],
         },
@@ -61,7 +65,7 @@ const XNavBar = () => {
     const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
 
     return (
-        <div className="grid grid-rows-expand grid-cols-12 min-h-[5%] mt-2">
+        <div className="grid grid-rows-expand grid-cols-12 mt-2">
             <div className="col-span-2"></div>
             <div className="navbar bg-base-100 mb-8 p-0 col-span-8">
                 <div className="navbar-start">
@@ -72,7 +76,7 @@ const XNavBar = () => {
                 <div
                     onMouseEnter={() => setIsNavMenuOpen(true)}
                     onMouseLeave={() => setIsNavMenuOpen(false)}
-                    className="flex flex-col p-6 space-y-12 justify-start items-center"
+                    className="flex flex-col py-6 px-8 space-y-12 justify-start items-center"
                 >
                     <div className="animate-pulse h-12 w-12">
                         <MoreHorizontal className="h-12 w-12" />
@@ -82,22 +86,22 @@ const XNavBar = () => {
                             isNavMenuOpen
                                 ? "opacity-100 z-[1]"
                                 : "opacity-0 z-[-1]"
-                        } transition-opacity duration-200 ease-in-out grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-12 p-8 rounded-xl absolute bg-base-200 shadow-2xl`}
+                        } transition-opacity duration-200 ease-in-out grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 p-8 rounded-xl absolute bg-base-200 shadow-2xl w-fit`}
                     >
                         {menu.map((value, i) => {
                             return (
                                 <div
                                     key={i}
-                                    className="flex flex-col space-y-4 justify-start items-start"
+                                    className="flex flex-col space-y-4 justify-start items-center text-center"
                                 >
-                                    <h1 className="font-black text-xl">
+                                    <h1 className="font-black text-xl text-center">
                                         {value.head}
                                     </h1>
                                     <div className="flex flex-col space-y-2">
                                         {value.items.map((item, j) => {
                                             return (
                                                 <Link key={j} href={item.path}>
-                                                    <p className="whitespace-nowrap text-gray-400 hover:text-neutral-content hover:underline">
+                                                    <p className="whitespace-nowrap text-gray-400 hover:text-neutral-content hover:underline hover:underline-offset-2">
                                                         {item.title}
                                                     </p>
                                                 </Link>
