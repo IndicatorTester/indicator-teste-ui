@@ -7,8 +7,8 @@ const HomePage = () => {
     return (
         <>
             <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1 min-h-screen">
-                <div className="pt-4 flex flex-col space-y-12 justify-start items-center text-center">
+            <div className="col-span-8 row-span-1 h-fit">
+                <div className="flex flex-col space-y-12 justify-start items-center text-center">
                     <Title />
                     <MainButton />
                     <div className="w-full mockup-window border border-gray-400 bg-base-200 shadow-2xl rounded-3xl">

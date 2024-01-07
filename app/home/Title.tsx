@@ -15,8 +15,7 @@ function Title() {
             </div>
             <div className="text-xl md:text-3xl font-thin">
                 <p>
-                    A tool to test and optimize custom signal trading indicators
-                    using historical data.
+                    A tool to backtest custom signal indicators.
                 </p>
             </div>
         </div>
