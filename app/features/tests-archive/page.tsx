@@ -206,7 +206,10 @@ const TestsArchive = () => {
                                             tests.map(
                                                 (test: any, index: number) => {
                                                     return (
-                                                        <tr key={index} className="hover:bg-base-300" >
+                                                        <tr
+                                                            key={index}
+                                                            className="hover:bg-base-300"
+                                                        >
                                                             <td className="font-black">
                                                                 {index +
                                                                     1 +
