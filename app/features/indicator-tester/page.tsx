@@ -65,7 +65,7 @@ const App = () => {
                 body: JSON.stringify({
                     exchange: testParams.exchange.toUpperCase(),
                     symbol: testParams.symbol.toUpperCase(),
-                    indicator: testParams.indicator.toLowerCase(),
+                    indicator: testParams.indicator.toLowerCase().replace(/\n/g, ''),
                     startDate: testParams.startDate,
                     endDate: testParams.endDate,
                     interval: testParams.interval,

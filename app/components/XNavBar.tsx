@@ -25,7 +25,7 @@ const XNavBar = () => {
             items: [
                 {
                     title: "Writing Indicators",
-                    path: "/guidelines/write-indicators",
+                    path: "/guidelines/writing-indicators",
                 },
                 {
                     title: "Indicators",

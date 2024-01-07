@@ -2,8 +2,11 @@
 
 import React, { useState } from "react";
 import XSelect, { Option } from "../../components/XSelect";
+import { validBooleanExpression, validBrackets } from "@/app/utils";
+import { Command } from "react-feather";
+import Link from "next/link";
 
-const INDICATOR_REGEX = /^[a-zA-Z0-9,()+\-*/|&<>=.! ]+$/;
+const INDICATOR_REGEX = /^[a-zA-Z0-9,()+\-*/|&<>=.! \n\t]+$/;
 
 export type TestParams = {
     type: string;
@@ -154,8 +157,25 @@ const FormView: React.FC<FormViewProps> = ({
             return;
         }
 
+        if (value.length > 300) {
+            setIndicatorMessage("Indicator must be less than 300 characters");
+            return;
+        }
+
         if (!INDICATOR_REGEX.test(value)) {
             setIndicatorMessage("Invalid syntax");
+            return;
+        }
+
+        if (!validBrackets(value)) {
+            setIndicatorMessage("Missing one or more brackets");
+            return;
+        }
+
+        if (!validBooleanExpression(value.replace(/\n/g, '').replace(/ /g, ''))) {
+            setIndicatorMessage(
+                "This indicator does not result to a True/False"
+            );
             return;
         }
 
@@ -179,7 +199,7 @@ const FormView: React.FC<FormViewProps> = ({
         } else if (startDate >= endDate) {
             handleRunTest(null, "End date must be after the start date!");
         } else if (indicator.length === 0) {
-            handleRunTest(null, "Empty indicator is invalid!");
+            handleRunTest(null, "Empty or Invalid indicator!");
         } else {
             const testParams: TestParams = {
                 type: type,
@@ -206,9 +226,12 @@ const FormView: React.FC<FormViewProps> = ({
                     <p className="text-gray-400">
                         Do you want to test a signal indicator? Plug in the
                         required data and run a back test. See:{" "}
-                        <span className="underline underline-offset-1 text-neutral-content">
+                        <Link
+                            href={"/guidelines/writing-indicators"}
+                            className="underline underline-offset-1 text-neutral-content"
+                        >
                             Indicator test guide
-                        </span>
+                        </Link>
                         .
                     </p>
                 </div>
@@ -294,9 +317,10 @@ const FormView: React.FC<FormViewProps> = ({
                         ) : (
                             <button
                                 onClick={runTest}
-                                className="btn btn-active bg-gradient-to-r from-pink-700 to-red-500 w-48 h-12"
+                                disabled={indicator.length === 0}
+                                className="btn btn-circle btn-info"
                             >
-                                Run The Test
+                                <Command className="text-neutral" />
                             </button>
                         )}
                     </div>
