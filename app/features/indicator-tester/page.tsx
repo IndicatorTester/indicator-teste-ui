@@ -9,13 +9,15 @@ import { generateClientHash } from "../../utils";
 import XComponentStack from "../../components/XComponentStack";
 import { Info, XOctagon } from "react-feather";
 import fakeTestResult from "@/public/fake/testResult.json";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const App = () => {
     const user = useUser();
+    const router = useRouter();
 
     if(user.user && !user.user?.email_verified) {
-        redirect("/profile");
+        router.push("/profile");
+        return;
     }
 
     const [apiKey, setApiKey] = useState<string | null>(null);
@@ -24,7 +26,7 @@ const App = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        setApiKey(localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY) ?? null);
+        setApiKey(localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY + user.user?.sub ?? "") ?? null);
     }, []);
 
     const handleRunTest = async (

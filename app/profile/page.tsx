@@ -43,7 +43,11 @@ const Profile = () => {
 
             const data = await response.json();
             setUserData(data);
-            setApiKey(localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY));
+            setApiKey(
+                localStorage.getItem(
+                    API_KEY_LOCAL_STORAGE_KEY + user.user?.sub ?? ""
+                )
+            );
             setIsFetchingData(false);
         };
 
@@ -60,6 +64,7 @@ const Profile = () => {
                 userId: userId,
                 userData: {
                     verified: "done",
+                    ...(userData.verified == null ? { bronzeTest: "50" } : {}),
                 },
             }),
         });
@@ -75,6 +80,14 @@ const Profile = () => {
         event: any
     ) => {
         event.preventDefault();
+
+        if (!user.user?.email_verified) {
+            setError(
+                "Kindly verify your email to be able to use this operation."
+            );
+            return;
+        }
+
         setError(null);
         setMessage(null);
         setIsUpdatingApiKet(true);
@@ -86,7 +99,10 @@ const Profile = () => {
             return;
         }
 
-        localStorage.setItem(API_KEY_LOCAL_STORAGE_KEY, newApiKey);
+        localStorage.setItem(
+            API_KEY_LOCAL_STORAGE_KEY + user.user?.sub ?? "",
+            newApiKey
+        );
         setApiKey(newApiKey);
         setMessage("Info: Stored new api key!");
         setIsUpdatingApiKet(false);
@@ -110,20 +126,20 @@ const Profile = () => {
                             <div role="alert" className="alert alert-warning">
                                 <AlertTriangle />
                                 <span>
-                                    Warning: Verify your email to get unlimited
-                                    Bronze tests. (if you already verified your
+                                    Warning: Verify your email to be able to use
+                                    your tests. (if you already verified your
                                     email, try to logout then login again)
                                 </span>
                             </div>
                         </div>
                     )}
-                    {!apiKey && (
+                    {!apiKey && (user.user?.email_verified ?? true) && (
                         <div className="w-full">
                             <div role="alert" className="alert alert-warning">
                                 <AlertTriangle />
                                 <span>
-                                    Warning: Add your Twelvedata api key to be
-                                    able to user your tests
+                                    Warning: Add your Twelvedata api key to get
+                                    50 Bronze tests. (for one time only)
                                 </span>
                             </div>
                         </div>
@@ -140,7 +156,7 @@ const Profile = () => {
                 {!isFetchingData && (
                     <div className="w-full max-w-[720px] bg-base-200 p-8 rounded-3xl flex flex-col space-y-8">
                         <div className="w-full text-center overflow-auto">
-                            <span className="text-5xl md:text-6xl lg:text-7xl font-black">
+                            <span className="text-4xl md:text-5xl lg:text-6xl font-black">
                                 {user.user?.email?.split("@")[0]}
                             </span>
                             <br />
@@ -157,7 +173,7 @@ const Profile = () => {
                         <div className="grid grid-cols-4">
                             <div className="lg:col-span-1 sm:col-span-2 col-span-4 p-4 flex flex-col justify-center items-center space-y-2">
                                 <h1 className="font-black text-5xl">
-                                    {user.user?.email_verified ? "∞" : "0"}
+                                    {userData.bronzeTest ?? "0"}
                                 </h1>
                                 <h2 className="font-bold">Bronze Tests</h2>
                             </div>
