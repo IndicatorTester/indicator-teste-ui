@@ -7,8 +7,8 @@ import Link from "next/link";
 const PricingPage = () => {
     return (
         <>
-            <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1 min-h-screen flex justify-center">
+            <div className="col-span-1 md:col-span-2"></div>
+            <div className="col-span-10 md:col-span-8 row-span-1 min-h-screen flex justify-center">
                 <div className="w-full max-w-[720px] flex flex-col space-y-4 justify-start">
                     <div className="w-full bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 justify-start">
                         <h1 className="text-5xl font-bold">Pricing</h1>
@@ -99,7 +99,7 @@ const PricingPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="col-span-2"></div>
+            <div className="col-span-1 md:col-span-2"></div>
         </>
     );
 };

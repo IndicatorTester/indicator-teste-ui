@@ -57,8 +57,8 @@ const Contact = () => {
 
     return (
         <>
-            <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1 min-h-screen flex justify-center">
+            <div className="col-span-1 md:col-span-2"></div>
+            <div className="col-span-10 md:col-span-8 row-span-1 min-h-screen flex justify-center">
                 <div className="w-full max-w-[720px] bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 h-fit">
                     {warning && (
                         <div className="w-full">
@@ -145,7 +145,7 @@ const Contact = () => {
                     </form>
                 </div>
             </div>
-            <div className="col-span-2"></div>
+            <div className="col-span-1 md:col-span-2"></div>
         </>
     );
 };

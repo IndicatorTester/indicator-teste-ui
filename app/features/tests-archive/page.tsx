@@ -140,8 +140,8 @@ const TestsArchive = () => {
 
     return (
         <>
-            <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1 min-h-screen">
+            <div className="col-span-1 md:col-span-2"></div>
+            <div className="col-span-10 md:col-span-8 row-span-1 min-h-screen">
                 <div className="w-full flex flex-col space-y-8 justify-center items-center">
                     {!user.user && (
                         <div className="w-full">
@@ -318,7 +318,7 @@ const TestsArchive = () => {
                     </div>
                 </div>
             </div>
-            <div className="col-span-2"></div>
+            <div className="col-span-1 md:col-span-2"></div>
         </>
     );
 };

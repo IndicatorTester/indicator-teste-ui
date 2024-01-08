@@ -5,8 +5,8 @@ import "tailwindcss/tailwind.css";
 const NotFoundPage = () => {
     return (
         <>
-            <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1">
+            <div className="col-span-1 md:col-span-2"></div>
+            <div className="col-span-10 md:col-span-8 row-span-1">
                 <div className="w-full h-screen flex flex-col items-center justify-start">
                     <div className="h-32" ></div>
                     <h1 className="text-4xl font-black mb-4">
@@ -17,7 +17,7 @@ const NotFoundPage = () => {
                     </p>
                 </div>
             </div>
-            <div className="col-span-2"></div>
+            <div className="col-span-1 md:col-span-2"></div>
         </>
     );
 };

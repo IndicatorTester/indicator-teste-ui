@@ -103,8 +103,8 @@ const App = () => {
 
     return (
         <>
-            <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1 min-h-screen flex flex-col justify-start items-center space-y-8">
+            <div className="col-span-1 md:col-span-2"></div>
+            <div className="col-span-10 md:col-span-8 row-span-1 min-h-screen flex flex-col justify-start items-center space-y-8">
                 {!user.user && (
                     <div className="w-full">
                         <div role="alert" className="alert alert-info">
@@ -141,7 +141,7 @@ const App = () => {
                     ]}
                 />
             </div>
-            <div className="col-span-2"></div>
+            <div className="col-span-1 md:col-span-2"></div>
         </>
     );
 };

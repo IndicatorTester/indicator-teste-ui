@@ -3,8 +3,8 @@ import React from "react";
 const TermsConditions = () => {
     return (
         <>
-            <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1 min-h-screen">
+            <div className="col-span-1 md:col-span-2"></div>
+            <div className="col-span-10 md:col-span-8 row-span-1 min-h-screen">
                 <div className="w-full">
                     <h1 className="font-black text-4xl">
                         Terms and Conditions
@@ -372,7 +372,7 @@ const TermsConditions = () => {
                     </p>
                 </div>
             </div>
-            <div className="col-span-2"></div>
+            <div className="col-span-1 md:col-span-2"></div>
         </>
     );
 };
