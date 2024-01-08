@@ -37,6 +37,7 @@ const Checkout = ({ params }: { params: { id: number } }) => {
     ];
 
     const [pickedAmount, setPickedAmount] = useState(3);
+    const [allowCheckout, setAllowCheckout] = useState(false);
 
     return (
         <>
@@ -112,6 +113,9 @@ const Checkout = ({ params }: { params: { id: number } }) => {
                                 type="checkbox"
                                 name="agree"
                                 className="checkbox"
+                                onChange={(e) =>
+                                    setAllowCheckout(e.target.checked)
+                                }
                             />
                             <p>
                                 I agree to our friendly{" "}
@@ -123,7 +127,10 @@ const Checkout = ({ params }: { params: { id: number } }) => {
                                 </Link>
                             </p>
                         </div>
-                        <button className="btn btn-circle btn-info">
+                        <button
+                            disabled={!allowCheckout}
+                            className="btn btn-circle btn-info"
+                        >
                             <ShoppingBag className="text-neutral" />
                         </button>
                     </div>

@@ -2,15 +2,15 @@
     {
         "title": "Bronze Test",
         "amount": "0.10",
-        "action": "Coming Soon",
-        "checkoutPage": "/pricing",
+        "action": "Buy Now",
+        "checkoutPage": "/checkout/0",
         "details": ["Run on US Stocks", "Daily data is available"]
     },
     {
         "title": "Silver Test",
         "amount": "0.20",
-        "action": "Coming Soon",
-        "checkoutPage": "/pricing",
+        "action": "Buy Now",
+        "checkoutPage": "/checkout/1",
         "details": [
             "Run on US Stocks",
             "Daily data is available",
@@ -20,8 +20,8 @@
     {
         "title": "Gold Test",
         "amount": "0.40",
-        "action": "Coming Soon",
-        "checkoutPage": "/pricing",
+        "action": "Buy Now",
+        "checkoutPage": "/checkout/2",
         "details": [
             "Run on US Stocks",
             "Run on Cryptocurrencies",
@@ -32,14 +32,15 @@
     {
         "title": "Diamond Test",
         "amount": "0.50",
-        "action": "Coming Soon",
-        "checkoutPage": "/pricing",
+        "action": "Buy Now",
+        "checkoutPage": "/checkout/3",
         "details": [
             "Run on US Stocks",
             "Run on Cryptocurrencies",
             "Daily data is available",
             "Intraday data is available",
-            "The test will be added to your archive"
+            "The test will be added to your archive",
+            "You will be able to run tests on indexes and ETFs if your twelvedata api key allows that"
         ]
     }
 ]
