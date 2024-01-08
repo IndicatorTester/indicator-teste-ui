@@ -9,15 +9,13 @@ import { generateClientHash } from "../../utils";
 import XComponentStack from "../../components/XComponentStack";
 import { Info, XOctagon } from "react-feather";
 import fakeTestResult from "@/public/fake/testResult.json";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const App = () => {
     const user = useUser();
-    const router = useRouter();
 
-    if(user.user && !user.user?.email_verified) {
-        router.push("/profile");
-        return;
+    if (user.user && !user.user?.email_verified) {
+        redirect("/profile");
     }
 
     const [apiKey, setApiKey] = useState<string | null>(null);
@@ -26,16 +24,21 @@ const App = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        setApiKey(localStorage.getItem(API_KEY_LOCAL_STORAGE_KEY + user.user?.sub ?? "") ?? null);
+        setApiKey(
+            localStorage.getItem(
+                API_KEY_LOCAL_STORAGE_KEY + user.user?.sub ?? ""
+            ) ?? null
+        );
     }, []);
 
     const handleRunTest = async (
         testParams: TestParams | null,
         error: string | null
     ) => {
-
-        if(apiKey === null || apiKey === "") {
-            setError("You have to add your api key to use this tool, go to your profile.");
+        if (apiKey === null || apiKey === "") {
+            setError(
+                "You have to add your api key to use this tool, go to your profile."
+            );
             return;
         }
 
@@ -67,7 +70,9 @@ const App = () => {
                 body: JSON.stringify({
                     exchange: testParams.exchange.toUpperCase(),
                     symbol: testParams.symbol.toUpperCase(),
-                    indicator: testParams.indicator.toLowerCase().replace(/\n/g, ''),
+                    indicator: testParams.indicator
+                        .toLowerCase()
+                        .replace(/\n/g, ""),
                     startDate: testParams.startDate,
                     endDate: testParams.endDate,
                     interval: testParams.interval,

@@ -14,15 +14,13 @@ import {
 } from "react-feather";
 import fakeTestsArchive from "@/public/fake/testsArchive.json";
 import fakeTestActions from "@/public/fake/testActions.json";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const TestsArchive = () => {
     const user = useUser();
-    const router = useRouter();
 
-    if(user.user && !user.user?.email_verified) {
-        router.push("/profile");
-        return;
+    if (user.user && !user.user?.email_verified) {
+        redirect("/profile");
     }
 
     const [tests, setTests] = useState<any>(null);
