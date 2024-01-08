@@ -66,8 +66,8 @@ const XNavBar = () => {
 
     return (
         <div className="grid grid-rows-expand grid-cols-12 mt-2">
-            <div className="col-span-2"></div>
-            <div className="navbar bg-base-100 mb-8 p-0 col-span-8 flex justify-between items-center">
+            <div className="col-span-1 md:col-span-2"></div>
+            <div className="col-span-10 md:col-span-8 navbar bg-base-100 mb-8 p-0 flex justify-between items-center">
                 <div className="w-[25%] flex justify-start">
                     <Link href={"/home"} className="text-xl font-bold">
                         XIndicator
@@ -132,7 +132,7 @@ const XNavBar = () => {
                     </div>
                 </div>
             </div>
-            <div className="col-span-2"></div>
+            <div className="col-span-1 md:col-span-2"></div>
         </div>
     );
 };

@@ -6,8 +6,8 @@ import MainButton from "./MainButton";
 const HomePage = () => {
     return (
         <>
-            <div className="col-span-2"></div>
-            <div className="col-span-8 row-span-1 h-fit">
+            <div className="col-span-1 md:col-span-2"></div>
+            <div className="col-span-10 md:col-span-8 row-span-1 h-fit">
                 <div className="flex flex-col space-y-12 justify-start items-center text-center">
                     <Title />
                     <MainButton />
@@ -24,7 +24,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <div className="col-span-2"></div>
+            <div className="col-span-1 md:col-span-2"></div>
         </>
     );
 };

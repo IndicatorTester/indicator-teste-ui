@@ -4,8 +4,8 @@ import React from "react";
 const XFooter = () => {
     return (
         <div className="grid grid-rows-expand grid-cols-12 min-h-[50%] mt-16">
-            <div className="col-span-2 bg-base-200"></div>
-            <div className="w-full flex flex-col justify-center items-center col-span-8 row-span-1 bg-base-200">
+            <div className="col-span-1 md:col-span-2 bg-base-200"></div>
+            <div className="w-full col-span-10 md:col-span-8 flex flex-col justify-center items-center row-span-1 bg-base-200">
                 <footer className="footer py-10 bg-base-200 text-neutral-content">
                     <aside>
                         <svg
@@ -73,7 +73,7 @@ const XFooter = () => {
                     </nav>
                 </footer>
             </div>
-            <div className="col-span-2 bg-base-200"></div>
+            <div className="col-span-1 md:col-span-2 bg-base-200"></div>
         </div>
     );
 };

@@ -110,8 +110,8 @@ const Profile = () => {
 
     return (
         <>
-            <div className="col-span-2"></div>
-            <div className="w-full col-span-8 row-span-1 min-h-screen flex flex-col justify-start items-center space-y-8">
+            <div className="col-span-1 md:col-span-2"></div>
+            <div className="w-full col-span-10 md:col-span-8 row-span-1 flex flex-col justify-start items-center space-y-8">
                 <div className="w-full max-w-[720px] flex flex-col space-y-2">
                     {error && (
                         <div className="w-full">
@@ -246,7 +246,7 @@ const Profile = () => {
                     </div>
                 )}
             </div>
-            <div className="col-span-2"></div>
+            <div className="col-span-1 md:col-span-2"></div>
         </>
     );
 };
