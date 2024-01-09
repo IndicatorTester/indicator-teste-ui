@@ -14,6 +14,25 @@ const nextConfig = {
             },
         ];
     },
+    async headers() {
+        return [
+            {
+                source: "/api/:path*",
+                headers: [
+                    { key: "Access-Control-Allow-Credentials", value: "true" },
+                    { key: "Access-Control-Allow-Origin", value: "*" },
+                    {
+                        key: "Access-Control-Allow-Methods",
+                        value: "*",
+                    },
+                    {
+                        key: "Access-Control-Allow-Headers",
+                        value: "*",
+                    },
+                ],
+            },
+        ];
+    },
     env: {
         // XIndicator backend config
         X_INDICATOR_API: process.env.X_INDICATOR_API,
