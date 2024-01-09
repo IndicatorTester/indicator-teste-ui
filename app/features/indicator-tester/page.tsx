@@ -35,7 +35,7 @@ const App = () => {
         testParams: TestParams | null,
         error: string | null
     ) => {
-        if (apiKey === null || apiKey === "") {
+        if ((apiKey === null || apiKey === "") && user.user) {
             setError(
                 "You have to add your api key to use this tool, go to your profile."
             );
