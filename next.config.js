@@ -28,6 +28,11 @@ const nextConfig = {
         AUTH0_ISSUER_BASE_URL: process.env.AUTH0_ISSUER_BASE_URL,
         AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
         AUTH0_CLIENT_SECRET: process.env.AUTH0_CLIENT_SECRET,
+
+        // Paddle config
+        PADDLE_ENV: process.env.PADDLE_ENV,
+        PADDLE_CLIENT_TOKEN: process.env.PADDLE_CLIENT_TOKEN,
+        PADDLE_WEBHOOK_SECRET: process.env.PADDLE_WEBHOOK_SECRET,
     },
 };
 

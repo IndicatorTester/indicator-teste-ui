@@ -6,9 +6,11 @@ import React, { useState } from "react";
 import pricingData from "@/public/static/pricing.json";
 import { ShoppingBag } from "react-feather";
 import Link from "next/link";
+import usePaddle from "@/app/hooks/usePaddle";
 
 const Checkout = ({ params }: { params: { id: number } }) => {
     const user = useUser();
+    const paddle = usePaddle();
 
     if (!user.user) {
         redirect("/api/auth/login");
@@ -21,23 +23,47 @@ const Checkout = ({ params }: { params: { id: number } }) => {
         {
             value: 10,
             free: 0,
+            priceId: pricingData[params.id].priceIds[0],
         },
         {
             value: 25,
             free: 4,
+            priceId: pricingData[params.id].priceIds[1],
         },
         {
             value: 50,
             free: 8,
+            priceId: pricingData[params.id].priceIds[2],
         },
         {
             value: 100,
             free: 16,
+            priceId: pricingData[params.id].priceIds[3],
         },
     ];
 
+    const [isLoading, setIsLoading] = useState(false);
     const [pickedAmount, setPickedAmount] = useState(3);
     const [allowCheckout, setAllowCheckout] = useState(false);
+
+    const openCheckout = () => {
+        setIsLoading(true);
+        paddle?.Checkout.open({
+            items: [
+                {
+                    priceId: amounts[pickedAmount].priceId,
+                    quantity: 1,
+                },
+            ],
+            customer: {
+                email: user.user?.email ?? "",
+            },
+            customData: {
+                userId: user.user?.sub ?? "",
+                priceId: amounts[pickedAmount].priceId,
+            },
+        });
+    };
 
     return (
         <>
@@ -84,7 +110,9 @@ const Checkout = ({ params }: { params: { id: number } }) => {
                                             type="radio"
                                             name="radio-7"
                                             className="radio radio-info"
-                                            checked={pickedAmount === index}
+                                            defaultChecked={
+                                                pickedAmount === index
+                                            }
                                             onClick={() =>
                                                 setPickedAmount(index)
                                             }
@@ -127,12 +155,19 @@ const Checkout = ({ params }: { params: { id: number } }) => {
                                 </Link>
                             </p>
                         </div>
-                        <button
-                            disabled={!allowCheckout}
-                            className="btn btn-circle btn-info"
-                        >
-                            <ShoppingBag className="text-neutral" />
-                        </button>
+                        <div className="flex flx-row justify-center items-center">
+                            {isLoading ? (
+                                <span className="loading loading-ring loading-lg"></span>
+                            ) : (
+                                <button
+                                    onClick={openCheckout}
+                                    disabled={!allowCheckout}
+                                    className="btn btn-circle btn-info"
+                                >
+                                    <ShoppingBag className="text-neutral" />
+                                </button>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

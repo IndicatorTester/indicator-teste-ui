@@ -131,7 +131,7 @@ const Contact = () => {
                             </div>
                             <div className="col-span-2 flex flx-row justify-center mt-6">
                                 {isLoading ? (
-                                    <span className="loading loading-spinner loading-lg"></span>
+                                    <span className="loading loading-ring loading-lg"></span>
                                 ) : (
                                     <button
                                         type="submit"
