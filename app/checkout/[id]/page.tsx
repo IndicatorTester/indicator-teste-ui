@@ -9,7 +9,8 @@ import Link from "next/link";
 import usePaddle from "@/app/hooks/usePaddle";
 
 const Checkout = ({ params }: { params: { id: number } }) => {
-    const PADDLE_ENV = process.env.PADDLE_ENV === "production" ? "production" : "sandbox";
+    const PADDLE_ENV =
+        process.env.PADDLE_ENV === "production" ? "production" : "sandbox";
 
     const user = useUser();
     const paddle = usePaddle();
@@ -44,12 +45,10 @@ const Checkout = ({ params }: { params: { id: number } }) => {
         },
     ];
 
-    const [isLoading, setIsLoading] = useState(false);
     const [pickedAmount, setPickedAmount] = useState(3);
     const [allowCheckout, setAllowCheckout] = useState(false);
 
     const openCheckout = () => {
-        setIsLoading(true);
         paddle?.Checkout.open({
             items: [
                 {
@@ -84,15 +83,15 @@ const Checkout = ({ params }: { params: { id: number } }) => {
                         <h1 className="font-bold text-2xl text-center">
                             Buy {productData.title}s
                         </h1>
-                        <div className="w-full grid grid-cols-2">
-                            <div className="flex flex-col grid-cols-1 justify-center items-center space-y-2">
+                        <div className="w-full grid grid-cols-2 md:gap-0 gap-16">
+                            <div className="flex flex-col md:col-span-1 col-span-2 justify-center items-center space-y-2">
                                 <h1 className="font-black text-6xl">
                                     {amounts[pickedAmount].value +
                                         amounts[pickedAmount].free}
                                 </h1>
                                 <p className="font-bold">Tests You Will Get</p>
                             </div>
-                            <div className="flex flex-col grid-cols-1 justify-center items-center space-y-2">
+                            <div className="flex flex-col md:col-span-1 col-span-2 justify-center items-center space-y-2">
                                 <h1 className="font-black text-6xl text-green-400">
                                     $
                                     {amounts[pickedAmount].value *
@@ -137,7 +136,7 @@ const Checkout = ({ params }: { params: { id: number } }) => {
                         </div>
                     </div>
                     <div className="divider"></div>
-                    <div className="w-full flex justify-between items-center">
+                    <div className="w-full flex md:flex-row flex-col md:justify-between justify-center items-center md:space-y-0 space-y-8">
                         <div className="col-span-2 flex flex-row space-x-2">
                             <input
                                 type="checkbox"
@@ -157,19 +156,13 @@ const Checkout = ({ params }: { params: { id: number } }) => {
                                 </Link>
                             </p>
                         </div>
-                        <div className="flex flx-row justify-center items-center">
-                            {isLoading ? (
-                                <span className="loading loading-ring loading-lg"></span>
-                            ) : (
-                                <button
-                                    onClick={openCheckout}
-                                    disabled={!allowCheckout}
-                                    className="btn btn-circle btn-info"
-                                >
-                                    <ShoppingBag className="text-neutral" />
-                                </button>
-                            )}
-                        </div>
+                        <button
+                            onClick={openCheckout}
+                            disabled={!allowCheckout}
+                            className="btn btn-circle btn-info"
+                        >
+                            <ShoppingBag className="text-neutral" />
+                        </button>
                     </div>
                 </div>
             </div>
