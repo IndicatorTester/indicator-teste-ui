@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import IndicatorDetails from "./IndicatorDetails";
-import indicatorsData from "@/public/static/indicators.json";
+import indicatorsData from "@/app/constants/indicators.json";
 
 const Indicators = () => {
     const [selectedIndicator, setSelectedIndicator] = useState(null);

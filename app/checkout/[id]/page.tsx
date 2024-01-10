@@ -3,12 +3,14 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
-import pricingData from "@/public/static/pricing.json";
+import pricingData from "@/app/constants/pricing.json";
 import { ShoppingBag } from "react-feather";
 import Link from "next/link";
 import usePaddle from "@/app/hooks/usePaddle";
 
 const Checkout = ({ params }: { params: { id: number } }) => {
+    const PADDLE_ENV = process.env.PADDLE_ENV === "production" ? "production" : "sandbox";
+
     const user = useUser();
     const paddle = usePaddle();
 
@@ -23,22 +25,22 @@ const Checkout = ({ params }: { params: { id: number } }) => {
         {
             value: 10,
             free: 0,
-            priceId: pricingData[params.id].priceIds[0],
+            priceId: pricingData[params.id].priceIds[PADDLE_ENV][0],
         },
         {
             value: 25,
             free: 4,
-            priceId: pricingData[params.id].priceIds[1],
+            priceId: pricingData[params.id].priceIds[PADDLE_ENV][1],
         },
         {
             value: 50,
             free: 8,
-            priceId: pricingData[params.id].priceIds[2],
+            priceId: pricingData[params.id].priceIds[PADDLE_ENV][2],
         },
         {
             value: 100,
             free: 16,
-            priceId: pricingData[params.id].priceIds[3],
+            priceId: pricingData[params.id].priceIds[PADDLE_ENV][3],
         },
     ];
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import pricingData from "@/public/static/pricing.json";
+import pricingData from "@/app/constants/pricing.json";
 import Link from "next/link";
 
 const PricingPage = () => {
