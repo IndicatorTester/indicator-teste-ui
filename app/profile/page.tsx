@@ -21,7 +21,7 @@ const Profile = () => {
     const [message, setMessage] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [isFetchingData, setIsFetchingData] = useState(true);
-    const [isUpdatingApiKey, setIsUpdatingApiKet] = useState(false);
+    const [isUpdatingApiKey, setIsUpdatingApiKey] = useState(false);
 
     useEffect(() => {
         const fetchUserData = async (userId: string) => {
@@ -90,12 +90,12 @@ const Profile = () => {
 
         setError(null);
         setMessage(null);
-        setIsUpdatingApiKet(true);
+        setIsUpdatingApiKey(true);
         const newApiKey = event.target.apiKey.value;
         const userUpdated = await updateUserData(user.user?.sub ?? "");
 
         if (!userUpdated) {
-            setIsUpdatingApiKet(false);
+            setIsUpdatingApiKey(false);
             return;
         }
 
@@ -105,7 +105,7 @@ const Profile = () => {
         );
         setApiKey(newApiKey);
         setMessage("Info: Stored new api key!");
-        setIsUpdatingApiKet(false);
+        setIsUpdatingApiKey(false);
     };
 
     return (
@@ -236,12 +236,12 @@ const Profile = () => {
                         </div>
                         <div className="divider"></div>
                         <div className="w-full flex justify-center items-center">
-                            <Link
-                                href={"/api/auth/logout"}
+                            <a
+                                href="/api/auth/logout"
                                 className="btn btn-circle"
                             >
                                 <LogOut />
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 )}

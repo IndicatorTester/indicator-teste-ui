@@ -122,12 +122,9 @@ const XNavBar = () => {
                                 <User className="hover:text-green-400 h-8 w-8" />
                             </Link>
                         ) : (
-                            <Link
-                                href={"/api/auth/login"}
-                                className="btn md:w-32"
-                            >
+                            <a href="/api/auth/login" className="btn md:w-32">
                                 Login
-                            </Link>
+                            </a>
                         )}
                     </div>
                 </div>
