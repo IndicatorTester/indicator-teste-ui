@@ -26,7 +26,7 @@
         "name": "Bollinger Bands",
         "shorts": [
             {
-                "name": "BOLD: Bollinger Bands lower band",
+                "name": "BOLU: Bollinger Bands lower band",
                 "requiredFields": [
                     {
                         "name": "prices",
