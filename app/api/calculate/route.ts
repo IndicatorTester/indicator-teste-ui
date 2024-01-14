@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { XIndicatorApiHeaders, hasClientServerAccess } from "../utils";
+import { XIndicatorApiHeaders, hasClientServerAccess } from "../utils/backend";
 
 export const POST = async (request: Request) => {
     const data = await request.json();

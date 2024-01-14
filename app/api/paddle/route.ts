@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { validateSignature } from "@/utils/paddle";
-import { XIndicatorApiHeaders } from "../utils";
+import { validateSignature } from "@/app/api/utils/paddle";
+import { XIndicatorApiHeaders } from "@/app/api/utils/backend";
 
 export async function POST(req: NextRequest) {
     const signature = req.headers.get("Paddle-Signature")!;
