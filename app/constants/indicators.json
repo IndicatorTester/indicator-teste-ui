@@ -26,7 +26,7 @@
         "name": "Bollinger Bands",
         "shorts": [
             {
-                "name": "BOLU: Bollinger Bands lower band",
+                "name": "BOLL: Bollinger Bands lower band",
                 "requiredFields": [
                     {
                         "name": "prices",
@@ -35,7 +35,7 @@
                 ]
             },
             {
-                "name": "BOLD: Bollinger Bands upper band",
+                "name": "BOLU: Bollinger Bands upper band",
                 "requiredFields": [
                     {
                         "name": "prices",
@@ -44,8 +44,8 @@
                 ]
             }
         ],
-        "examples": ["BOLD(open)", "BOLD(high)", "BOLU(low)", "BOLU(close)"],
-        "code": "\n    import pandas as pd\n\n        # Bollinger Bands lower band\n        def bold(data: pd.DataFrame):\n            WINDOW = 20\n            SMA = data.rolling(window = WINDOW).mean()\n            SD = data.rolling(window = WINDOW).std()\n            return SMA - 2 * SD\n        \n        # Bollinger Bands upper band\n        def bolu(data: pd.DataFrame):\n            WINDOW = 20\n            SMA = data.rolling(window = WINDOW).mean()\n            SD = data.rolling(window = WINDOW).std()\n            return SMA + 2 * SD\n"
+        "examples": ["BOLL(open)", "BOLL(high)", "BOLU(low)", "BOLU(close)"],
+        "code": "\n    import pandas as pd\n\n        # Bollinger Bands lower band\n        def boll(data: pd.DataFrame):\n            WINDOW = 20\n            SMA = data.rolling(window = WINDOW).mean()\n            SD = data.rolling(window = WINDOW).std()\n            return SMA - 2 * SD\n        \n        # Bollinger Bands upper band\n        def bolu(data: pd.DataFrame):\n            WINDOW = 20\n            SMA = data.rolling(window = WINDOW).mean()\n            SD = data.rolling(window = WINDOW).std()\n            return SMA + 2 * SD\n"
     },
     {
         "name": "Commodity Channel Index",

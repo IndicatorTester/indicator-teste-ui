@@ -354,7 +354,7 @@ const FormView: React.FC<FormViewProps> = ({
                             defaultValue={
                                 buyIndicator.length === 0 ? "" : buyIndicator
                             }
-                            placeholder="Buy If: ex: sma(close) < sma(close, 35)"
+                            placeholder="Buy When. Example: sma(close) < sma(close, 35)"
                             onChange={handleBuyIndicatorChange}
                         ></textarea>
                         {buyIndicatorMessage.length !== 0 ? (
@@ -369,7 +369,7 @@ const FormView: React.FC<FormViewProps> = ({
                             defaultValue={
                                 sellIndicator.length === 0 ? "" : sellIndicator
                             }
-                            placeholder="Sell If: ex: ema(close) < ema(close, 28)"
+                            placeholder="Sell When. Example: sma(close) > sma(open, 28)"
                             onChange={handleSellIndicatorChange}
                         ></textarea>
                         {sellIndicatorMessage.length !== 0 ? (

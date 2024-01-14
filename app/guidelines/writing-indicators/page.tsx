@@ -37,26 +37,143 @@ const WritingIndicators = () => {
                 </div>
                 <div className="w-full bg-base-200 p-8 rounded-3xl flex flex-col space-y-4 h-fit">
                     <h1 className="text-3xl font-bold">
-                        The Main Points Which You Must Know:
+                        How The Indicator Tester Works?
                     </h1>
                     <div className="flex flex-col space-y-2">
                         <p>
-                            <span className="font-black">• </span>The indicator
-                            you write must result to a True/False list, which
-                            indicates to Buy/Sell trades.
+                            You will provide two signal indicators, the first
+                            one is for the buy signal and second one is for the
+                            sell signal.
                         </p>
                         <p>
-                            <span className="font-black">• </span>If you result
-                            is True for a specific candlestick, that means it is
-                            a buy trade with all cash on the close price of that
-                            candlestick.
+                            <span className="font-black">• </span>Both of your
+                            indicators will give a list of true/false signals,
+                            where true for buy indicator means buy, and true for
+                            sell indicator means sell.
                         </p>
                         <p>
-                            <span className="font-black">• </span>If you result
-                            is False for a specific candlestick, that means it
-                            is a sell trade with all stock/crypto on the close
-                            price of that candlestick.
+                            <span className="font-black">• </span>The best way
+                            to explain it is by checking an example:
                         </p>
+                        <p className="ml-4">
+                            <span className="font-black">◦ </span>Buy Indicator:
+                            <code className="font-bold">
+                                {" "}
+                                sma(close) &lt; sma(close, 35)
+                            </code>
+                            , which means buy when simple moving average for
+                            close price for length 14 is less than simple moving
+                            average for close price for length 35, results to:
+                            <code className="font-bold">
+                                {" "}
+                                [True, True, True, False, False, False]
+                            </code>
+                        </p>
+                        <p className="ml-4">
+                            <span className="font-black">◦ </span>Sell
+                            Indicator:
+                            <code className="font-bold">
+                                {" "}
+                                sma(close) &gt; sma(close, 28)
+                            </code>
+                            , which means sell when simple moving average for
+                            close price for length 14 is greater than simple
+                            moving average for close price for length 28,
+                            results to:
+                            <code className="font-bold">
+                                {" "}
+                                [False, False, True, False, True, True]
+                            </code>
+                        </p>
+                        <div className="h-4"></div>
+                        <div className="overflow-x-auto">
+                            <table className="table text-lg">
+                                <thead className="text-lg text-neutral-content">
+                                    <tr>
+                                        <th>Candle</th>
+                                        <th>Buy Indicator</th>
+                                        <th>Sell Indicator</th>
+                                        <th>Action</th>
+                                        <th>Explanation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr className="text-start hover:bg-base-300">
+                                        <th>1</th>
+                                        <td>True</td>
+                                        <td>False</td>
+                                        <td className="font-bold text-green-400">
+                                            Buy
+                                        </td>
+                                        <td>
+                                            In this case a buy action will take
+                                            place since the buy indicator is
+                                            "True" and the sell indicator is
+                                            "False".
+                                        </td>
+                                    </tr>
+                                    <tr className="text-start hover:bg-base-300">
+                                        <th>2</th>
+                                        <td>True</td>
+                                        <td>False</td>
+                                        <td className="font-bold">None</td>
+                                        <td>
+                                            In this case it is a buy action,
+                                            however a buy action is that last
+                                            action that took place so this
+                                            action will be ignored.
+                                        </td>
+                                    </tr>
+                                    <tr className="text-start hover:bg-base-300">
+                                        <th>3</th>
+                                        <td>True</td>
+                                        <td>True</td>
+                                        <td className="font-bold">None</td>
+                                        <td>
+                                            If both indicators gave the same
+                                            value no action will take place.
+                                        </td>
+                                    </tr>
+                                    <tr className="text-start hover:bg-base-300">
+                                        <th>4</th>
+                                        <td>False</td>
+                                        <td>False</td>
+                                        <td className="font-bold">None</td>
+                                        <td>
+                                            If both indicators gave the same
+                                            value no action will take place.
+                                        </td>
+                                    </tr>
+                                    <tr className="text-start hover:bg-base-300">
+                                        <th>5</th>
+                                        <td>False</td>
+                                        <td>True</td>
+                                        <td className="font-bold text-red-500">
+                                            Sell
+                                        </td>
+                                        <td>
+                                            In this case a sell action will take
+                                            place since the buy indicator is
+                                            "False" and the sell indicator is
+                                            "True", and the last action was a
+                                            buy action.
+                                        </td>
+                                    </tr>
+                                    <tr className="text-start hover:bg-base-300">
+                                        <th>6</th>
+                                        <td>False</td>
+                                        <td>True</td>
+                                        <td className="font-bold">None</td>
+                                        <td>
+                                            In this case it is a sell action,
+                                            however a sell action is that last
+                                            action that took place so this
+                                            action will be ignored.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div className="w-full bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 h-fit">
