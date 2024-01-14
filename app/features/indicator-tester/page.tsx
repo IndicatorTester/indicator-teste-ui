@@ -70,7 +70,10 @@ const App = () => {
                 body: JSON.stringify({
                     exchange: testParams.exchange.toUpperCase(),
                     symbol: testParams.symbol.toUpperCase(),
-                    indicator: testParams.indicator
+                    buyIndicator: testParams.buyIndicator
+                        .toLowerCase()
+                        .replace(/\n/g, ""),
+                    sellIndicator: testParams.sellIndicator
                         .toLowerCase()
                         .replace(/\n/g, ""),
                     startDate: testParams.startDate,

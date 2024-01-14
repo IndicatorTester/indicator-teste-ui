@@ -15,7 +15,8 @@ export type TestParams = {
     exchange: string;
     startDate: string;
     endDate: string;
-    indicator: string;
+    buyIndicator: string;
+    sellIndicator: string;
 };
 
 type FormViewProps = {
@@ -58,8 +59,11 @@ const FormView: React.FC<FormViewProps> = ({
     const [interval, setInterval] = useState("");
     const [startDate, setStartDate] = useState<string>("");
     const [endDate, setEndDate] = useState<string>("");
-    const [indicator, setIndicator] = useState<string>("");
-    const [indicatorMessage, setIndicatorMessage] = useState<string>("");
+    const [buyIndicator, setBuyIndicator] = useState<string>("");
+    const [buyIndicatorMessage, setBuyIndicatorMessage] = useState<string>("");
+    const [sellIndicator, setSellIndicator] = useState<string>("");
+    const [sellIndicatorMessage, setSellIndicatorMessage] =
+        useState<string>("");
 
     const handleTypeChange: React.ChangeEventHandler<
         HTMLSelectElement
@@ -146,41 +150,86 @@ const FormView: React.FC<FormViewProps> = ({
         }
     };
 
-    const handleIndicatorChange: React.ChangeEventHandler<
+    const handleBuyIndicatorChange: React.ChangeEventHandler<
         HTMLTextAreaElement
     > = (event) => {
-        setIndicator("");
+        setBuyIndicator("");
         const value = event.target.value;
 
         if (value.length === 0) {
-            setIndicatorMessage("");
+            setBuyIndicatorMessage("");
             return;
         }
 
         if (value.length > 300) {
-            setIndicatorMessage("Indicator must be less than 300 characters");
+            setBuyIndicatorMessage(
+                "Indicator must be less than 300 characters"
+            );
             return;
         }
 
         if (!INDICATOR_REGEX.test(value)) {
-            setIndicatorMessage("Invalid syntax");
+            setBuyIndicatorMessage("Invalid syntax");
             return;
         }
 
         if (!validBrackets(value)) {
-            setIndicatorMessage("Missing one or more brackets");
+            setBuyIndicatorMessage("Missing one or more brackets");
             return;
         }
 
-        if (!validBooleanExpression(value.replace(/\n/g, '').replace(/ /g, ''))) {
-            setIndicatorMessage(
+        if (
+            !validBooleanExpression(value.replace(/\n/g, "").replace(/ /g, ""))
+        ) {
+            setBuyIndicatorMessage(
                 "This indicator does not result to a True/False"
             );
             return;
         }
 
-        setIndicatorMessage("");
-        setIndicator(value);
+        setBuyIndicatorMessage("");
+        setBuyIndicator(value);
+    };
+
+    const handleSellIndicatorChange: React.ChangeEventHandler<
+        HTMLTextAreaElement
+    > = (event) => {
+        setSellIndicator("");
+        const value = event.target.value;
+
+        if (value.length === 0) {
+            setSellIndicatorMessage("");
+            return;
+        }
+
+        if (value.length > 300) {
+            setSellIndicatorMessage(
+                "Indicator must be less than 300 characters"
+            );
+            return;
+        }
+
+        if (!INDICATOR_REGEX.test(value)) {
+            setSellIndicatorMessage("Invalid syntax");
+            return;
+        }
+
+        if (!validBrackets(value)) {
+            setSellIndicatorMessage("Missing one or more brackets");
+            return;
+        }
+
+        if (
+            !validBooleanExpression(value.replace(/\n/g, "").replace(/ /g, ""))
+        ) {
+            setSellIndicatorMessage(
+                "This indicator does not result to a True/False"
+            );
+            return;
+        }
+
+        setSellIndicatorMessage("");
+        setSellIndicator(value);
     };
 
     const runTest: React.MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -198,8 +247,10 @@ const FormView: React.FC<FormViewProps> = ({
             handleRunTest(null, "Choose a valid end date!");
         } else if (startDate >= endDate) {
             handleRunTest(null, "End date must be after the start date!");
-        } else if (indicator.length === 0) {
-            handleRunTest(null, "Empty or Invalid indicator!");
+        } else if (buyIndicator.length === 0) {
+            handleRunTest(null, "Empty or Invalid buy indicator!");
+        } else if (sellIndicator.length === 0) {
+            handleRunTest(null, "Empty or Invalid sell indicator!");
         } else {
             const testParams: TestParams = {
                 type: type,
@@ -209,7 +260,8 @@ const FormView: React.FC<FormViewProps> = ({
                 endDate: endDate,
                 exchange:
                     type === "cryptocurrencies" ? "" : symbol.split(" ")[2],
-                indicator: indicator,
+                buyIndicator: buyIndicator,
+                sellIndicator: sellIndicator,
             };
 
             handleRunTest(testParams, null);
@@ -298,16 +350,31 @@ const FormView: React.FC<FormViewProps> = ({
                     />
                     <div className="w-full flex flex-col space-y-2 justify-center items-start col-span-2">
                         <textarea
-                            className="w-full h-48 textarea textarea-bordered border-neutral-content text-base"
+                            className="w-full h-28 textarea textarea-bordered border-neutral-content text-base"
                             defaultValue={
-                                indicator.length === 0 ? "" : indicator
+                                buyIndicator.length === 0 ? "" : buyIndicator
                             }
-                            placeholder="Your Indicator"
-                            onChange={handleIndicatorChange}
+                            placeholder="Buy If: ex: sma(close) < sma(close, 35)"
+                            onChange={handleBuyIndicatorChange}
                         ></textarea>
-                        {indicatorMessage.length !== 0 ? (
+                        {buyIndicatorMessage.length !== 0 ? (
                             <p className="text-red-500 font-bold">
-                                {indicatorMessage}
+                                {buyIndicatorMessage}
+                            </p>
+                        ) : null}
+                    </div>
+                    <div className="w-full flex flex-col space-y-2 justify-center items-start col-span-2">
+                        <textarea
+                            className="w-full h-28 textarea textarea-bordered border-neutral-content text-base"
+                            defaultValue={
+                                sellIndicator.length === 0 ? "" : sellIndicator
+                            }
+                            placeholder="Sell If: ex: ema(close) < ema(close, 28)"
+                            onChange={handleSellIndicatorChange}
+                        ></textarea>
+                        {sellIndicatorMessage.length !== 0 ? (
+                            <p className="text-red-500 font-bold">
+                                {sellIndicatorMessage}
                             </p>
                         ) : null}
                     </div>
@@ -317,7 +384,10 @@ const FormView: React.FC<FormViewProps> = ({
                         ) : (
                             <button
                                 onClick={runTest}
-                                disabled={indicator.length === 0}
+                                disabled={
+                                    buyIndicator.length === 0 ||
+                                    sellIndicator.length === 0
+                                }
                                 className="btn btn-circle btn-info"
                             >
                                 <Command className="text-neutral" />

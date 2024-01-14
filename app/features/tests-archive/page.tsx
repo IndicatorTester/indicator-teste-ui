@@ -234,7 +234,11 @@ const TestsArchive = () => {
                                                                         type="checkbox"
                                                                         onClick={() =>
                                                                             navigator.clipboard.writeText(
-                                                                                test.indicator
+                                                                                "Buy: " +
+                                                                                    test.buyIndicator +
+                                                                                    "\n\n" +
+                                                                                    "Sell: " +
+                                                                                    test.sellIndicator
                                                                             )
                                                                         }
                                                                     />
