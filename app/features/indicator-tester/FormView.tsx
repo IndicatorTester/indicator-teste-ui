@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import XSelect, { Option } from "../../components/XSelect";
+import XSelect, { Option } from "@/app/components/XSelect";
 import { validBooleanExpression, validBrackets } from "@/utils/indicator";
 import { Command } from "react-feather";
 import Link from "next/link";
@@ -54,8 +54,10 @@ const FormView: React.FC<FormViewProps> = ({
     ]);
     const [type, setType] = useState("");
     const [symbols, setSymbols] = useState<Option[] | null>(null);
+    const [exchanges, setExchanges] = useState<Option[] | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [symbol, setSymbol] = useState("");
+    const [exchange, setExchange] = useState("");
     const [interval, setInterval] = useState("");
     const [startDate, setStartDate] = useState<string>("");
     const [endDate, setEndDate] = useState<string>("");
@@ -88,15 +90,32 @@ const FormView: React.FC<FormViewProps> = ({
 
                 const data = JSON.parse(chunks)["data"];
 
-                const symbolsList: Option[] = data.map((object: any) => ({
-                    value:
-                        object.symbol +
-                        (object.exchange ? ` - ${object.exchange}` : ""),
-                    label:
-                        object.symbol +
-                        (object.exchange ? ` - ${object.exchange}` : ""),
-                }));
+                const symbolsSet: Set<string> = new Set();
+                data.map((object: any) => symbolsSet.add(object.symbol));
+                const symbolsList: Option[] = [];
+                symbolsSet.forEach((object: any) =>
+                    symbolsList.push({
+                        value: object,
+                        label: object,
+                    })
+                );
                 setSymbols(symbolsList);
+
+                if ("cryptocurrencies" !== selectedValue) {
+                    const exchangesSet: Set<string> = new Set();
+                    data.map((object: any) =>
+                        exchangesSet.add(object.exchange)
+                    );
+                    const exchangesList: Option[] = [];
+                    exchangesSet.forEach((object: any) =>
+                        exchangesList.push({
+                            value: object,
+                            label: object,
+                        })
+                    );
+                    setExchanges(exchangesList);
+                }
+
                 setType(selectedValue);
             })
             .catch((error) => {
@@ -120,6 +139,10 @@ const FormView: React.FC<FormViewProps> = ({
 
     const symbolSelectHandler: (input: string) => void = (symbol) => {
         setSymbol(symbol);
+    };
+
+    const exchangeSelectHandler: (input: string) => void = (exchange) => {
+        setExchange(exchange);
     };
 
     const handleStartDateChange = (
@@ -239,6 +262,8 @@ const FormView: React.FC<FormViewProps> = ({
             handleRunTest(null, "Choose a type!");
         } else if (interval.length === 0) {
             handleRunTest(null, "Choose an interval!");
+        } else if (type !== "cryptocurrencies" && exchange.length === 0) {
+            handleRunTest(null, "Exchange is required for this type!");
         } else if (symbol.length === 0) {
             handleRunTest(null, "Choose a Symbol!");
         } else if (startDate.length === 0) {
@@ -258,8 +283,7 @@ const FormView: React.FC<FormViewProps> = ({
                 symbol: symbol.split(" ")[0],
                 startDate: startDate,
                 endDate: endDate,
-                exchange:
-                    type === "cryptocurrencies" ? "" : symbol.split(" ")[2],
+                exchange: type === "cryptocurrencies" ? "" : exchange,
                 buyIndicator: buyIndicator,
                 sellIndicator: sellIndicator,
             };
@@ -325,13 +349,29 @@ const FormView: React.FC<FormViewProps> = ({
                         {isLoading ? (
                             <span className="loading loading-ring loading-lg"></span>
                         ) : (
-                            <XSelect
-                                options={symbols ?? []}
-                                placeholder="Symbol"
-                                selectedHandler={symbolSelectHandler}
-                                defaultValue={symbol}
-                                disabled={type.length === 0}
-                            />
+                            <div className="w-full flex md:flex-row flex-col justify-center items-center md:space-x-6 md:space-y-0 space-y-6">
+                                <XSelect
+                                    options={exchanges ?? []}
+                                    placeholder="Exchange"
+                                    selectedHandler={exchangeSelectHandler}
+                                    defaultValue={exchange}
+                                    disabled={
+                                        type.length === 0 ||
+                                        type === "cryptocurrencies"
+                                    }
+                                />
+                                <XSelect
+                                    options={symbols ?? []}
+                                    placeholder="Symbol"
+                                    selectedHandler={symbolSelectHandler}
+                                    defaultValue={symbol}
+                                    disabled={
+                                        (type !== "cryptocurrencies" &&
+                                            exchange.length === 0) ||
+                                        type.length === 0
+                                    }
+                                />
+                            </div>
                         )}
                     </div>
                     <input
