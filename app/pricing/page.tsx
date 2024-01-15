@@ -29,8 +29,7 @@ const PricingPage = () => {
                                 <span className="font-black text-neutral-content">
                                     •{" "}
                                 </span>
-                                Make sure to only buy as you need, currently
-                                refund is NOT supported.
+                                Currently refund is NOT supported.
                             </p>
                             <p>
                                 <span className="font-black text-neutral-content">

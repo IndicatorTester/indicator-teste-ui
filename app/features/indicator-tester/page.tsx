@@ -46,6 +46,7 @@ const App = () => {
 
         setError(error);
         if (testParams === null) {
+            scrollToTop(document);
             return;
         }
 

@@ -47,9 +47,9 @@ const IndicatorDetails = ({ data }: { data: any }) => {
                                                         ◦ {field.name}:{" "}
                                                     </span>
                                                     {field.description} With
-                                                    initial value [{" "}
+                                                    default value [{" "}
                                                     <span className="font-black">
-                                                        {field.initialValue}
+                                                        {field.defaultValue}
                                                     </span>{" "}
                                                     ].
                                                 </p>

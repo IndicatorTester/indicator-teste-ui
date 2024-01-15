@@ -13,12 +13,12 @@ const WritingIndicators = () => {
                     <div>
                         <p className="text-gray-400">
                             Here you will learn how to write signal indicators
-                            which is suitable for{" "}
+                            that is suitable for{" "}
                             <Link
                                 className="underline underline-offset-2 text-neutral-content"
                                 href={"/features/indicator-tester"}
                             >
-                                indicator-tester
+                                Indicator Tester
                             </Link>{" "}
                             tool.
                         </p>
@@ -53,7 +53,7 @@ const WritingIndicators = () => {
                         </p>
                         <p>
                             <span className="font-black">• </span>The best way
-                            to explain it is by checking an example:
+                            to explain it is by seeing an example:
                         </p>
                         <p className="ml-4">
                             <span className="font-black">◦ </span>Buy Indicator:
@@ -108,8 +108,8 @@ const WritingIndicators = () => {
                                         <td>
                                             In this case a buy action will take
                                             place since the buy indicator is
-                                            &quot;True&quot; and the sell indicator is
-                                            &quot;False&quot;.
+                                            &quot;True&quot; and the sell
+                                            indicator is &quot;False&quot;.
                                         </td>
                                     </tr>
                                     <tr className="text-start hover:bg-base-300">
@@ -119,7 +119,7 @@ const WritingIndicators = () => {
                                         <td className="font-bold">None</td>
                                         <td>
                                             In this case it is a buy action,
-                                            however a buy action is that last
+                                            however a buy action is the last
                                             action that took place so this
                                             action will be ignored.
                                         </td>
@@ -154,9 +154,9 @@ const WritingIndicators = () => {
                                         <td>
                                             In this case a sell action will take
                                             place since the buy indicator is
-                                            &quot;False&quot; and the sell indicator is
-                                            &quot;True&quot;, and the last action was a
-                                            buy action.
+                                            &quot;False&quot;, the sell
+                                            indicator is &quot;True&quot;, and
+                                            the last action was a buy action.
                                         </td>
                                     </tr>
                                     <tr className="text-start hover:bg-base-300">
@@ -166,7 +166,7 @@ const WritingIndicators = () => {
                                         <td className="font-bold">None</td>
                                         <td>
                                             In this case it is a sell action,
-                                            however a sell action is that last
+                                            however a sell action is the last
                                             action that took place so this
                                             action will be ignored.
                                         </td>
@@ -214,25 +214,15 @@ const WritingIndicators = () => {
                         </li>
                     </ul>
                     <div className="flex flex-col space-y-2">
-                        <h1 className="text-xl font-bold">Example</h1>
-                        <p className="text-gray-400">
-                            If we have the following prices:
+                        <h1 className="text-xl font-bold">Examples</h1>
+                        <p className="italic">
+                            <span className="font-black">• </span>open &lt;
+                            close
                         </p>
-                        <p>Close prices as: [1, 5, 3, 3, 4]</p>
-                        <p>Open prices as: [2, 3, 4, 5, 1]</p>
-                        <p className="text-gray-400">
-                            And the following indicator:
+                        <p className="italic">
+                            <span className="font-black">• </span>open == low &
+                            open &lt; close
                         </p>
-                        <p className="italic">open &lt; close</p>
-                        <p className="text-gray-400">The result will be:</p>
-                        <p>[False, True, False, False, True]</p>
-                        <p className="text-gray-400">
-                            Which means the trades will be:
-                        </p>
-                        <p>Sell on the 1st day</p>
-                        <p>Buy on the 2nd day</p>
-                        <p>Sell on the 3rd day</p>
-                        <p>Buy on the 5th day</p>
                     </div>
                 </div>
                 <div className="w-full bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 h-fit">
@@ -261,25 +251,15 @@ const WritingIndicators = () => {
                         </li>
                     </ul>
                     <div className="flex flex-col space-y-2">
-                        <h1 className="text-xl font-bold">Example</h1>
-                        <p className="text-gray-400">
-                            If we have the following prices:
+                        <h1 className="text-xl font-bold">Examples</h1>
+                        <p className="italic">
+                            <span className="font-black">• </span>open - low
+                            &lt; high - close
                         </p>
-                        <p>Open prices as: [1, 5, 3]</p>
-                        <p>High prices as: [7, 3, 4]</p>
-                        <p>Low prices as: [6, 2, 1]</p>
-                        <p>Close prices as: [5, 3, 1]</p>
-                        <p className="text-gray-400">
-                            And the following indicator:
+                        <p className="italic">
+                            <span className="font-black">• </span>open &gt;
+                            close & (low - high) &lt; close * 1.02
                         </p>
-                        <p className="italic">open - low &lt; high - close</p>
-                        <p className="text-gray-400">The result will be:</p>
-                        <p>[False, False, True]</p>
-                        <p className="text-gray-400">
-                            Which means the trades will be:
-                        </p>
-                        <p>Sell on the 1st day</p>
-                        <p>Buy on the 3rd day</p>
                     </div>
                 </div>
                 <div className="w-full bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 h-fit">
@@ -317,24 +297,14 @@ const WritingIndicators = () => {
                         </li>
                     </ul>
                     <div className="flex flex-col space-y-2">
-                        <h1 className="text-xl font-bold">Example</h1>
-                        <p className="text-gray-400">
-                            If we have the following prices:
+                        <h1 className="text-xl font-bold">Examples</h1>
+                        <p className="italic">
+                            <span className="font-black">• </span>close == high
                         </p>
-                        <p>Close prices as: [1, 5, 3]</p>
-                        <p>High prices as: [2, 5, 4]</p>
-                        <p className="text-gray-400">
-                            And the following indicator:
+                        <p className="italic">
+                            <span className="font-black">• </span>open != low |
+                            close == high
                         </p>
-                        <p className="italic">close == high</p>
-                        <p className="text-gray-400">The result will be:</p>
-                        <p>[False, True, False]</p>
-                        <p className="text-gray-400">
-                            Which means the trades will be:
-                        </p>
-                        <p>Sell on the 1st day</p>
-                        <p>Buy on the 2nd day</p>
-                        <p>Sell on the 3rd day</p>
                     </div>
                 </div>
                 <div className="w-full bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 h-fit">
@@ -355,26 +325,15 @@ const WritingIndicators = () => {
                         </li>
                     </ul>
                     <div className="flex flex-col space-y-2">
-                        <h1 className="text-xl font-bold">Example</h1>
-                        <p className="text-gray-400">
-                            If we have the following prices:
-                        </p>
-                        <p>Open prices as: [2, 5, 3]</p>
-                        <p>Low prices as: [1, 2, 1]</p>
-                        <p>Close prices as: [5, 3, 1]</p>
-                        <p className="text-gray-400">
-                            And the following indicator:
+                        <h1 className="text-xl font-bold">Examples</h1>
+                        <p className="italic">
+                            <span className="font-black">• </span>(open &gt;
+                            low) & (close &lt; open)
                         </p>
                         <p className="italic">
-                            (open &gt; low) & (close &lt; open)
+                            <span className="font-black">• </span>(open &gt;
+                            low) & (close &lt; open) | (high != close)
                         </p>
-                        <p className="text-gray-400">The result will be:</p>
-                        <p>[False, True, True]</p>
-                        <p className="text-gray-400">
-                            Which means the trades will be:
-                        </p>
-                        <p>Sell on the 1st day</p>
-                        <p>Buy on the 2nd day</p>
                     </div>
                 </div>
                 <div className="w-full bg-base-200 p-8 rounded-3xl flex flex-col space-y-8 h-fit">
@@ -393,7 +352,7 @@ const WritingIndicators = () => {
                         </p>
                     </div>
                     <div className="flex flex-col space-y-2">
-                        <h1 className="text-xl font-bold">Example</h1>
+                        <h1 className="text-xl font-bold">Examples</h1>
                         <p className="italic">
                             sma(close, 10) &lt; sma(open, 5)
                         </p>
@@ -403,7 +362,7 @@ const WritingIndicators = () => {
                         <p className="italic">
                             psar(data, 0.04, 0.04, 0.4) &lt; close
                         </p>
-                        <p className="italic">bold(close) &gt; open</p>
+                        <p className="italic">boll(close) &gt; open</p>
                     </div>
                 </div>
             </div>

@@ -82,7 +82,7 @@
             "Daily data is available",
             "Intraday data is available",
             "The test will be added to your archive",
-            "You will be able to run tests on indexes and ETFs if your twelvedata api key allows that"
+            "You will be able to run tests on indexes and ETFs if your twelvedata api key subscription supports that"
         ],
         "priceIds": {
             "sandbox": [

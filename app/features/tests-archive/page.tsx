@@ -171,7 +171,8 @@ const TestsArchive = () => {
                         <div>
                             <p className="text-gray-400">
                                 Check your tests history and download all
-                                transactions for your tests.
+                                transactions for your tests. Only Gold and
+                                Diamond tests support this feature.
                             </p>
                         </div>
                         <div className="divider"></div>
@@ -190,7 +191,7 @@ const TestsArchive = () => {
                                                 Symbol
                                             </th>
                                             <th className="font-black">
-                                                Indicator
+                                                Indicators
                                             </th>
                                             <th className="font-black">
                                                 Interval

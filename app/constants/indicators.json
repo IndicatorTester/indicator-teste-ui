@@ -14,7 +14,7 @@
                     {
                         "name": "length",
                         "description": "time periods.",
-                        "initialValue": "14"
+                        "defaultValue": "14"
                     }
                 ]
             }
@@ -62,7 +62,7 @@
                     {
                         "name": "length",
                         "description": "time periods.",
-                        "initialValue": "20"
+                        "defaultValue": "20"
                     }
                 ]
             }
@@ -85,7 +85,7 @@
                     {
                         "name": "length",
                         "description": "time periods.",
-                        "initialValue": "14"
+                        "defaultValue": "14"
                     }
                 ]
             }
@@ -107,11 +107,11 @@
                 "optionalFields": [
                     {
                         "name": "short_period",
-                        "initialValue": "12"
+                        "defaultValue": "12"
                     },
                     {
                         "name": "long_period",
-                        "initialValue": "26"
+                        "defaultValue": "26"
                     }
                 ]
             },
@@ -126,15 +126,15 @@
                 "optionalFields": [
                     {
                         "name": "short_period",
-                        "initialValue": "12"
+                        "defaultValue": "12"
                     },
                     {
                         "name": "long_period",
-                        "initialValue": "26"
+                        "defaultValue": "26"
                     },
                     {
                         "name": "signal_period",
-                        "initialValue": "9"
+                        "defaultValue": "9"
                     }
                 ]
             },
@@ -149,15 +149,15 @@
                 "optionalFields": [
                     {
                         "name": "short_period",
-                        "initialValue": "12"
+                        "defaultValue": "12"
                     },
                     {
                         "name": "long_period",
-                        "initialValue": "26"
+                        "defaultValue": "26"
                     },
                     {
                         "name": "signal_period",
-                        "initialValue": "9"
+                        "defaultValue": "9"
                     }
                 ]
             }
@@ -179,15 +179,15 @@
                 "optionalFields": [
                     {
                         "name": "af_start",
-                        "initialValue": "0.02"
+                        "defaultValue": "0.02"
                     },
                     {
                         "name": "af_increment",
-                        "initialValue": "0.02"
+                        "defaultValue": "0.02"
                     },
                     {
                         "name": "af_max",
-                        "initialValue": "0.2"
+                        "defaultValue": "0.2"
                     }
                 ]
             }
@@ -210,7 +210,7 @@
                     {
                         "name": "length",
                         "description": "time periods.",
-                        "initialValue": "14"
+                        "defaultValue": "14"
                     }
                 ]
             }
@@ -233,7 +233,7 @@
                     {
                         "name": "length",
                         "description": "time periods.",
-                        "initialValue": "5"
+                        "defaultValue": "5"
                     }
                 ]
             }
@@ -256,7 +256,7 @@
                     {
                         "name": "length",
                         "description": "time periods.",
-                        "initialValue": "14"
+                        "defaultValue": "14"
                     }
                 ]
             }
@@ -279,7 +279,7 @@
                     {
                         "name": "length",
                         "description": "time periods.",
-                        "initialValue": "14"
+                        "defaultValue": "14"
                     }
                 ]
             },
@@ -295,7 +295,7 @@
                     {
                         "name": "length",
                         "description": "time periods.",
-                        "initialValue": "3"
+                        "defaultValue": "3"
                     }
                 ]
             }
@@ -318,7 +318,7 @@
                     {
                         "name": "length",
                         "description": "time periods.",
-                        "initialValue": "5"
+                        "defaultValue": "5"
                     }
                 ]
             }
