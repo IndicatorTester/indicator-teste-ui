@@ -5,7 +5,7 @@ import FormView, { TestParams } from "./FormView";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import ResultView from "./ResultView";
 import { API_KEY_LOCAL_STORAGE_KEY } from "../../constants/constants";
-import { generateClientHash } from "../../utils";
+import { generateClientHash } from "../../../utils/backend";
 import XComponentStack from "../../components/XComponentStack";
 import { Info, XOctagon } from "react-feather";
 import fakeTestResult from "@/public/fake/testResult.json";

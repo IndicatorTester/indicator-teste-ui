@@ -1,6 +1,6 @@
 "use client";
 
-import { INTERVALS_MAPPING, generateClientHash } from "@/app/utils";
+import { INTERVALS_MAPPING, generateClientHash } from "@/utils/backend";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import React, { useEffect, useState } from "react";
 import {

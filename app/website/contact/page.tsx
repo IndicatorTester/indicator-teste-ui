@@ -1,6 +1,6 @@
 "use client";
 
-import { generateClientHash } from "@/app/utils";
+import { generateClientHash } from "@/utils/backend";
 import Link from "next/link";
 import React, { useState } from "react";
 import { AlertTriangle, Info, Send } from "react-feather";

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import XSelect, { Option } from "../../components/XSelect";
-import { validBooleanExpression, validBrackets } from "@/app/utils";
+import { validBooleanExpression, validBrackets } from "@/utils/indicator";
 import { Command } from "react-feather";
 import Link from "next/link";
 

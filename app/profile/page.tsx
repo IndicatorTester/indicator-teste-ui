@@ -5,7 +5,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { API_KEY_LOCAL_STORAGE_KEY } from "../constants/constants";
 import { redirect } from "next/navigation";
-import { generateClientHash } from "../utils";
+import { generateClientHash } from "../../utils/backend";
 import Link from "next/link";
 import { AlertTriangle, Info, LogOut, XOctagon } from "react-feather";
 
