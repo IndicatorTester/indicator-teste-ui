@@ -108,8 +108,8 @@ const WritingIndicators = () => {
                                         <td>
                                             In this case a buy action will take
                                             place since the buy indicator is
-                                            "True" and the sell indicator is
-                                            "False".
+                                            &quot;True&quot; and the sell indicator is
+                                            &quot;False&quot;.
                                         </td>
                                     </tr>
                                     <tr className="text-start hover:bg-base-300">
@@ -154,8 +154,8 @@ const WritingIndicators = () => {
                                         <td>
                                             In this case a sell action will take
                                             place since the buy indicator is
-                                            "False" and the sell indicator is
-                                            "True", and the last action was a
+                                            &quot;False&quot; and the sell indicator is
+                                            &quot;True&quot;, and the last action was a
                                             buy action.
                                         </td>
                                     </tr>
