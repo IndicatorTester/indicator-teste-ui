@@ -85,7 +85,7 @@ const WritingIndicators = () => {
                                 [False, False, True, False, True, True]
                             </code>
                         </p>
-                        <div className="h-4"></div>
+                        <div className="divider h-8"></div>
                         <div className="overflow-x-auto">
                             <table className="table text-lg">
                                 <thead className="text-lg text-neutral-content">
@@ -354,22 +354,6 @@ const WritingIndicators = () => {
                             <span className="font-black">• </span>Or (|)
                         </li>
                     </ul>
-                    <div className="flex flex-col space-y-2">
-                        <h1 className="text-xl font-bold">Note</h1>
-                        <p>
-                            For every expression that is used with a logical
-                            operation is MUST be between brackets (). A valid
-                            indicator:{" "}
-                            <span className="italic font-bold">
-                                (expressionA) & (expressionB) | (expressionC)
-                            </span>
-                            , meanwhile{" "}
-                            <span className="italic font-bold">
-                                expressionA & expressionB | expressionC
-                            </span>{" "}
-                            is not valid.
-                        </p>
-                    </div>
                     <div className="flex flex-col space-y-2">
                         <h1 className="text-xl font-bold">Example</h1>
                         <p className="text-gray-400">

@@ -2,7 +2,7 @@
 
 import { INTERVALS_MAPPING, generateClientHash } from "@/utils/backend";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
     Check,
     ChevronLeft,
@@ -18,6 +18,7 @@ import { redirect } from "next/navigation";
 
 const TestsArchive = () => {
     const user = useUser();
+    const topRef = useRef<HTMLDivElement>(null);
 
     if (user.user && !user.user?.email_verified) {
         redirect("/profile");
@@ -127,6 +128,7 @@ const TestsArchive = () => {
         setTests(null);
         await fetchTests(lastTimestamp, pageNumber + 1);
         setPageNumber(pageNumber + 1);
+        topRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
     const previousPage: React.MouseEventHandler<HTMLButtonElement> = async (
@@ -136,11 +138,12 @@ const TestsArchive = () => {
         setTests(null);
         await fetchTests(firstTimestamp, pageNumber - 1);
         setPageNumber(pageNumber - 1);
+        topRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
     return (
         <>
-            <div className="col-span-1 md:col-span-2"></div>
+            <div ref={topRef} className="col-span-1 md:col-span-2"></div>
             <div className="col-span-10 md:col-span-8 row-span-1 min-h-screen">
                 <div className="w-full flex flex-col space-y-8 justify-center items-center">
                     {!user.user && (

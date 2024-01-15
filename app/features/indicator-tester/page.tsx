@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import FormView, { TestParams } from "./FormView";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import ResultView from "./ResultView";
@@ -13,6 +13,7 @@ import { redirect } from "next/navigation";
 
 const App = () => {
     const user = useUser();
+    const topRef = useRef<HTMLDivElement>(null);
 
     if (user.user && !user.user?.email_verified) {
         redirect("/profile");
@@ -39,6 +40,7 @@ const App = () => {
             setError(
                 "You have to add your api key to use this tool, go to your profile."
             );
+            topRef.current?.scrollIntoView({ behavior: "smooth" });
             return;
         }
 
@@ -102,12 +104,16 @@ const App = () => {
                 const error = await response.json();
                 setError(error.error);
                 setIsLoading(false);
+                topRef.current?.scrollIntoView({ behavior: "smooth" });
                 return;
             }
 
             const data = await response.json();
             setTestResult(data);
-        } catch (error) {}
+        } catch (error) {
+            setError("Something went wrong kindly try again later");
+            topRef.current?.scrollIntoView({ behavior: "smooth" });
+        }
 
         setIsLoading(false);
     };
@@ -118,7 +124,7 @@ const App = () => {
 
     return (
         <>
-            <div className="col-span-1 md:col-span-2"></div>
+            <div ref={topRef} className="col-span-1 md:col-span-2"></div>
             <div className="col-span-10 md:col-span-8 row-span-1 min-h-screen flex flex-col justify-start items-center space-y-8">
                 {!user.user && (
                     <div className="w-full">
