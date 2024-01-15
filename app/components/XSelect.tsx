@@ -8,18 +8,18 @@ export type Option = {
 };
 
 type XSelectProps = {
+    value?: string;
     options: Option[];
     disabled?: boolean;
     placeholder?: string;
-    defaultValue?: string;
     selectedHandler: (selectedValue: string) => void;
 };
 
 const XSelect: React.FC<XSelectProps> = ({
+    value,
     options,
     disabled,
     placeholder,
-    defaultValue,
     selectedHandler,
 }) => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -61,7 +61,7 @@ const XSelect: React.FC<XSelectProps> = ({
                 placeholder={placeholder || "Search for an option..."}
                 value={
                     selectedOption?.label ?? searchTerm.length === 0
-                        ? defaultValue
+                        ? value
                         : searchTerm
                 }
                 onChange={handleInputChange}
@@ -69,7 +69,7 @@ const XSelect: React.FC<XSelectProps> = ({
                 disabled={disabled ?? true}
             />
             {visibleOptions.length !== 0 ? (
-                <ul className="grid grid-cols-2 gap-8 bg-neutral menu rounded-xl text-start absolute z-[1] mt-14 overflow-auto">
+                <ul className="max-w-[240px] grid grid-cols-1 gap-2 bg-neutral menu rounded-xl text-start absolute z-[1] mt-14 overflow-auto">
                     {visibleOptions.map((option) => (
                         <li
                             key={option.value}

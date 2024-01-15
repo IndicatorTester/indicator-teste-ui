@@ -71,6 +71,8 @@ const FormView: React.FC<FormViewProps> = ({
         HTMLSelectElement
     > = async (e) => {
         setIsLoading(true);
+        setSymbol("");
+        setExchange("");
         const selectedValue = e.target.value;
         handleRunTest(null, null);
 
@@ -354,7 +356,7 @@ const FormView: React.FC<FormViewProps> = ({
                                     options={exchanges ?? []}
                                     placeholder="Exchange"
                                     selectedHandler={exchangeSelectHandler}
-                                    defaultValue={exchange}
+                                    value={exchange}
                                     disabled={
                                         type.length === 0 ||
                                         type === "cryptocurrencies"
@@ -364,7 +366,7 @@ const FormView: React.FC<FormViewProps> = ({
                                     options={symbols ?? []}
                                     placeholder="Symbol"
                                     selectedHandler={symbolSelectHandler}
-                                    defaultValue={symbol}
+                                    value={symbol}
                                     disabled={
                                         (type !== "cryptocurrencies" &&
                                             exchange.length === 0) ||

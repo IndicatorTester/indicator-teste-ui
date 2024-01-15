@@ -53,7 +53,7 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
                         </span>
                         <br />
                         <span className="font-light md:text-lg text-base text-gray-400">
-                            Your Total Profit from this Test
+                            Your Total Profit In this Test
                         </span>
                     </p>
                     <div className="flex justify-start items-center h-4">
@@ -82,7 +82,11 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
                     <span className="text-neutral-content font-black">
                         {data.actions.length}
                     </span>{" "}
-                    transactions between{" "}
+                    trades on{" "}
+                    <span className="text-neutral-content font-semibold">
+                        {data.symbol}
+                    </span>{" "}
+                    between{" "}
                     <span className="text-neutral-content font-black italic">
                         {data.start}
                     </span>{" "}
@@ -93,7 +97,7 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
                     .
                 </p>
             </div>
-            <div className="divider" ></div>
+            <div className="divider"></div>
             <div className="w-full overflow-auto">
                 <table className="table">
                     <thead className="text-base text-neutral-content font-black">
@@ -115,8 +119,11 @@ const ResultView: React.FC<ResultViewProps> = ({ data, backAction }) => {
                         {data.actions.map(
                             (action: any, index: number) =>
                                 (index < 20 ||
-                                index > data.actions.length - 20) && (
-                                    <tr key={index} className="hover:bg-base-300" >
+                                    index > data.actions.length - 20) && (
+                                    <tr
+                                        key={index}
+                                        className="hover:bg-base-300"
+                                    >
                                         <th className="font-black">
                                             {index + 1}
                                         </th>
