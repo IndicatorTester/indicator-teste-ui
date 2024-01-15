@@ -1,8 +1,8 @@
-import "./globals.css";
+import "@/app/globals.css";
 import "tailwindcss/tailwind.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import XNavBar from "./components/XNavBar";
-import XFooter from "./components/XFooter";
+import XNavBar from "@/app/components/XNavBar";
+import XFooter from "@/app/components/XFooter";
 
 export const metadata = {
     title: "XIndicator",
@@ -18,7 +18,7 @@ export default function RootLayout({
             <head>
                 <link rel="icon" href="/Logo.svg" sizes="any" />
             </head>
-            <body className="h-[100%] text-neutral-content">
+            <body id="body" className="h-[100%] text-neutral-content">
                 <UserProvider>
                     <XNavBar />
                     <div className="grid grid-rows-expand grid-cols-12 min-h-screen">

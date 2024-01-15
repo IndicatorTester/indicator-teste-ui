@@ -74,6 +74,7 @@ const XNavBar = () => {
                     </Link>
                 </div>
                 <div
+                    onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
                     onMouseEnter={() => setIsNavMenuOpen(true)}
                     onMouseLeave={() => setIsNavMenuOpen(false)}
                     className="flex flex-col py-6 px-8 space-y-12 justify-start items-center"

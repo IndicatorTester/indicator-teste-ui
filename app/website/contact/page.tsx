@@ -1,12 +1,12 @@
 "use client";
 
 import { generateClientHash } from "@/utils/backend";
+import { scrollToTop } from "@/utils/view";
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { AlertTriangle, Info, Send } from "react-feather";
 
 const Contact = () => {
-    const topRef = useRef<HTMLDivElement>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [info, setInfo] = useState<string | null>(null);
     const [warning, setWarning] = useState<string | null>(null);
@@ -29,12 +29,12 @@ const Contact = () => {
         ) {
             setWarning("Warning: Kindly fill all fields");
             setIsLoading(false);
-            topRef.current?.scrollIntoView({ behavior: "smooth" });
+            scrollToTop(document);
             return;
         } else if (!agree.checked) {
             setWarning("Warning: Kindly agree on our friendly privacy policy");
             setIsLoading(false);
-            topRef.current?.scrollIntoView({ behavior: "smooth" });
+            scrollToTop(document);
             return;
         }
 
@@ -56,11 +56,12 @@ const Contact = () => {
         });
         setIsLoading(false);
         setInfo("Thank you, we appreciate your time");
+        scrollToTop(document);
     };
 
     return (
         <>
-            <div ref={topRef} className="col-span-1 md:col-span-2"></div>
+            <div className="col-span-1 md:col-span-2"></div>
             <div className="col-span-10 md:col-span-8 row-span-1 min-h-screen flex justify-center">
                 <div className="w-full max-w-[720px] rounded-3xl flex flex-col space-y-8 h-fit">
                     {warning && (

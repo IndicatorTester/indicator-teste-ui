@@ -1,19 +1,19 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormView, { TestParams } from "./FormView";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import ResultView from "./ResultView";
-import { API_KEY_LOCAL_STORAGE_KEY } from "../../constants/constants";
-import { generateClientHash } from "../../../utils/backend";
-import XComponentStack from "../../components/XComponentStack";
+import { API_KEY_LOCAL_STORAGE_KEY } from "@/app/constants/constants";
+import { generateClientHash } from "@/utils/backend";
+import XComponentStack from "@/app/components/XComponentStack";
 import { Info, XOctagon } from "react-feather";
 import fakeTestResult from "@/public/fake/testResult.json";
 import { redirect } from "next/navigation";
+import { scrollToTop } from "@/utils/view";
 
 const App = () => {
     const user = useUser();
-    const topRef = useRef<HTMLDivElement>(null);
 
     if (user.user && !user.user?.email_verified) {
         redirect("/profile");
@@ -40,7 +40,7 @@ const App = () => {
             setError(
                 "You have to add your api key to use this tool, go to your profile."
             );
-            topRef.current?.scrollIntoView({ behavior: "smooth" });
+            scrollToTop(document);
             return;
         }
 
@@ -104,15 +104,16 @@ const App = () => {
                 const error = await response.json();
                 setError(error.error);
                 setIsLoading(false);
-                topRef.current?.scrollIntoView({ behavior: "smooth" });
+                scrollToTop(document);
                 return;
             }
 
             const data = await response.json();
             setTestResult(data);
+            scrollToTop(document);
         } catch (error) {
             setError("Something went wrong kindly try again later");
-            topRef.current?.scrollIntoView({ behavior: "smooth" });
+            scrollToTop(document);
         }
 
         setIsLoading(false);
@@ -124,7 +125,7 @@ const App = () => {
 
     return (
         <>
-            <div ref={topRef} className="col-span-1 md:col-span-2"></div>
+            <div className="col-span-1 md:col-span-2"></div>
             <div className="col-span-10 md:col-span-8 row-span-1 min-h-screen flex flex-col justify-start items-center space-y-8">
                 {!user.user && (
                     <div className="w-full">
