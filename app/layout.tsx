@@ -21,7 +21,7 @@ export default function RootLayout({
             <body className="h-[100%] text-neutral-content">
                 <UserProvider>
                     <XNavBar />
-                    <div className="grid grid-rows-expand grid-cols-12">
+                    <div className="grid grid-rows-expand grid-cols-12 min-h-screen">
                         {children}
                     </div>
                 </UserProvider>
