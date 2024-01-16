@@ -58,6 +58,7 @@ const App = () => {
         if (!user.user) {
             setTestResult(fakeTestResult);
             setIsLoading(false);
+            scrollToTop(document);
             return;
         }
 
