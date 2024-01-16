@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 import { generateClientHash } from "../../utils/backend";
 import Link from "next/link";
 import { AlertTriangle, Info, LogOut, XOctagon } from "react-feather";
+import { scrollToTop } from "@/utils/view";
 
 const Profile = () => {
     const user = useUser();
@@ -17,7 +18,7 @@ const Profile = () => {
     }
 
     const [userData, setUserData] = useState<any>(null);
-    const [apiKey, setApiKey] = useState<string | null>(null);
+    const [apiKey, setApiKey] = useState<string | null>("PLACEHOLDER");
     const [message, setMessage] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [isFetchingData, setIsFetchingData] = useState(true);
@@ -104,8 +105,11 @@ const Profile = () => {
             newApiKey
         );
         setApiKey(newApiKey);
-        setMessage("Info: Stored new api key!");
+        if (newApiKey.length !== 0) {
+            setMessage("Info: Stored new api key!");
+        }
         setIsUpdatingApiKey(false);
+        scrollToTop(document);
     };
 
     return (
@@ -214,9 +218,9 @@ const Profile = () => {
                                 ) : (
                                     <button
                                         type="submit"
-                                        className="btn btn-neutral"
+                                        className="btn btn-ghost"
                                     >
-                                        Save
+                                        Update
                                     </button>
                                 )}
                             </form>
@@ -232,6 +236,9 @@ const Profile = () => {
                                 >
                                     https://twelvedata.com/pricing
                                 </Link>
+                            </p>
+                            <p className="text-gray-400 text-sm">
+                                * You will need to update the key for each new browser you use.
                             </p>
                         </div>
                         <div className="divider"></div>
