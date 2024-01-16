@@ -1,52 +1,57 @@
 [
-  {
-    "userId": "auth0|65683f9089d738e2258d3080",
-    "timestamp": "1703835960",
-    "endDate": "2023-01-01",
-    "indicator": "ema(open) > ema(close)",
-    "interval": "1day",
-    "profit": "-98.34",
-    "startDate": "2022-01-01",
-    "symbol": "TSLA"
-  },
-  {
-    "userId": "auth0|65683f9089d738e2258d3080",
-    "timestamp": "1703835960",
-    "endDate": "2023-12-01",
-    "indicator": "ema(open) > ema(close)",
-    "interval": "2h",
-    "profit": "-9.61",
-    "startDate": "2023-01-01",
-    "symbol": "AMZN"
-  },
-  {
-    "userId": "auth0|65683f9089d738e2258d3080",
-    "timestamp": "1703835960",
-    "endDate": "2023-01-15",
-    "indicator": "ema(open) > ema(close)",
-    "interval": "1week",
-    "profit": "8.4",
-    "startDate": "2023-01-01",
-    "symbol": "BTC/USD"
-  },
-  {
-    "userId": "auth0|65683f9089d738e2258d3080",
-    "timestamp": "1703835960",
-    "endDate": "2024-01-01",
-    "indicator": "ema(open) > ema(close)",
-    "interval": "1day",
-    "profit": "34.62",
-    "startDate": "2022-01-01",
-    "symbol": "DOGE/USD"
-  },
-  {
-    "userId": "auth0|65683f9089d738e2258d3080",
-    "timestamp": "1703835960",
-    "endDate": "2023-09-01",
-    "indicator": "ema(open) > ema(close)",
-    "interval": "1day",
-    "profit": "61.35",
-    "startDate": "2023-06-01",
-    "symbol": "ETH/USD"
-  }
+    {
+        "userId": "auth0|65683f9089d738e2258d3080",
+        "timestamp": "1703835960",
+        "endDate": "2023-01-01",
+        "buyIndicator": "sma(close, 10) < sma(open, 5)",
+        "sellIndicator": "psar(data, 0.04, 0.04, 0.4) < close",
+        "interval": "1day",
+        "profit": "-98.34",
+        "startDate": "2022-01-01",
+        "symbol": "TSLA"
+    },
+    {
+        "userId": "auth0|65683f9089d738e2258d3080",
+        "timestamp": "1703835960",
+        "endDate": "2023-12-01",
+        "buyIndicator": "boll(close) > open",
+        "sellIndicator": "sma(close, 10) < sma(open, 5)",
+        "interval": "2h",
+        "profit": "-9.61",
+        "startDate": "2023-01-01",
+        "symbol": "AMZN"
+    },
+    {
+        "userId": "auth0|65683f9089d738e2258d3080",
+        "timestamp": "1703835960",
+        "endDate": "2023-01-15",
+        "buyIndicator": "(open > low) & (close < open) | (high != close)",
+        "sellIndicator": "open != low | close == high",
+        "interval": "1week",
+        "profit": "8.4",
+        "startDate": "2023-01-01",
+        "symbol": "BTC/USD"
+    },
+    {
+        "userId": "auth0|65683f9089d738e2258d3080",
+        "timestamp": "1703835960",
+        "endDate": "2024-01-01",
+        "buyIndicator": "(open > low) & (close < open)",
+        "sellIndicator": "close == high",
+        "interval": "1day",
+        "profit": "34.62",
+        "startDate": "2022-01-01",
+        "symbol": "DOGE/USD"
+    },
+    {
+        "userId": "auth0|65683f9089d738e2258d3080",
+        "timestamp": "1703835960",
+        "endDate": "2023-09-01",
+        "buyIndicator": "open - low < high - close",
+        "sellIndicator": "open > close & (low - high) < close * 1.02",
+        "interval": "1day",
+        "profit": "61.35",
+        "startDate": "2023-06-01",
+        "symbol": "ETH/USD"
+    }
 ]
