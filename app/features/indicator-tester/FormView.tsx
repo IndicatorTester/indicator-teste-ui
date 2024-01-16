@@ -352,16 +352,18 @@ const FormView: React.FC<FormViewProps> = ({
                             <span className="loading loading-ring loading-lg"></span>
                         ) : (
                             <div className="w-full flex md:flex-row flex-col justify-center items-center md:space-x-6 md:space-y-0 space-y-6">
-                                <XSelect
-                                    options={exchanges ?? []}
-                                    placeholder="Exchange"
-                                    selectedHandler={exchangeSelectHandler}
-                                    value={exchange}
-                                    disabled={
-                                        type.length === 0 ||
-                                        type === "cryptocurrencies"
-                                    }
-                                />
+                                {type !== "cryptocurrencies" && (
+                                    <XSelect
+                                        options={exchanges ?? []}
+                                        placeholder="Exchange"
+                                        selectedHandler={exchangeSelectHandler}
+                                        value={exchange}
+                                        disabled={
+                                            type.length === 0 ||
+                                            type === "cryptocurrencies"
+                                        }
+                                    />
+                                )}
                                 <XSelect
                                     options={symbols ?? []}
                                     placeholder="Symbol"
