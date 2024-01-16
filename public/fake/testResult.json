@@ -1,9 +1,10 @@
 {
     "start": "2023-06-06",
     "end": "2023-12-31",
-    "cash": 792.20,
-    "profit": -207.80,
+    "cash": 792.2,
+    "profit": -207.8,
     "profitPercentage": -20.78,
+    "symbol": "BTC/USD",
     "success": true,
     "actions": [
         {
