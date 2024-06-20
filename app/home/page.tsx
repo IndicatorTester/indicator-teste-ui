@@ -14,7 +14,7 @@ const HomePage = () => {
                     <div className="w-full mockup-window border border-gray-400 bg-base-200 shadow-2xl rounded-3xl">
                         <div className="flex justify-center bg-base-200 rounded-3xl">
                             <Image
-                                src="/Application.png"
+                                src="./Application.png"
                                 alt="Application Image"
                                 width={3023}
                                 height={1718}
